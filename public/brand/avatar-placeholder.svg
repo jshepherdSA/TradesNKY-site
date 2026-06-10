@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" role="img" aria-label="Photo placeholder">
+  <rect width="640" height="640" fill="#e3e5e6"/>
+  <ellipse cx="320" cy="250" rx="120" ry="140" fill="#a8adb2"/>
+  <path d="M100 640 C100 490 210 420 320 420 C430 420 540 490 540 640 Z" fill="#a8adb2"/>
+</svg>

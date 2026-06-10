@@ -1,26 +1,322 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =============================================================
+   shadcn theme — neutral surface palette + radius scale.
+   The Trades NKY @theme block below overrides conflicting tokens
+   (radii). See DESIGN.md for the authoritative token spec.
+   ============================================================= */
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Rewired to brand — see DESIGN.md.
+     The brand @theme block below defines --color-tnky-* tokens that
+     these variables point at. shadcn primitives now inherit brand. */
+  --background: var(--color-tnky-cream);
+  --foreground: var(--color-tnky-ink);
+  --card: var(--color-tnky-white);
+  --card-foreground: var(--color-tnky-ink);
+  --popover: var(--color-tnky-white);
+  --popover-foreground: var(--color-tnky-ink);
+  --primary: var(--color-tnky-blue);
+  --primary-foreground: var(--color-tnky-white);
+  --secondary: var(--color-tnky-paper);
+  --secondary-foreground: var(--color-tnky-ink);
+  --muted: var(--color-tnky-paper);
+  --muted-foreground: var(--color-tnky-mute);
+  --accent: var(--color-tnky-blue-50);
+  --accent-foreground: var(--color-tnky-blue);
+  --destructive: var(--color-tnky-rust);
+  --border: var(--color-tnky-edge);
+  --input: var(--color-tnky-edge);
+  --ring: var(--color-tnky-blue);
+  --chart-1: var(--color-tnky-blue);
+  --chart-2: var(--color-tnky-safety);
+  --chart-3: var(--color-tnky-grass);
+  --chart-4: var(--color-tnky-rust);
+  --chart-5: var(--color-tnky-sky);
+  --radius: 0.625rem;
+  --sidebar: var(--color-tnky-paper);
+  --sidebar-foreground: var(--color-tnky-ink);
+  --sidebar-primary: var(--color-tnky-blue);
+  --sidebar-primary-foreground: var(--color-tnky-white);
+  --sidebar-accent: var(--color-tnky-blue-50);
+  --sidebar-accent-foreground: var(--color-tnky-blue);
+  --sidebar-border: var(--color-tnky-edge);
+  --sidebar-ring: var(--color-tnky-blue);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  /* Dark mirror — mirrors the brand's actual on-dark patterns:
+     black surfaces (footer / CTA band), safety-yellow as primary CTA,
+     warm ink-2 for hairlines. */
+  --background: var(--color-tnky-black);
+  --foreground: var(--color-tnky-white);
+  --card: var(--color-tnky-ink);
+  --card-foreground: var(--color-tnky-white);
+  --popover: var(--color-tnky-ink);
+  --popover-foreground: var(--color-tnky-white);
+  --primary: var(--color-tnky-safety);
+  --primary-foreground: var(--color-tnky-safety-ink);
+  --secondary: var(--color-tnky-ink-2);
+  --secondary-foreground: var(--color-tnky-white);
+  --muted: var(--color-tnky-ink-2);
+  --muted-foreground: var(--color-tnky-mute-2);
+  --accent: var(--color-tnky-ink-2);
+  --accent-foreground: var(--color-tnky-safety);
+  --destructive: var(--color-tnky-rust);
+  --border: var(--color-tnky-ink-2);
+  --input: var(--color-tnky-ink-2);
+  --ring: var(--color-tnky-safety);
+  --chart-1: var(--color-tnky-sky);
+  --chart-2: var(--color-tnky-safety);
+  --chart-3: var(--color-tnky-grass);
+  --chart-4: var(--color-tnky-rust);
+  --chart-5: var(--color-tnky-blue-600);
+  --sidebar: var(--color-tnky-ink);
+  --sidebar-foreground: var(--color-tnky-white);
+  --sidebar-primary: var(--color-tnky-safety);
+  --sidebar-primary-foreground: var(--color-tnky-safety-ink);
+  --sidebar-accent: var(--color-tnky-ink-2);
+  --sidebar-accent-foreground: var(--color-tnky-safety);
+  --sidebar-border: var(--color-tnky-ink-2);
+  --sidebar-ring: var(--color-tnky-safety);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* =============================================================
+   Trades NKY brand tokens — authoritative source.
+   Placed AFTER shadcn so the brand radius/font scales override
+   shadcn's neutral defaults. See DESIGN.md for the spec.
+   ============================================================= */
+@theme {
+  /* ============ COLOR — Primary brand ============ */
+  --color-tnky-blue: #081d82;
+  --color-tnky-blue-700: #0a25a3;
+  --color-tnky-blue-600: #1733bf;
+  --color-tnky-blue-100: #e6e9f5;
+  --color-tnky-blue-50: #f2f4fb;
+  --color-tnky-black: #000000;
+  --color-tnky-ink: #0b0e1a;
+  --color-tnky-ink-2: #1c2236;
+
+  /* ============ COLOR — Neutrals ============ */
+  --color-tnky-white: #ffffff;
+  --color-tnky-cream: #faf8f3;
+  --color-tnky-paper: #f4f1e9;
+  --color-tnky-line: #d9d4c6;
+  --color-tnky-line-cool: #d6dae6;
+  --color-tnky-edge: #e6e3d8;
+  --color-tnky-mute: #6b6f7a;
+  --color-tnky-mute-2: #9a9eaa;
+
+  /* ============ COLOR — Accents ============ */
+  --color-tnky-safety: #ffb800;
+  --color-tnky-safety-ink: #3d2c00;
+  --color-tnky-rust: #c4441f;
+  --color-tnky-grass: #2f7d3a;
+  --color-tnky-sky: #4fa3ff;
+
+  /* ============ COLOR — Cream variants (placeholder imagery) ============ */
+  --color-tnky-cream-2: #e9e4d3;
+  --color-tnky-cream-3: #d6d0bf;
+
+  /* ============ COLOR — Pillar coding ============ */
+  --color-pillar-build: #2c4ba0;
+  --color-pillar-make: #1d7a3f;
+  --color-pillar-move: #f08a1a;
+  --color-pillar-power: #c43426;
+  --color-pillar-protect: #2f4441;
+  --color-pillar-base: #f1f0ec;
+
+  /* ============ TYPE — families ============ */
+  --font-display: var(--font-galano), "Montserrat", system-ui, sans-serif;
+  --font-body: var(--font-montserrat), var(--font-galano), system-ui, sans-serif;
+  --font-alt: var(--font-comfortaa), var(--font-galano), system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* ============ TYPE — scale (clamp-based) ============ */
+  --text-display: clamp(2.75rem, 6vw + 1rem, 5.5rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.025em;
+  --text-section: clamp(2rem, 2.6vw + 1rem, 2.75rem);
+  --text-section--line-height: 1.12;
+  --text-section--letter-spacing: -0.015em;
+  --text-h1: clamp(2.25rem, 3.6vw + 1rem, 3.5rem);
+  --text-h1--line-height: 1.15;
+  --text-h2: clamp(1.75rem, 2.4vw + 1rem, 2.5rem);
+  --text-h2--line-height: 1.15;
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.15;
+  --text-h4: 1.25rem;
+  --text-h4--line-height: 1.2;
+  --text-card-title: 1.375rem;   /* 22px — pathway card title */
+  --text-card-title--line-height: 1.2;
+  --text-eyebrow: 0.8125rem;
+  --text-eyebrow--letter-spacing: 0.14em;
+  --text-lead: 1.1875rem;
+  --text-lead--line-height: 1.55;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-button: 0.9375rem;      /* 15px — button label / data display */
+  --text-button--letter-spacing: 0.01em;
+  --text-small: 0.875rem;        /* 14px */
+  --text-mini: 0.8125rem;        /* 13px — small body w/o eyebrow tracking */
+  --text-micro: 0.75rem;         /* 12px */
+  --text-micro--letter-spacing: 0.02em;
+  --text-meta: 0.6875rem;        /* 11px — uppercase data labels */
+  --text-stat-md: 1.625rem;      /* 26px — quiz q + hero photo stat number */
+  --text-stat-md--letter-spacing: -0.02em;
+  --text-stat-lg: 2.625rem;      /* 42px — quiz result name */
+  --text-stat-lg--letter-spacing: -0.02em;
+  --text-stat-xl: 3.25rem;       /* 52px — stat-bar number */
+  --text-stat-xl--letter-spacing: -0.02em;
+
+  /* ============ TYPE — tracking (letter-spacing) ============ */
+  --tracking-button: 0.01em;
+  --tracking-tag: 0.05em;
+  --tracking-pillar: 0.06em;
+  --tracking-label: 0.08em;
+  --tracking-data: 0.1em;
+  --tracking-eyebrow: 0.14em;
+  --tracking-numeric: -0.02em;
+
+  /* ============ TYPE — font weights ============ */
+  --font-weight-heavy: 900;
+  --font-weight-tnky-black: 950;
+
+  /* ============ RADII — brand wins, overrides shadcn calc() ============ */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-tag: 14px;            /* hero photo stat card — between md & lg */
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+  --radius-pill: 999px;
+
+  /* ============ SPACING — odd-pixel brand values not on default scale ====== */
+  --spacing-dot: 0.3125rem;      /* 5px  — quiz progress dot height */
+  --spacing-card: 1.125rem;      /* 18px — card inner padding / gap */
+  --spacing-pill-x: 1.375rem;    /* 22px — pill-button px / card-22 */
+  --spacing-band: 4.5rem;        /* 72px — full-bleed band vertical */
+
+  /* ============ CONTAINER widths ============ */
+  --container-content: 1200px;   /* marketing content max */
+  --container-wide: 1320px;      /* full-bleed hero max */
+  --container-lead: 620px;       /* lead paragraph max */
+  --container-narrow: 320px;     /* footer tagline max */
+
+  /* ============ BLUR ============ */
+  --backdrop-blur-tnky: 10px;    /* sticky header glass */
+
+  /* ============ SHADOWS ============ */
+  --shadow-tnky-1: 0 1px 0 rgba(8, 29, 130, 0.04), 0 1px 2px rgba(11, 14, 26, 0.06);
+  --shadow-tnky-2: 0 4px 10px rgba(11, 14, 26, 0.08), 0 1px 2px rgba(11, 14, 26, 0.05);
+  --shadow-tnky-3: 0 14px 32px rgba(8, 29, 130, 0.12), 0 4px 8px rgba(11, 14, 26, 0.06);
+  --shadow-tnky-blue: 0 10px 24px rgba(8, 29, 130, 0.28);
+  --shadow-tnky-tag: 0 6px 14px rgba(8, 29, 130, 0.3);
+  --shadow-tnky-safety: 0 10px 24px rgba(0, 0, 0, 0.25);
+  --shadow-tnky-node: 0 4px 0 rgba(0, 0, 0, 0.08);
+
+  /* ============ BACKGROUND IMAGES ============ */
+  --background-image-road: repeating-linear-gradient(
+    to right,
+    var(--color-tnky-blue) 0 14px,
+    transparent 14px 28px
+  );
+
+  /* ============ MOTION ============ */
+  --ease-tnky: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-tnky-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --animate-road-march: road-march 6s linear infinite;
+  @keyframes road-march {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: -44; }
+  }
+
+  /* Diagonal stripe pattern — 45° alternating blue / white, 20px per stripe
+     so the gradient cycle is 40px along the gradient axis. */
+  --background-image-stripe: repeating-linear-gradient(
+    45deg,
+    var(--color-tnky-blue) 0px,
+    var(--color-tnky-blue) 20px,
+    var(--color-tnky-white) 20px,
+    var(--color-tnky-white) 40px
+  );
+
+  /* Stripe-band scrollers — translate horizontally by one full pattern cycle.
+     For a 45° gradient with a 40px cycle along the gradient axis, the
+     equivalent horizontal distance is 40 × √2 ≈ 56.57px, so the loop seam
+     is invisible. */
+  --animate-stripe-right: stripe-right 1.5s linear infinite;
+  @keyframes stripe-right {
+    from { transform: translateX(calc(-40px * 1.41421356)); }
+    to { transform: translateX(0); }
+  }
+  --animate-stripe-left: stripe-left 1.5s linear infinite;
+  @keyframes stripe-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-40px * 1.41421356)); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    @apply font-sans;
+  }
+  body {
+    background: var(--color-tnky-cream);
+    color: var(--color-tnky-ink);
+    font-family: var(--font-body);
+    @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-tnky-ink);
+    text-wrap: balance;
+  }
+  * {
+    @apply border-border outline-ring/50;
+  }
 }

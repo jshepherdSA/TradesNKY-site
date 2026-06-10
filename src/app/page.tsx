@@ -1,65 +1,55 @@
-import Image from "next/image";
+import { HeroSection } from "./_components/hero-section";
+import { FivePathsAccordion } from "./_components/five-paths-accordion";
+import { SimplePathwaySection } from "./_components/simple-pathway-section";
+import { StatBar as NKYStatsBanner } from "./_components/StatBar";
+import { RealStories } from "./_components/real-stories";
+import { InsightsSection } from "./_components/insights-section";
+import { CtaCard as NewsletterBanner } from "./_components/CtaCard";
 
-export default function Home() {
+// PathwayScroll has moved off the homepage — kept here, commented out, for
+// later reuse on /students.
+// import { PathwayScroll } from "./_components/pathway-scroll";
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main>
+      {/* Hero + audience banner are now a single component that fills exactly
+          the visible area below the sticky nav (calc(100vh - var(--nav-h))). */}
+      <HeroSection />
+
+      <SimplePathwaySection />
+
+      <FivePathsAccordion />
+
+      {/* Yellow accent rule above NKYStatsBanner — visually brackets the
+          stats band against the section above. */}
+      <div
+        aria-hidden="true"
+        style={{
+          width: "100%",
+          height: "1px",
+          backgroundColor: "var(--color-tnky-safety)",
+        }}
+      />
+
+      <NKYStatsBanner />
+
+      {/* Yellow accent rule below NKYStatsBanner — bracket against the
+          section below. */}
+      <div
+        aria-hidden="true"
+        style={{
+          width: "100%",
+          height: "1px",
+          backgroundColor: "var(--color-tnky-safety)",
+        }}
+      />
+
+      <RealStories />
+
+      <InsightsSection />
+
+      <NewsletterBanner />
+    </main>
   );
 }
