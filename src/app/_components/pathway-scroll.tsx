@@ -23,8 +23,7 @@ export const DEFAULT_STAGES: PathwayStage[] = [
     name: "Expose",
     blurb:
       "Long before a student picks up a tool, curiosity is the first skill. In the earliest grades, TradesNKY brings the world of skilled trades into view — through classroom visits, hands-on demonstrations, and real conversations with tradespeople who love what they do. We plant the seed early so students grow up knowing these careers exist, they matter, and they pay well.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop",
+    imageSrc: "/images/students-event.jpg",
     imageAlt: "",
   },
   {
@@ -32,8 +31,7 @@ export const DEFAULT_STAGES: PathwayStage[] = [
     name: "Explore",
     blurb:
       "Middle school is where curiosity becomes direction. Students get their first real taste of the trades through job site visits, try-it activities, and career discovery events. They meet welders, electricians, HVAC techs, and project managers — people who built their careers with their hands. By the end of middle school, students have a clearer sense of which of the five pillars excites them most.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=2070&auto=format&fit=crop",
+    imageSrc: "/images/students-handson.jpg",
     imageAlt: "",
   },
   {
@@ -41,8 +39,7 @@ export const DEFAULT_STAGES: PathwayStage[] = [
     name: "Engage",
     blurb:
       "High school is where exploration becomes commitment. TradesNKY connects students to dual enrollment programs, registered apprenticeships, career and technical education courses, and employer partnerships across Northern Kentucky. Students earn real credentials alongside their diploma — entering the workforce or continuing their training already ahead of the curve.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop",
+    imageSrc: "/images/students-building.jpg",
     imageAlt: "",
   },
   {
@@ -50,8 +47,7 @@ export const DEFAULT_STAGES: PathwayStage[] = [
     name: "Earn",
     blurb:
       "This is what it was all for. NKY employers are hiring, wages are strong, and students who followed the pathway are ready on day one. Whether entering a full apprenticeship, joining a company directly, or continuing at a technical college, TradesNKY graduates step into careers with purpose, skill, and a community behind them.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=2070&auto=format&fit=crop",
+    imageSrc: "/images/student-excavator.jpg",
     imageAlt: "",
   },
 ];

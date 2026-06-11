@@ -64,8 +64,8 @@ type HeroSectionProps = {
 
 const DEFAULT_ROTATING = ["Skills.", "Futures.", "A Career.", "Connections."];
 const DEFAULT_BG = {
-  src: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop",
-  alt: "Skilled trades worker on the job in Northern Kentucky",
+  src: "/images/student-excavator.jpg",
+  alt: "A student operates a compact excavator at a Northern Kentucky trades program",
 };
 const DEFAULT_CONTACT = {
   website: { label: "tradesnky.org", href: "https://tradesnky.org" },

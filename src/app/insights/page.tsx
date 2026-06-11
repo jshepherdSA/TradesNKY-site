@@ -21,7 +21,7 @@ const FEATURED: InsightsHeroSlide[] = [
     excerpt:
       "How one Boone County senior traded a question mark for a five-year apprenticeship — and a paycheck — before the cap-and-gown.",
     imageSrc:
-      "https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=2070&auto=format&fit=crop",
+      "/images/students-handson.jpg",
     imageAlt: "",
     href: "/insights/ryle-high-welding-apprenticeship",
   },
@@ -32,7 +32,7 @@ const FEATURED: InsightsHeroSlide[] = [
     excerpt:
       "Three apprentices, zero regrets — why a Boone County employer stopped waiting for résumés and started hiring straight out of shop class.",
     imageSrc:
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop",
+      "/images/student-woodworking.jpg",
     imageAlt: "",
     href: "/insights/florence-plumbing-hires-local",
   },
@@ -43,7 +43,7 @@ const FEATURED: InsightsHeroSlide[] = [
     excerpt:
       "12,400 open trade roles across Northern Kentucky and counting — a new regional report shows where the demand is concentrated and which credentials open the most doors.",
     imageSrc:
-      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=2070&auto=format&fit=crop",
+      "/images/students-building.jpg",
     imageAlt: "",
     href: "/insights/nky-trades-hiring-surge-2026",
   },
@@ -54,7 +54,7 @@ const FEATURED: InsightsHeroSlide[] = [
     excerpt:
       "A new partnership connects Northern Kentucky high schoolers directly to paid apprenticeships in construction, manufacturing, and energy — no degree, no debt.",
     imageSrc:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop",
+      "/images/student-excavator.jpg",
     imageAlt: "",
     href: "/insights/apprenticeship-pipeline-launch",
   },
@@ -71,7 +71,7 @@ const POSTS: BlogPost[] = [
     date: "May 18, 2026",
     dateTime: "2026-05-18",
     imageSrc:
-      "https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=2070&auto=format&fit=crop",
+      "/images/students-handson.jpg",
     imageAlt: "",
     href: "/insights/boone-county-welding-helmet",
   },
@@ -85,7 +85,7 @@ const POSTS: BlogPost[] = [
     date: "May 11, 2026",
     dateTime: "2026-05-11",
     imageSrc:
-      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=2070&auto=format&fit=crop",
+      "/images/students-building.jpg",
     imageAlt: "",
     href: "/insights/bracken-county-hvac-apprenticeship",
   },
@@ -99,7 +99,7 @@ const POSTS: BlogPost[] = [
     date: "May 04, 2026",
     dateTime: "2026-05-04",
     imageSrc:
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop",
+      "/images/student-woodworking.jpg",
     imageAlt: "",
     href: "/insights/nky-electrician-wages-2026",
   },
@@ -113,7 +113,7 @@ const POSTS: BlogPost[] = [
     date: "April 27, 2026",
     dateTime: "2026-04-27",
     imageSrc:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop",
+      "/images/student-excavator.jpg",
     imageAlt: "",
     href: "/insights/nky-diesel-apprenticeship-path",
   },
@@ -127,7 +127,7 @@ const POSTS: BlogPost[] = [
     date: "April 22, 2026",
     dateTime: "2026-04-22",
     imageSrc:
-      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=2070&auto=format&fit=crop",
+      "/images/students-building.jpg",
     imageAlt: "",
     href: "/insights/nky-12k-open-trade-jobs",
   },
@@ -141,7 +141,7 @@ const POSTS: BlogPost[] = [
     date: "April 15, 2026",
     dateTime: "2026-04-15",
     imageSrc:
-      "https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=2070&auto=format&fit=crop",
+      "/images/students-handson.jpg",
     imageAlt: "",
     href: "/insights/dual-credit-manufacturing-course",
   },
@@ -155,7 +155,7 @@ const POSTS: BlogPost[] = [
     date: "April 09, 2026",
     dateTime: "2026-04-09",
     imageSrc:
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop",
+      "/images/student-woodworking.jpg",
     imageAlt: "",
     href: "/insights/registered-apprenticeship-kentucky",
   },
@@ -169,7 +169,7 @@ const POSTS: BlogPost[] = [
     date: "April 03, 2026",
     dateTime: "2026-04-03",
     imageSrc:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop",
+      "/images/student-excavator.jpg",
     imageAlt: "",
     href: "/insights/campbell-county-lineworker-bid",
   },
@@ -183,7 +183,7 @@ const POSTS: BlogPost[] = [
     date: "March 27, 2026",
     dateTime: "2026-03-27",
     imageSrc:
-      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=2070&auto=format&fit=crop",
+      "/images/students-building.jpg",
     imageAlt: "",
     href: "/insights/boone-county-concrete-hires-local",
   },
@@ -197,7 +197,7 @@ const POSTS: BlogPost[] = [
     date: "March 20, 2026",
     dateTime: "2026-03-20",
     imageSrc:
-      "https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=2070&auto=format&fit=crop",
+      "/images/students-handson.jpg",
     imageAlt: "",
     href: "/insights/hvac-vs-plumbing-vs-electrical-2026",
   },

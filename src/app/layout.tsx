@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", galano.variable, montserrat.variable, comfortaa.variable, "font-sans", geist.variable)}
+      className={cn("h-full scroll-smooth", galano.variable, montserrat.variable, comfortaa.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-full flex flex-col bg-tnky-cream text-tnky-ink font-body antialiased">
         <Nav />

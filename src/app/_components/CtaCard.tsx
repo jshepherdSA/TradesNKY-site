@@ -17,8 +17,7 @@ const DESCRIPTION =
   "Sign up for our newsletter and get the latest on careers, programs, and opportunities in Northern Kentucky.";
 const BUTTON_TEXT = "Subscribe";
 const INPUT_PLACEHOLDER = "Enter your email address";
-const DEFAULT_IMAGE =
-  "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop";
+const DEFAULT_IMAGE = "/images/students-building.jpg";
 
 const containerVariants: Variants = {
   hidden: {},

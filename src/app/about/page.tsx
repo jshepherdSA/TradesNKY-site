@@ -478,8 +478,8 @@ export default function AboutPage() {
     <main className="bg-tnky-cream">
       {/* Section 1 — Mission */}
       <TextParallaxContent
-        imgUrl="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop"
-        imgAlt=""
+        imgUrl="/images/students-event.jpg"
+        imgAlt="Northern Kentucky students gather at a TradesNKY career event"
         subheading="Our Mission"
         heading="Built for Northern Kentucky"
         firstSection
@@ -515,8 +515,8 @@ export default function AboutPage() {
 
       {/* Section 2 — Vision */}
       <TextParallaxContent
-        imgUrl="https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=2070&auto=format&fit=crop"
-        imgAlt=""
+        imgUrl="/images/students-handson.jpg"
+        imgAlt="Students take part in a hands-on trades workshop"
         subheading="Our Vision"
         heading="Every Student Every Path"
       >
@@ -563,8 +563,8 @@ export default function AboutPage() {
       {/* Section 3 — Guiding Principles (no body — transitions
           directly into the rolling list below). */}
       <TextParallaxContent
-        imgUrl="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=2070&auto=format&fit=crop"
-        imgAlt=""
+        imgUrl="/images/student-woodworking.jpg"
+        imgAlt="A student builds a project with hand tools in a trades classroom"
         subheading="How We Work"
         heading="Our Guiding Principles"
       />

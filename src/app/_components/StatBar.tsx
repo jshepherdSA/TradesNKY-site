@@ -1,8 +1,8 @@
 const STATS = [
-  { num: "12,400", lbl: "open trade jobs across NKY" },
-  { num: "$62K", lbl: "average journeyman wage" },
-  { num: "0", lbl: "dollars of student debt at finish" },
-  { num: "94%", lbl: "of grads placed within 6 months" },
+  { num: "$63K", lbl: "median journey-level salary in NKY" },
+  { num: "1M+", lbl: "unfilled skilled-trade jobs nationwide" },
+  { num: "43%", lbl: "earnings jump for apprentices within 2.5 years" },
+  { num: "40%+", lbl: "of the workforce retiring this decade" },
 ];
 
 export function StatBar() {
