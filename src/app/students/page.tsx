@@ -17,6 +17,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FadeInSection } from "../_components/fade-in-section";
+import { AudienceHero } from "../_components/audience-hero";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
 import { PATHS, PATH_SLUGS } from "./pillars/data";
 import { cn } from "@/lib/utils";
@@ -146,44 +147,16 @@ export default function StudentsPage() {
   return (
     <main className="bg-tnky-cream">
       {/* ── HERO — “Build Something Bigger Than Yourself” ─────────── */}
-      <section className="relative flex min-h-[78vh] items-center overflow-hidden bg-tnky-blue">
-        <Image
-          src="/images/students-handson.jpg"
-          alt="Students in hard hats taking part in a hands-on TradesNKY workshop"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div aria-hidden="true" className="absolute inset-0 bg-tnky-blue/82" />
-        <div aria-hidden="true" className="absolute inset-0 bg-tnky-ink/15" />
-        <div className="relative z-10 max-w-content mx-auto w-full px-4 py-20 sm:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="font-display font-bold uppercase tracking-eyebrow text-eyebrow text-tnky-safety">
-              For Students
-            </p>
-            <h1 className="mt-3 font-display italic font-extrabold text-5xl md:text-7xl text-tnky-white [text-wrap:balance]">
-              Build Something Bigger Than Yourself
-            </h1>
-            <div
-              aria-hidden="true"
-              className="mx-auto mt-5 h-1 w-20 rounded-full bg-tnky-safety"
-            />
-            <p className="mx-auto mt-6 max-w-lead text-lead font-medium text-tnky-cream/95 [text-wrap:pretty]">
-              The roads you travel, the schools you attend, the hospitals that care
-              for families, and the technology that powers our world all depend on
-              skilled professionals. Explore careers that allow you to make a real
-              impact while building a future you&apos;re proud of.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link href="/students/quiz" className={BTN_YELLOW_BLUE}>
-                Take the Career Quiz
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AudienceHero
+        audience="students"
+        title="Build Something Bigger Than Yourself"
+        subtitle="The roads you travel, the schools you attend, the hospitals that care for families, and the technology that powers our world all depend on skilled professionals. Explore careers that allow you to make a real impact while building a future you're proud of."
+        image={{
+          src: "/images/students-handson.jpg",
+          alt: "Students in hard hats taking part in a hands-on TradesNKY workshop",
+        }}
+        primaryCta={{ text: "Take the Career Quiz", href: "/students/quiz" }}
+      />
 
       {/* ── FIRST SECTION — Turn Your Interests Into a Future ─────── */}
       <FadeInSection className="bg-tnky-white">
@@ -214,12 +187,21 @@ export default function StudentsPage() {
       {/* ── SECOND SECTION — The Technology Behind Modern Careers ─── */}
       <FadeInSection className="bg-tnky-cream">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading center>
-              The Technology Behind Modern Careers
-            </SectionHeading>
-            <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              <p>
+          <div className="mx-auto max-w-3xl">
+            <SectionHeading>The Technology Behind Modern Careers</SectionHeading>
+            <div className="mt-6 flow-root text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+              <figure className="float-right mb-4 ml-6 w-2/5 max-w-xs sm:ml-8">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-tnky-2">
+                  <Image
+                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80"
+                    alt="A student using digital diagnostics on computer-controlled equipment"
+                    fill
+                    sizes="(min-width: 768px) 40vw, 90vw"
+                    className="object-cover"
+                  />
+                </div>
+              </figure>
+              <p className="mb-4">
                 Today&apos;s skilled careers combine hands-on work with some of the
                 most advanced technology in the workforce. From robotics and
                 automation to drones, smart sensors, computer-controlled equipment,
@@ -311,6 +293,42 @@ export default function StudentsPage() {
               </p>
             </article>
           </div>
+
+          {/* Earn-while-you-learn vs. college-debt comparison infographic */}
+          <div className="mt-8 overflow-hidden rounded-2xl border border-tnky-edge shadow-tnky-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2">
+              <div className="bg-tnky-blue p-8 md:p-10">
+                <p className="font-display font-bold uppercase tracking-tag text-meta text-tnky-safety">
+                  Earn While You Learn
+                </p>
+                <p className="mt-3 font-display font-tnky-black text-stat-xl leading-none text-tnky-white">
+                  $0
+                </p>
+                <p className="mt-2 text-body font-bold text-tnky-white">
+                  Debt to get started
+                </p>
+                <p className="mt-3 text-small font-medium leading-relaxed text-tnky-white/80 [text-wrap:pretty]">
+                  Apprenticeships and on-the-job training pay you a wage—and often
+                  cover credentials—from day one. You earn while you build skills.
+                </p>
+              </div>
+              <div className="bg-tnky-paper p-8 md:p-10">
+                <p className="font-display font-bold uppercase tracking-tag text-meta text-tnky-mute">
+                  Average 4-Year Path
+                </p>
+                <p className="mt-3 font-display font-tnky-black text-stat-xl leading-none text-tnky-mute">
+                  $38K
+                </p>
+                <p className="mt-2 text-body font-bold text-tnky-ink">
+                  Average student-loan debt
+                </p>
+                <p className="mt-3 text-small font-medium leading-relaxed text-tnky-ink/70 [text-wrap:pretty]">
+                  Many students borrow for years of tuition before earning a
+                  full-time paycheck (U.S. average federal student-loan balance).
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </FadeInSection>
 
@@ -389,13 +407,28 @@ export default function StudentsPage() {
       </FadeInSection>
 
       {/* ── FIFTH SECTION — Today's Skilled Professional. Owner. ──── */}
-      <FadeInSection className="bg-tnky-white">
-        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
+      {/* Full-bleed image band carries the heading + intro; the owner cards
+          sit on white directly below it. */}
+      <section className="relative isolate overflow-hidden bg-tnky-blue">
+        <Image
+          src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80"
+          alt="Two skilled professionals reviewing plans on a tablet at a job site"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-tnky-blue/85" />
+        <div aria-hidden="true" className="absolute inset-0 bg-tnky-ink/25" />
+        <div className="relative z-10 max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="max-w-3xl">
-            <SectionHeading>
+            <h2 className="font-display italic font-extrabold text-3xl md:text-4xl text-tnky-white [text-wrap:balance]">
               Today&apos;s Skilled Professional. Tomorrow&apos;s Business Owner.
-            </SectionHeading>
-            <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+            </h2>
+            <div
+              aria-hidden="true"
+              className="mt-4 h-[3px] w-14 rounded-full bg-tnky-safety"
+            />
+            <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-white/90 [text-wrap:pretty]">
               <p>
                 Many successful entrepreneurs started by mastering a valuable skill.
                 Electricians, welders, mechanics, HVAC technicians, and contractors
@@ -408,8 +441,11 @@ export default function StudentsPage() {
               </p>
             </div>
           </div>
-
-          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+        </div>
+      </section>
+      <FadeInSection className="bg-tnky-white">
+        <div className="max-w-content mx-auto px-4 pb-24 pt-16 sm:px-8 md:pb-28 md:pt-20">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
             {OWNERS.map((o) => (
               <article
                 key={o.name}

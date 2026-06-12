@@ -13,6 +13,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FadeInSection } from "../_components/fade-in-section";
+import { AudienceHero } from "../_components/audience-hero";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
 import { cn } from "@/lib/utils";
 
@@ -64,45 +65,17 @@ export default function ParentsPage() {
   return (
     <main className="bg-tnky-cream">
       {/* ── HERO — “Success Doesn't Have Just One Path” ───────────── */}
-      <section className="relative flex min-h-[80vh] items-center overflow-hidden bg-tnky-blue">
-        <Image
-          src="/images/mentor-student.jpg"
-          alt="A mentor and a young adult working together in a Northern Kentucky trades setting"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div aria-hidden="true" className="absolute inset-0 bg-tnky-blue/82" />
-        <div aria-hidden="true" className="absolute inset-0 bg-tnky-ink/15" />
-        <div className="relative z-10 max-w-content mx-auto w-full px-4 py-20 sm:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="font-display font-bold uppercase tracking-eyebrow text-eyebrow text-tnky-safety">
-              For Parents
-            </p>
-            <h1 className="mt-3 font-display italic font-extrabold text-4xl md:text-6xl text-tnky-white [text-wrap:balance]">
-              Success Doesn&apos;t Have Just One Path
-            </h1>
-            <div
-              aria-hidden="true"
-              className="mx-auto mt-5 h-1 w-20 rounded-full bg-tnky-safety"
-            />
-            <p className="mx-auto mt-6 max-w-lead text-lead font-medium text-tnky-cream/95 [text-wrap:pretty]">
-              Through skilled trades and technical education, students can gain
-              valuable skills, earn while they learn, pursue higher education,
-              advance into leadership roles, and even start businesses of their own.
-              TradesNKY helps students discover pathways that create opportunity
-              today while keeping doors open for tomorrow.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
-              <Link href="/students/quiz" className={BTN_YELLOW_BLUE}>
-                Take the Career Quiz
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AudienceHero
+        audience="parents"
+        title="Success Doesn't Have Just One Path"
+        subtitle="Through skilled trades and technical education, students can gain valuable skills, earn while they learn, pursue higher education, advance into leadership roles, and even start businesses of their own. TradesNKY helps students discover pathways that create opportunity today while keeping doors open for tomorrow."
+        image={{
+          src: "/images/mentor-student.jpg",
+          alt: "A mentor and a young adult working together in a Northern Kentucky trades setting",
+        }}
+        primaryCta={{ text: "Take the Career Quiz", href: "/students/quiz" }}
+        secondaryCta={{ text: "About TradesNKY", href: "/about" }}
+      />
 
       {/* ── FIRST SECTION — Every Child Deserves a Pathway ────────── */}
       <FadeInSection className="bg-tnky-cream">
@@ -239,6 +212,64 @@ export default function ParentsPage() {
                 with possibilities.
               </p>
             </div>
+
+            {/* Trades path vs. 4-year degree comparison infographic */}
+            <div className="mt-10 overflow-hidden rounded-2xl border border-tnky-edge shadow-tnky-2">
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="bg-tnky-blue p-8 md:p-10">
+                  <p className="font-display font-bold uppercase tracking-tag text-meta text-tnky-safety">
+                    Skilled Trades Path
+                  </p>
+                  <p className="mt-3 font-display font-tnky-black text-stat-md leading-none text-tnky-white">
+                    Earn from day one
+                  </p>
+                  <ul className="mt-5 space-y-3">
+                    {[
+                      "Paid apprenticeships and on-the-job training",
+                      "Industry credentials in months, not years",
+                      "Little to no student debt",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2.5 text-body font-medium leading-relaxed text-tnky-white/85 [text-wrap:pretty]"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-tnky-safety"
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="bg-tnky-paper p-8 md:p-10">
+                  <p className="font-display font-bold uppercase tracking-tag text-meta text-tnky-mute">
+                    Traditional 4-Year Degree
+                  </p>
+                  <p className="mt-3 font-display font-tnky-black text-stat-md leading-none text-tnky-ink">
+                    Four years first
+                  </p>
+                  <ul className="mt-5 space-y-3">
+                    {[
+                      "Tuition often paid up front through loans",
+                      "~$38K average student-loan debt",
+                      "First full-time paycheck after graduation",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2.5 text-body font-medium leading-relaxed text-tnky-ink/75 [text-wrap:pretty]"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-tnky-mute"
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </FadeInSection>
@@ -333,6 +364,44 @@ export default function ParentsPage() {
           </div>
         </div>
       </FadeInSection>
+
+      {/* Regional demand stat band — full-width tnky-blue strip */}
+      <section className="bg-tnky-blue">
+        <div className="max-w-content mx-auto px-4 py-16 sm:px-8 md:py-20">
+          <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-3 sm:gap-6">
+            {[
+              {
+                stat: "40%",
+                label:
+                  "of the skilled-trades workforce is nearing retirement this decade",
+              },
+              {
+                stat: "3 in 4",
+                label:
+                  "employers report difficulty finding the skilled workers they need",
+              },
+              {
+                stat: "1,000s",
+                label:
+                  "of open skilled roles across Northern Kentucky's key industries",
+              },
+            ].map((s) => (
+              <div key={s.stat}>
+                <p className="font-display font-tnky-black text-stat-xl leading-none text-tnky-white">
+                  {s.stat}
+                </p>
+                <div
+                  aria-hidden="true"
+                  className="mx-auto mt-3 h-[3px] w-10 rounded-full bg-tnky-safety"
+                />
+                <p className="mx-auto mt-3 max-w-xs text-body font-medium text-tnky-white/85 [text-wrap:pretty]">
+                  {s.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── SIXTH SECTION — Leadership and Entrepreneurship ───────── */}
       <FadeInSection className="bg-tnky-cream">

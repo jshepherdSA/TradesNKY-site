@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
   Briefcase,
   Check,
+  MapPin,
   TrendingUp,
   Users,
   Wallet,
   type LucideIcon,
 } from "lucide-react";
 import { FadeInSection } from "../_components/fade-in-section";
+import { AudienceHero } from "../_components/audience-hero";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
 import { cn } from "@/lib/utils";
 
@@ -131,64 +133,26 @@ export default function PolicymakersPage() {
   return (
     <main className="bg-tnky-cream">
       {/* ── HERO ────────────────────────────────────────────────── */}
-      <section className="relative flex min-h-[62vh] items-center overflow-hidden bg-tnky-blue">
-        <Image
-          src="/images/students-building.jpg"
-          alt="Students building a project in a Northern Kentucky trades program"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div aria-hidden="true" className="absolute inset-0 bg-tnky-blue/82" />
-        <div aria-hidden="true" className="absolute inset-0 bg-tnky-ink/15" />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-tnky-safety/10 blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-tnky-white/5 blur-3xl"
-        />
-        <div className="relative z-10 max-w-content mx-auto w-full px-4 py-20 sm:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="font-display font-bold uppercase tracking-eyebrow text-eyebrow text-tnky-safety">
-              For Policymakers
-            </p>
-            <h1 className="mt-3 font-display italic font-extrabold text-4xl md:text-6xl text-tnky-white [text-wrap:balance]">
-              Workforce Development. Economic Growth. Community Impact.
-            </h1>
-            <div
-              aria-hidden="true"
-              className="mx-auto mt-5 h-1 w-20 rounded-full bg-tnky-safety"
-            />
-            <p className="mx-auto mt-6 max-w-lead text-lead font-medium text-tnky-cream/95 [text-wrap:pretty]">
-              TradesNKY helps prepare the next generation of skilled professionals
-              who support economic growth, strengthen local infrastructure, create
-              pathways to upward mobility, and contribute to safer, more vibrant
-              communities.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link href="/contact" className={BTN_YELLOW_BLUE}>
-                Request a Meeting
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-              <Link href="/about" className={BTN_OUTLINE_BLUE}>
-                About TradesNKY
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AudienceHero
+        audience="policymakers"
+        title="Workforce Development. Economic Growth. Community Impact."
+        subtitle="TradesNKY helps prepare the next generation of skilled professionals who support economic growth, strengthen local infrastructure, create pathways to upward mobility, and contribute to safer, more vibrant communities."
+        image={{
+          src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+          alt: "A modern civic skyline representing a growing regional economy",
+        }}
+        primaryCta={{ text: "Request a Meeting", href: "/contact" }}
+        secondaryCta={{ text: "About TradesNKY", href: "/about" }}
+      />
 
       {/* ── SECTIONS (from Website Architecture & Content doc) ─────── */}
       {SECTIONS.map((s, i) => {
         const sectionWhite = i % 2 === 0;
         return (
-          <FadeInSection
-            key={s.title}
-            className={sectionWhite ? "bg-tnky-white" : "bg-tnky-cream"}
-          >
+          <Fragment key={s.title}>
+            <FadeInSection
+              className={sectionWhite ? "bg-tnky-white" : "bg-tnky-cream"}
+            >
             <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
               <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
                 <div>
@@ -238,7 +202,135 @@ export default function PolicymakersPage() {
                 </div>
               </div>
             </div>
-          </FadeInSection>
+            </FadeInSection>
+
+            {/* NKY region + site-selection stat card */}
+            {i === 0 && (
+              <section className="bg-tnky-cream">
+                <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
+                  <div className="overflow-hidden rounded-3xl border border-tnky-edge shadow-tnky-2 lg:grid lg:grid-cols-5">
+                    <div className="relative flex flex-col justify-center overflow-hidden bg-tnky-blue p-8 md:p-10 lg:col-span-2">
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-tnky-safety/10 blur-3xl"
+                      />
+                      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tnky-white/10 text-tnky-safety">
+                        <MapPin
+                          className="h-6 w-6"
+                          strokeWidth={1.75}
+                          aria-hidden="true"
+                        />
+                      </span>
+                      <p className="mt-5 font-display font-bold uppercase tracking-tag text-meta text-tnky-safety">
+                        Northern Kentucky
+                      </p>
+                      <p className="mt-2 font-display font-tnky-black text-stat-md leading-tight text-tnky-white">
+                        Boone · Kenton · Campbell
+                      </p>
+                      <p className="mt-3 text-body font-medium leading-relaxed text-tnky-white/85 [text-wrap:pretty]">
+                        A river-region economy powered by manufacturing, logistics,
+                        construction, and skilled trades.
+                      </p>
+                    </div>
+                    <div className="flex flex-col justify-center bg-tnky-white p-8 md:p-10 lg:col-span-3">
+                      <p className="font-display font-bold uppercase tracking-tag text-meta text-tnky-blue">
+                        Site Selection
+                      </p>
+                      <p className="mt-2 font-display font-tnky-black text-stat-xl leading-none text-tnky-blue">
+                        Top 3
+                      </p>
+                      <p className="mt-3 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                        Workforce availability ranks among the top factors in
+                        business site-selection decisions.
+                      </p>
+                      <p className="mt-3 text-body font-medium leading-relaxed text-tnky-ink/80 [text-wrap:pretty]">
+                        When employers choose where to grow, a ready talent pipeline
+                        is one of the first things they evaluate—and one of
+                        NKY&apos;s strongest assets to offer.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Mid-page government-relevant stat band */}
+            {i === 1 && (
+              <section className="bg-tnky-blue">
+                <div className="max-w-content mx-auto px-4 py-16 sm:px-8 md:py-20">
+                  <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-3 sm:gap-6">
+                    {[
+                      {
+                        stat: "40%",
+                        label:
+                          "of the regional skilled workforce is nearing retirement this decade",
+                      },
+                      {
+                        stat: "1,000s",
+                        label:
+                          "of family-supporting jobs to fill across Northern Kentucky",
+                      },
+                      {
+                        stat: "Higher",
+                        label: "household earnings and a stronger local tax base",
+                      },
+                    ].map((s2) => (
+                      <div key={s2.stat}>
+                        <p className="font-display font-tnky-black text-stat-xl leading-none text-tnky-white">
+                          {s2.stat}
+                        </p>
+                        <div
+                          aria-hidden="true"
+                          className="mx-auto mt-3 h-[3px] w-10 rounded-full bg-tnky-safety"
+                        />
+                        <p className="mx-auto mt-3 max-w-xs text-body font-medium text-tnky-white/85 [text-wrap:pretty]">
+                          {s2.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Infrastructure image band */}
+            {i === 2 && (
+              <section className="relative isolate overflow-hidden bg-tnky-blue">
+                <Image
+                  src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=1200&q=80"
+                  alt="Regional infrastructure—bridges, roads, and utilities maintained by skilled professionals"
+                  fill
+                  sizes="100vw"
+                  className="object-cover object-center"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-tnky-blue/80"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-tnky-ink/20"
+                />
+                <div className="relative z-10 max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
+                  <div className="max-w-2xl">
+                    <h2 className="font-display italic font-extrabold text-3xl md:text-4xl text-tnky-white [text-wrap:balance]">
+                      The Workforce Behind Every Community
+                    </h2>
+                    <div
+                      aria-hidden="true"
+                      className="mt-4 h-[3px] w-14 rounded-full bg-tnky-safety"
+                    />
+                    <p className="mt-5 max-w-lead text-lead font-medium text-tnky-white/90 [text-wrap:pretty]">
+                      The roads, bridges, schools, hospitals, and utilities our
+                      region depends on are built and maintained by skilled
+                      professionals. Investing in that workforce is investing in
+                      NKY&apos;s foundation.
+                    </p>
+                  </div>
+                </div>
+              </section>
+            )}
+          </Fragment>
         );
       })}
 

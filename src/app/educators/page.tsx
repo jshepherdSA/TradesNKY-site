@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -13,6 +13,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FadeInSection } from "../_components/fade-in-section";
+import { AudienceHero } from "../_components/audience-hero";
 import { SimplePathwaySection } from "../_components/simple-pathway-section";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
 import { cn } from "@/lib/utils";
@@ -149,66 +150,119 @@ export default function EducatorsPage() {
   return (
     <main className="bg-tnky-cream">
       {/* ── HERO ────────────────────────────────────────────────── */}
-      <section className="relative flex min-h-[62vh] items-center overflow-hidden bg-tnky-blue">
+      <AudienceHero
+        audience="educators"
+        title="Stronger Student Outcomes. Stronger Schools."
+        subtitle="TradesNKY helps districts improve College & Career Readiness, increase engagement, strengthen graduation outcomes, and ensure every student has a plan for the future."
+        image={{
+          src: "/images/students-event.jpg",
+          alt: "Students at a Northern Kentucky TradesNKY classroom event",
+        }}
+        primaryCta={{ text: "Partner With Us", href: "/contact" }}
+        secondaryCta={{ text: "About TradesNKY", href: "/about" }}
+      />
+
+      {/* ── THE TRADESNKY PATHWAY (shared, directly below hero) ───── */}
+      <SimplePathwaySection />
+
+      {/* ── Image band — hands-on, work-based learning ─────────────── */}
+      <section className="relative isolate overflow-hidden bg-tnky-blue">
         <Image
-          src="/images/students-event.jpg"
-          alt="Students at a Northern Kentucky TradesNKY classroom event"
+          src="/images/students-handson.jpg"
+          alt="Students engaged in hands-on, work-based learning in a TradesNKY program"
           fill
-          priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-center"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-tnky-blue/82" />
-        <div aria-hidden="true" className="absolute inset-0 bg-tnky-ink/15" />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-tnky-safety/10 blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-tnky-white/5 blur-3xl"
-        />
-        <div className="relative z-10 max-w-content mx-auto w-full px-4 py-20 sm:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="font-display font-bold uppercase tracking-eyebrow text-eyebrow text-tnky-safety">
-              For Educators
-            </p>
-            <h1 className="mt-3 font-display italic font-extrabold text-4xl md:text-6xl text-tnky-white [text-wrap:balance]">
-              Stronger Student Outcomes. Stronger Schools.
-            </h1>
+        <div aria-hidden="true" className="absolute inset-0 bg-tnky-blue/75" />
+        <div aria-hidden="true" className="absolute inset-0 bg-tnky-ink/20" />
+        <div className="relative z-10 max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
+          <div className="max-w-2xl">
+            <h2 className="font-display italic font-extrabold text-3xl md:text-4xl text-tnky-white [text-wrap:balance]">
+              Learning That Connects to the Real World
+            </h2>
             <div
               aria-hidden="true"
-              className="mx-auto mt-5 h-1 w-20 rounded-full bg-tnky-safety"
+              className="mt-4 h-[3px] w-14 rounded-full bg-tnky-safety"
             />
-            <p className="mx-auto mt-6 max-w-lead text-lead font-medium text-tnky-cream/95 [text-wrap:pretty]">
-              TradesNKY helps districts improve College &amp; Career Readiness,
-              increase engagement, strengthen graduation outcomes, and ensure every
-              student has a plan for the future.
+            <p className="mt-5 max-w-lead text-lead font-medium text-tnky-white/90 [text-wrap:pretty]">
+              Career-connected experiences help students see why school matters—
+              turning classroom lessons into real skills, direction, and momentum.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link href="/contact" className={BTN_YELLOW_BLUE}>
-                Partner With Us
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-              <Link href="/about" className={BTN_OUTLINE_BLUE}>
-                About TradesNKY
-              </Link>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ── THE TRADESNKY PATHWAY (shared, directly below hero) ───── */}
-      <SimplePathwaySection />
+      {/* ── Outcome stat tiles ─────────────────────────────────────── */}
+      <FadeInSection className="bg-tnky-white">
+        <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <SectionHeading center>The Outcomes Districts Care About</SectionHeading>
+            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+              Career-connected learning moves the metrics that matter most—for your
+              students and for your district.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: GraduationCap,
+                stat: "94%",
+                label: "graduation rate for CTE concentrators",
+              },
+              {
+                icon: TrendingUp,
+                stat: "Higher",
+                label: "GPA and academic performance",
+              },
+              {
+                icon: Users,
+                stat: "Stronger",
+                label: "attendance and classroom engagement",
+              },
+              {
+                icon: Compass,
+                stat: "8 in 10",
+                label: "graduate with a clear next step",
+              },
+            ].map((tile) => {
+              const TileIcon = tile.icon;
+              return (
+                <div
+                  key={tile.label}
+                  className="rounded-2xl border border-tnky-edge bg-tnky-cream p-7 shadow-tnky-2"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tnky-blue/10 text-tnky-blue">
+                    <TileIcon
+                      className="h-6 w-6"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <p className="mt-5 font-display font-tnky-black text-stat-lg leading-none text-tnky-blue">
+                    {tile.stat}
+                  </p>
+                  <p className="mt-2 text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                    {tile.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+          <p className="mt-6 text-center text-micro font-medium uppercase tracking-tag text-tnky-mute">
+            Figures reflect national CTE research and are illustrative.
+          </p>
+        </div>
+      </FadeInSection>
 
       {/* ── SECTIONS (from Website Architecture & Content doc) ─────── */}
       {SECTIONS.map((s, i) => {
         const sectionWhite = i % 2 === 1;
         return (
-          <FadeInSection
-            key={s.title}
-            className={sectionWhite ? "bg-tnky-white" : "bg-tnky-cream"}
-          >
+          <Fragment key={s.title}>
+            <FadeInSection
+              className={sectionWhite ? "bg-tnky-white" : "bg-tnky-cream"}
+            >
             <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
               <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
                 <div>
@@ -258,7 +312,37 @@ export default function EducatorsPage() {
                 </div>
               </div>
             </div>
-          </FadeInSection>
+            </FadeInSection>
+            {i === 1 && (
+              <section className="relative isolate overflow-hidden bg-tnky-blue">
+                <Image
+                  src="/images/mentor-student.jpg"
+                  alt="An educator working alongside students at a school workforce event"
+                  fill
+                  sizes="100vw"
+                  className="object-cover object-center"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-tnky-blue/80"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-tnky-ink/20"
+                />
+                <div className="relative z-10 max-w-content mx-auto px-4 py-20 text-center sm:px-8 md:py-24">
+                  <p className="mx-auto max-w-3xl font-display italic font-extrabold text-2xl md:text-3xl leading-snug text-tnky-white [text-wrap:balance]">
+                    &ldquo;When students can see a future for themselves, they show
+                    up, stay engaged, and graduate with a plan.&rdquo;
+                  </p>
+                  <div
+                    aria-hidden="true"
+                    className="mx-auto mt-5 h-[3px] w-14 rounded-full bg-tnky-safety"
+                  />
+                </div>
+              </section>
+            )}
+          </Fragment>
         );
       })}
 
