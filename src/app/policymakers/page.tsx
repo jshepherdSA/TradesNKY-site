@@ -106,6 +106,26 @@ const SECTIONS: {
   },
 ];
 
+// One topical image per content section (parallel to SECTIONS by index).
+const SECTION_IMAGES: { src: string; alt: string }[] = [
+  {
+    src: "/images/students-building.jpg",
+    alt: "Construction work driving regional economic growth",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80",
+    alt: "Skilled careers creating pathways to upward mobility",
+  },
+  {
+    src: "/images/student-excavator.jpg",
+    alt: "Industry and businesses growing across the region",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200&q=80",
+    alt: "Regional infrastructure supported by skilled workers",
+  },
+];
+
 function SectionHeading({
   children,
   center = false,
@@ -157,7 +177,25 @@ export default function PolicymakersPage() {
               <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
                 <div>
                   <SectionHeading>{s.title}</SectionHeading>
-                  <div className="mt-6 max-w-prose space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                  <div className="mt-6 flow-root max-w-prose space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                    <figure
+                      className={cn(
+                        "mb-5 w-full overflow-hidden rounded-xl md:mb-4 md:w-2/5",
+                        i % 2 === 0
+                          ? "md:float-right md:ml-6"
+                          : "md:float-left md:mr-6",
+                      )}
+                    >
+                      <div className="relative aspect-[4/3]">
+                        <Image
+                          src={SECTION_IMAGES[i].src}
+                          alt={SECTION_IMAGES[i].alt}
+                          fill
+                          sizes="(min-width: 768px) 40vw, 100vw"
+                          className="object-cover"
+                        />
+                      </div>
+                    </figure>
                     {s.intro.map((p) => (
                       <p key={p}>{p}</p>
                     ))}

@@ -84,7 +84,18 @@ export default function ParentsPage() {
             <SectionHeading>
               Every Child Deserves a Pathway to Success
             </SectionHeading>
-            <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+            <div className="mt-6 flow-root space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+              <figure className="w-full overflow-hidden rounded-xl md:float-left md:mb-4 md:mr-6 md:w-2/5">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src="/images/students-event.jpg"
+                    alt="Students exploring career pathways together"
+                    fill
+                    sizes="(min-width: 768px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              </figure>
               <p>
                 Every student has unique talents, interests, and goals. While some
                 thrive in traditional academic settings, others excel through
@@ -333,7 +344,18 @@ export default function ParentsPage() {
             <SectionHeading>
               High-Demand Careers in Our Community
             </SectionHeading>
-            <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+            <div className="mt-6 flow-root space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+              <figure className="w-full overflow-hidden rounded-xl md:float-left md:mb-4 md:mr-6 md:w-2/5">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src="/images/students-building.jpg"
+                    alt="A modern construction and manufacturing workplace in Northern Kentucky"
+                    fill
+                    sizes="(min-width: 768px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              </figure>
               <p>
                 In the Northern Kentucky region, manufacturing, construction, and
                 technical industries continue to face workforce shortages as
@@ -410,7 +432,18 @@ export default function ParentsPage() {
             <SectionHeading>
               A Foundation for Leadership and Entrepreneurship
             </SectionHeading>
-            <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+            <div className="mt-6 flow-root space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+              <figure className="w-full overflow-hidden rounded-xl md:float-right md:mb-4 md:ml-6 md:w-2/5">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80"
+                    alt="Skilled professionals advancing into leadership roles"
+                    fill
+                    sizes="(min-width: 768px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              </figure>
               <p>
                 Many successful business owners started by learning a valuable skill.
                 Electricians, welders, HVAC technicians, mechanics, contractors, and

@@ -161,10 +161,21 @@ export default function StudentsPage() {
       {/* ── FIRST SECTION — Turn Your Interests Into a Future ─────── */}
       <FadeInSection className="bg-tnky-white">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto flow-root max-w-3xl">
             <SectionHeading>
               Turn Your Interests Into a Future You&apos;re Proud Of
             </SectionHeading>
+            <figure className="mt-6 w-full overflow-hidden rounded-xl md:float-left md:mb-4 md:mr-6 md:mt-2 md:w-2/5">
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src="/images/student-woodworking.jpg"
+                  alt="A student turning a hands-on interest into real, marketable skills"
+                  fill
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </figure>
             <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
               The things you enjoy today could lead to an exciting career tomorrow.
               Whether you&apos;re interested in technology, building things, solving

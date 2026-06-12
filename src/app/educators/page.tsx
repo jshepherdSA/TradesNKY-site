@@ -123,6 +123,30 @@ const SECTIONS: {
   },
 ];
 
+// One topical image per content section (parallel to SECTIONS by index).
+const SECTION_IMAGES: { src: string; alt: string }[] = [
+  {
+    src: "/images/student-woodworking.jpg",
+    alt: "A student building hands-on skills in a CTE workshop",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80",
+    alt: "Students working with professionals on a real-world project",
+  },
+  {
+    src: "/images/student-excavator.jpg",
+    alt: "A student gaining real-world experience operating equipment",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80",
+    alt: "A student training in a skilled-trades program",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+    alt: "Local employers and schools partnering across the community",
+  },
+];
+
 function SectionHeading({
   children,
   center = false,
@@ -267,7 +291,25 @@ export default function EducatorsPage() {
               <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
                 <div>
                   <SectionHeading>{s.title}</SectionHeading>
-                  <div className="mt-6 max-w-prose space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                  <div className="mt-6 flow-root max-w-prose space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                    <figure
+                      className={cn(
+                        "mb-5 w-full overflow-hidden rounded-xl md:mb-4 md:w-2/5",
+                        i % 2 === 0
+                          ? "md:float-right md:ml-6"
+                          : "md:float-left md:mr-6",
+                      )}
+                    >
+                      <div className="relative aspect-[4/3]">
+                        <Image
+                          src={SECTION_IMAGES[i].src}
+                          alt={SECTION_IMAGES[i].alt}
+                          fill
+                          sizes="(min-width: 768px) 40vw, 100vw"
+                          className="object-cover"
+                        />
+                      </div>
+                    </figure>
                     {s.intro.map((p) => (
                       <p key={p}>{p}</p>
                     ))}

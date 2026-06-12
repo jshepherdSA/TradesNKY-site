@@ -115,6 +115,30 @@ const SECTIONS: {
   },
 ];
 
+// One topical image per content section (parallel to SECTIONS by index).
+const SECTION_IMAGES: { src: string; alt: string }[] = [
+  {
+    src: "/images/students-handson.jpg",
+    alt: "Skilled workers on a modern manufacturing floor",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80",
+    alt: "Investing in training the next generation of workers",
+  },
+  {
+    src: "/images/student-woodworking.jpg",
+    alt: "A skilled worker applying job-ready trade skills",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=80",
+    alt: "Technical skills for a modern, prepared workforce",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+    alt: "An employer investing in the local community",
+  },
+];
+
 function SectionHeading({
   children,
   center = false,
@@ -166,7 +190,25 @@ export default function EmployersPage() {
               <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
                 <div>
                   <SectionHeading>{s.title}</SectionHeading>
-                  <div className="mt-6 max-w-prose space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                  <div className="mt-6 flow-root max-w-prose space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                    <figure
+                      className={cn(
+                        "mb-5 w-full overflow-hidden rounded-xl md:mb-4 md:w-2/5",
+                        i % 2 === 0
+                          ? "md:float-right md:ml-6"
+                          : "md:float-left md:mr-6",
+                      )}
+                    >
+                      <div className="relative aspect-[4/3]">
+                        <Image
+                          src={SECTION_IMAGES[i].src}
+                          alt={SECTION_IMAGES[i].alt}
+                          fill
+                          sizes="(min-width: 768px) 40vw, 100vw"
+                          className="object-cover"
+                        />
+                      </div>
+                    </figure>
                     {s.intro.map((p) => (
                       <p key={p}>{p}</p>
                     ))}
