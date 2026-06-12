@@ -4,28 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  BarChart3,
   Briefcase,
   Check,
-  Factory,
-  FileBarChart,
-  Globe,
-  GraduationCap,
-  Heart,
   TrendingUp,
   Users,
   Wallet,
   type LucideIcon,
 } from "lucide-react";
 import { FadeInSection } from "../_components/fade-in-section";
-import { SimplePathwaySection } from "../_components/simple-pathway-section";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Policymakers | Trades NKY",
   description:
-    "Investing in Northern Kentucky's workforce future. TradesNKY strengthens the talent pipeline that fuels economic growth, expands upward mobility, and keeps the region competitive.",
+    "Workforce development, economic growth, and community impact. TradesNKY prepares the next generation of skilled professionals who fuel Northern Kentucky's economy.",
 };
 
 const BTN_YELLOW_BLUE =
@@ -33,84 +26,81 @@ const BTN_YELLOW_BLUE =
 const BTN_OUTLINE_BLUE =
   "inline-flex items-center justify-center gap-2 rounded-pill border-2 border-tnky-white px-8 py-4 font-display font-bold text-button text-tnky-white transition-all duration-200 ease-tnky hover:-translate-y-px hover:bg-tnky-white hover:text-tnky-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-white focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-blue";
 
-const POLICY_CASE: { icon: LucideIcon; title: string; body: string }[] = [
-  {
-    icon: Factory,
-    title: "Closing the Workforce Gap",
-    body: "Skilled-labor shortages limit growth across manufacturing, construction, transportation, and utilities. TradesNKY builds the pipeline to fill them.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Real Economic Impact",
-    body: "Regions with strong trade pipelines see higher median earnings, lower unemployment, and stronger local tax revenue.",
-  },
-  {
-    icon: Globe,
-    title: "Regional Competitiveness",
-    body: "Availability of skilled labor is the #1 site-selection factor for companies — making NKY a more competitive place to invest.",
-  },
-];
-
-const IMPACT: { value: string; label: string }[] = [
-  { value: "10,000+", label: "students reached across Northern Kentucky" },
-  { value: "25+", label: "partner schools and districts" },
-  { value: "40+", label: "employers engaged in the pipeline" },
-];
-
-const DELIVERS: { icon: LucideIcon; title: string; body: string }[] = [
+// Section content from the TradesNKY Website Architecture & Content doc
+// (Policymakers page). Each section: intro paragraph(s), "Why it matters"
+// bullets, and "The result".
+const SECTIONS: {
+  icon: LucideIcon;
+  eyebrow: string;
+  title: string;
+  intro: string[];
+  why: string[];
+  result: string;
+}[] = [
   {
     icon: TrendingUp,
-    title: "Fuels Local Economic Growth",
-    body: "A strong skilled-trade pipeline helps grow payrolls, expand businesses, and support local tax revenue.",
+    eyebrow: "Economic Growth",
+    title: "Fueling Economic Growth",
+    intro: [
+      "A strong workforce is the foundation of a strong economy. TradesNKY helps build the skilled talent pipeline local employers need to grow, invest, and create jobs—making Northern Kentucky more competitive for business expansion and economic development.",
+    ],
+    why: [
+      "Workforce availability is consistently ranked among the top factors influencing business location and expansion decisions.",
+      "Skilled careers provide pathways to family-supporting wages, increasing household income and local spending.",
+      "Strong workforce pipelines help employers fill critical positions, reduce labor shortages, and support business growth.",
+      "Communities that align education and workforce development are better positioned to attract investment and retain talent.",
+    ],
+    result:
+      "More jobs, stronger local businesses, higher household earnings, and a more competitive Northern Kentucky economy.",
   },
   {
     icon: Users,
-    title: "Reduces Poverty & Increases Mobility",
-    body: "Fast, debt-free pathways to middle-class wages help families move up and reduce reliance on public assistance.",
+    eyebrow: "Upward Mobility",
+    title: "Creating Pathways to Upward Mobility",
+    intro: [
+      "Economic mobility begins with opportunity. TradesNKY helps students and young adults access high-demand careers that offer strong wages, career advancement, and long-term financial stability—often without the burden of significant student debt.",
+      "By connecting education to workforce opportunities, TradesNKY helps more residents move into family-supporting careers, strengthen their earning potential, and build a better future for themselves and their families.",
+    ],
+    why: [
+      "Skilled trades provide direct pathways to middle-class wages and long-term career growth.",
+      "Apprenticeships allow participants to earn while they learn, reducing educational debt and accelerating workforce participation.",
+      "Higher earnings contribute to stronger household stability, increased local spending, and greater economic mobility.",
+      "Communities with strong workforce pathways often experience lower unemployment and greater economic resilience.",
+    ],
+    result:
+      "More residents achieving financial independence, stronger families, and greater economic opportunity throughout Northern Kentucky.",
   },
   {
     icon: Briefcase,
-    title: "Attracts & Retains Businesses",
-    body: "Businesses stay and grow where they can hire — strong K–12 pipelines secure more expansions and new investment.",
-  },
-  {
-    icon: Heart,
-    title: "Reduces Youth Disengagement",
-    body: "When young people see real career options, engagement increases and risky behaviors decline.",
+    eyebrow: "Business Attraction",
+    title: "Attracting and Retaining Businesses",
+    intro: [
+      "Businesses grow where talent is available. TradesNKY helps build the skilled workforce employers need to expand, invest, and remain in Northern Kentucky—making our region more competitive for economic development.",
+    ],
+    why: [
+      "Workforce availability is a leading factor in business location and expansion decisions.",
+      "Strong talent pipelines help employers fill critical positions and support growth.",
+      "Communities with skilled workers are better positioned to attract new investment.",
+      "Business growth creates jobs, strengthens the tax base, and expands opportunity for residents.",
+    ],
+    result:
+      "More business investment, more jobs, and a stronger Northern Kentucky economy.",
   },
   {
     icon: Wallet,
-    title: "Eases Strain on Local Budgets",
-    body: "Workforce development is far cheaper than workforce shortages, lowering costs in social services and emergency programs.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Aligns With Education Priorities",
-    body: "TradesNKY helps districts meet College & Career Readiness goals and supports Kentucky's workforce initiatives.",
-  },
-];
-
-const OBJECTIVES = [
-  "Economic growth",
-  "Workforce stability",
-  "Public safety and infrastructure",
-  "Budget stewardship",
-  "Reducing poverty and increasing mobility",
-  "Supporting schools and families",
-  "Attracting and retaining businesses",
-  "Demonstrating results to constituents",
-];
-
-const REPORTS: { icon: LucideIcon; title: string; body: string }[] = [
-  {
-    icon: FileBarChart,
-    title: "Annual Impact Report",
-    body: "Students reached, schools partnered, and employers engaged — measured and published each year.",
-  },
-  {
-    icon: BarChart3,
-    title: "Regional Workforce Brief",
-    body: "Local demand data and outcomes to inform policy and investment decisions across the region.",
+    eyebrow: "Public ROI",
+    title: "Reducing Long-Term Public Costs",
+    intro: [
+      "Investing in workforce development today helps reduce costly challenges tomorrow. TradesNKY connects students to career pathways that lead to employment, financial independence, and long-term economic stability—strengthening outcomes for both residents and communities.",
+    ],
+    why: [
+      "Career-connected learning helps more students graduate with a plan and transition successfully into the workforce.",
+      "Higher employment and earnings contribute to stronger local economies and reduced reliance on public assistance programs.",
+      "Workforce development is often more cost-effective than addressing the long-term impacts of labor shortages, unemployment, and economic stagnation.",
+      "Strong talent pipelines help communities remain economically competitive and resilient.",
+    ],
+    result:
+      "More residents working, stronger local economies, and a greater return on public investment.",
   },
 ];
 
@@ -171,17 +161,17 @@ export default function PolicymakersPage() {
               For Policymakers
             </p>
             <h1 className="mt-3 font-display italic font-extrabold text-4xl md:text-6xl text-tnky-white [text-wrap:balance]">
-              Investing in NKY&apos;s Workforce Future
+              Workforce Development. Economic Growth. Community Impact.
             </h1>
             <div
               aria-hidden="true"
               className="mx-auto mt-5 h-1 w-20 rounded-full bg-tnky-safety"
             />
             <p className="mx-auto mt-6 max-w-lead text-lead font-medium text-tnky-cream/95 [text-wrap:pretty]">
-              Workforce development is one of the highest-return investments a
-              community can make. TradesNKY strengthens the talent pipeline that
-              fuels economic growth, expands upward mobility, and keeps Northern
-              Kentucky competitive.
+              TradesNKY helps prepare the next generation of skilled professionals
+              who support economic growth, strengthen local infrastructure, create
+              pathways to upward mobility, and contribute to safer, more vibrant
+              communities.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/contact" className={BTN_YELLOW_BLUE}>
@@ -196,221 +186,66 @@ export default function PolicymakersPage() {
         </div>
       </section>
 
-      {/* ── S1 — THE POLICY CASE ────────────────────────────────── */}
-      <FadeInSection className="bg-tnky-cream">
-        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading center eyebrow="The Case">
-              The Case for Skilled-Trades Investment
-            </SectionHeading>
-            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              A skilled workforce is the foundation of a thriving region. Here&apos;s
-              why investing in trades pathways pays off for Northern Kentucky.
-            </p>
-          </div>
-          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-            {POLICY_CASE.map((c) => {
-              const Icon = c.icon;
-              return (
-                <article
-                  key={c.title}
-                  className="flex flex-col rounded-2xl border border-tnky-edge bg-tnky-white p-8 shadow-tnky-2"
-                >
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-tnky-blue text-tnky-white">
-                    <Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
-                  </span>
-                  <h3 className="mt-5 font-display font-extrabold text-card-title text-tnky-ink [text-wrap:balance]">
-                    {c.title}
-                  </h3>
-                  <p className="mt-3 text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                    {c.body}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </FadeInSection>
-
-      {/* ── ECONOMIC DEVELOPMENT — site-selection callout band ────── */}
-      <FadeInSection className="bg-tnky-blue">
-        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
-            <div className="text-center lg:col-span-5 lg:text-left">
-              <p className="font-display font-tnky-black leading-none text-[length:clamp(5rem,12vw,9rem)] text-tnky-safety">
-                #1
-              </p>
-              <p className="mt-2 font-display font-bold uppercase tracking-tag text-meta text-tnky-white">
-                Site-selection factor: availability of skilled labor
-              </p>
-            </div>
-            <div className="lg:col-span-7">
-              <p className="font-display font-bold uppercase tracking-eyebrow text-eyebrow text-tnky-safety">
-                Economic Development
-              </p>
-              <h2 className="mt-3 font-display italic font-extrabold text-3xl md:text-4xl text-tnky-white [text-wrap:balance]">
-                More Than a Program — It&apos;s Infrastructure
-              </h2>
-              <div
-                aria-hidden="true"
-                className="mt-4 h-[3px] w-14 rounded-full bg-tnky-safety"
-              />
-              <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-cream/95 [text-wrap:pretty]">
-                Availability of skilled labor is the number-one factor companies
-                weigh when choosing where to expand. Every student TradesNKY moves
-                into a skilled career makes Northern Kentucky more competitive for
-                investment — and regions with strong trade pipelines see higher
-                median earnings and lower unemployment. Workforce development costs
-                far less than a workforce shortage.
-              </p>
-            </div>
-          </div>
-        </div>
-      </FadeInSection>
-
-      {/* ── S2 — IMPACT METRICS ─────────────────────────────────── */}
-      <FadeInSection className="bg-tnky-white">
-        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading center eyebrow="By the Numbers">
-              Our Regional Impact
-            </SectionHeading>
-            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              Every connection between a student and a skilled career strengthens the
-              region&apos;s economy.
-            </p>
-          </div>
-          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {IMPACT.map((m) => (
-              <div
-                key={m.label}
-                className="rounded-2xl bg-tnky-blue p-8 text-center text-tnky-white shadow-tnky-2"
-              >
-                <p className="font-display font-tnky-black leading-none text-stat-lg text-tnky-safety">
-                  {m.value}
-                </p>
-                <p className="mt-3 text-body font-medium leading-relaxed text-tnky-cream/90 [text-wrap:pretty]">
-                  {m.label}
-                </p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-6 text-center text-small font-medium text-tnky-ink/60">
-            Figures shown are launch placeholders — full impact reporting is in
-            development.
-          </p>
-        </div>
-      </FadeInSection>
-
-      {/* ── S3 — WHAT WE DELIVER ────────────────────────────────── */}
-      <FadeInSection className="bg-tnky-cream">
-        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading center eyebrow="Public Return">
-              What TradesNKY Delivers for the Region
-            </SectionHeading>
-            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              One investment advances economic, social, and educational priorities at
-              the same time.
-            </p>
-          </div>
-          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {DELIVERS.map((d) => {
-              const Icon = d.icon;
-              return (
-                <article
-                  key={d.title}
-                  className="rounded-2xl border border-tnky-edge bg-tnky-white p-7 shadow-tnky-2"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tnky-cream text-tnky-blue">
-                    <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
-                  </span>
-                  <h3 className="mt-4 font-display font-extrabold text-card-title text-tnky-ink [text-wrap:balance]">
-                    {d.title}
-                  </h3>
-                  <p className="mt-2 text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                    {d.body}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </FadeInSection>
-
-      {/* ── S4 — SHARED OBJECTIVES ──────────────────────────────── */}
-      <FadeInSection className="bg-tnky-white">
-        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="max-w-3xl">
-            <SectionHeading eyebrow="Aligned Goals">
-              Accountable to the Same Goals You Are
-            </SectionHeading>
-            <p className="mt-6 max-w-prose text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              Local, county, and state leaders are accountable for outcomes that
-              TradesNKY directly advances:
-            </p>
-          </div>
-          <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-x-12">
-            {OBJECTIVES.map((o) => (
-              <li
-                key={o}
-                className="flex items-center gap-3 rounded-xl border border-tnky-edge bg-tnky-cream px-5 py-4 text-body font-medium text-tnky-ink"
-              >
-                <Check
-                  className="h-5 w-5 shrink-0 text-tnky-grass"
-                  strokeWidth={2.5}
-                  aria-hidden="true"
-                />
-                <span>{o}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </FadeInSection>
-
-      {/* ── S5 — REPORTS & DATA (placeholder) ───────────────────── */}
-      <FadeInSection className="bg-tnky-cream">
-        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading center eyebrow="Coming Soon">
-              Reports &amp; Data
-            </SectionHeading>
-            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              Transparent reporting is on the way. Sign up below to receive impact
-              reports and data briefs as they publish.
-            </p>
-          </div>
-          <div className="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-            {REPORTS.map((r) => {
-              const Icon = r.icon;
-              return (
-                <article
-                  key={r.title}
-                  className="flex flex-col rounded-2xl border border-dashed border-tnky-edge bg-tnky-white p-8"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tnky-cream text-tnky-blue">
-                      <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
-                    </span>
-                    <span className="rounded-pill bg-tnky-blue/10 px-3 py-1 font-display font-bold uppercase tracking-tag text-meta text-tnky-blue">
-                      Coming Soon
-                    </span>
+      {/* ── SECTIONS (from Website Architecture & Content doc) ─────── */}
+      {SECTIONS.map((s, i) => {
+        const sectionWhite = i % 2 === 0;
+        return (
+          <FadeInSection
+            key={s.title}
+            className={sectionWhite ? "bg-tnky-white" : "bg-tnky-cream"}
+          >
+            <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
+              <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+                <div>
+                  <SectionHeading eyebrow={s.eyebrow}>{s.title}</SectionHeading>
+                  <div className="mt-6 max-w-prose space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                    {s.intro.map((p) => (
+                      <p key={p}>{p}</p>
+                    ))}
                   </div>
-                  <h3 className="mt-5 font-display font-extrabold text-card-title text-tnky-ink [text-wrap:balance]">
-                    {r.title}
-                  </h3>
-                  <p className="mt-3 text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                    {r.body}
+                  <div className="mt-8 rounded-2xl border-l-4 border-tnky-blue bg-tnky-blue/5 p-5">
+                    <p className="font-display font-bold uppercase tracking-tag text-meta text-tnky-blue">
+                      The Result
+                    </p>
+                    <p className="mt-1.5 text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                      {s.result}
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className={cn(
+                    "rounded-3xl border border-tnky-edge p-8 shadow-tnky-2 md:p-10",
+                    sectionWhite ? "bg-tnky-cream" : "bg-tnky-white",
+                  )}
+                >
+                  <p className="font-display font-extrabold text-card-title text-tnky-ink">
+                    Why it matters
                   </p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </FadeInSection>
-
-      {/* ── THE TRADESNKY PATHWAY (shared) ──────────────────────── */}
-      <SimplePathwaySection />
+                  <div
+                    aria-hidden="true"
+                    className="mt-3 h-[3px] w-10 rounded-full bg-tnky-safety"
+                  />
+                  <ul className="mt-5 space-y-4">
+                    {s.why.map((w) => (
+                      <li
+                        key={w}
+                        className="flex items-start gap-3 text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+                      >
+                        <Check
+                          className="mt-0.5 h-5 w-5 shrink-0 text-tnky-grass"
+                          strokeWidth={2.5}
+                          aria-hidden="true"
+                        />
+                        <span>{w}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </FadeInSection>
+        );
+      })}
 
       {/* ── CTA ─────────────────────────────────────────────────── */}
       <FadeInSection className="bg-tnky-blue">

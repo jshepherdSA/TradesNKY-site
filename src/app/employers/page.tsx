@@ -7,16 +7,12 @@ import {
   BadgeCheck,
   Check,
   Factory,
-  Globe,
   Handshake,
-  Star,
   TrendingUp,
-  Users,
   Wallet,
   type LucideIcon,
 } from "lucide-react";
 import { FadeInSection } from "../_components/fade-in-section";
-import { SimplePathwaySection } from "../_components/simple-pathway-section";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
 import { cn } from "@/lib/utils";
 
@@ -31,11 +27,13 @@ const BTN_YELLOW_BLUE =
 const BTN_OUTLINE_BLUE =
   "inline-flex items-center justify-center gap-2 rounded-pill border-2 border-tnky-white px-8 py-4 font-display font-bold text-button text-tnky-white transition-all duration-200 ease-tnky hover:-translate-y-px hover:bg-tnky-white hover:text-tnky-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-white focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-blue";
 
-const BENEFITS: {
+// Section content from the TradesNKY Website Architecture & Content doc
+// (Businesses page).
+const SECTIONS: {
   icon: LucideIcon;
   eyebrow: string;
   title: string;
-  intro: string;
+  intro: string[];
   why: string[];
   result: string;
 }[] = [
@@ -43,8 +41,9 @@ const BENEFITS: {
     icon: Factory,
     eyebrow: "The Challenge",
     title: "Solving the Skilled Labor Shortage",
-    intro:
+    intro: [
       "TradesNKY helps build the future workforce by introducing students to skilled trades careers early and connecting them to education and training pathways that align with industry needs.",
+    ],
     why: [
       "Skilled labor shortages continue to limit growth across manufacturing, construction, transportation, utilities, and other sectors.",
       "Early career exposure increases awareness of opportunities that many students may never otherwise consider.",
@@ -57,8 +56,9 @@ const BENEFITS: {
     icon: TrendingUp,
     eyebrow: "The Investment",
     title: "Investing in Your Future Workforce",
-    intro:
+    intro: [
       "Supporting TradesNKY is an investment in the long-term strength of your company and industry. By helping students explore skilled careers earlier, businesses contribute to a larger, more sustainable talent pipeline for years to come.",
+    ],
     why: [
       "Workforce shortages can limit productivity, growth, and succession planning.",
       "Strong education-industry partnerships help create a steady flow of future workers.",
@@ -71,8 +71,9 @@ const BENEFITS: {
     icon: Wallet,
     eyebrow: "The Savings",
     title: "Reducing Recruiting & Training Costs",
-    intro:
+    intro: [
       "TradesNKY helps students gain awareness of skilled careers before they enter the workforce, creating a larger pool of candidates who better understand industry expectations and opportunities.",
+    ],
     why: [
       "Access to informed candidates can reduce recruiting challenges and shorten hiring timelines.",
       "Early exposure helps students enter the workforce with greater career awareness and interest.",
@@ -85,8 +86,9 @@ const BENEFITS: {
     icon: BadgeCheck,
     eyebrow: "The Readiness",
     title: "Building a More Prepared Workforce",
-    intro:
+    intro: [
       "TradesNKY helps students develop a stronger understanding of workplace expectations, career opportunities, and the skills valued by employers before entering the workforce.",
+    ],
     why: [
       "Career-connected learning helps students better understand workplace environments and expectations.",
       "Early exposure to industries and employers increases awareness of safety, professionalism, and job responsibilities.",
@@ -99,8 +101,9 @@ const BENEFITS: {
     icon: Handshake,
     eyebrow: "The Reputation",
     title: "Demonstrating Community Leadership",
-    intro:
+    intro: [
       "Supporting TradesNKY demonstrates a commitment to workforce development, education, and the future of Northern Kentucky. It positions your organization as a partner in creating opportunities for the next generation.",
+    ],
     why: [
       "Students, parents, educators, and community leaders increasingly value employers that invest in their communities.",
       "Workforce partnerships help strengthen relationships between businesses, schools, and local stakeholders.",
@@ -108,24 +111,6 @@ const BENEFITS: {
     ],
     result:
       "Stronger community relationships, increased brand awareness, and recognition as a leader in workforce development.",
-  },
-];
-
-const TIERS: { icon: LucideIcon; name: string; body: string }[] = [
-  {
-    icon: Globe,
-    name: "Visibility",
-    body: "List your company as a TradesNKY partner, with logo placement and recognition across our channels and events.",
-  },
-  {
-    icon: Users,
-    name: "Engagement",
-    body: "Host site visits, send guest speakers, and join career fairs to meet the next generation of talent directly.",
-  },
-  {
-    icon: Star,
-    name: "Sponsorship",
-    body: "Fund programs, events, and equipment that put your brand at the center of regional workforce development.",
   },
 ];
 
@@ -202,134 +187,37 @@ export default function EmployersPage() {
                 Become a Partner
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
+              <Link href="/about" className={BTN_OUTLINE_BLUE}>
+                About TradesNKY
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── THE SHORTAGE — real-number stat band ──────────────────── */}
-      <FadeInSection className="bg-tnky-white">
-        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading center eyebrow="The Stakes">
-              The Shortage Is Real — and Growing
-            </SectionHeading>
-            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              The skilled-labor gap is widening across every sector that builds,
-              powers, and moves the region.
-            </p>
-          </div>
-          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {[
-              {
-                value: "439,000",
-                label: "new construction workers needed in 2025 alone",
-              },
-              {
-                value: "Millions",
-                label: "of manufacturing jobs unfilled by 2033",
-              },
-              {
-                value: "70%",
-                label: "of employers say the shortage limits business growth",
-              },
-            ].map((s) => (
-              <div
-                key={s.label}
-                className="rounded-2xl bg-tnky-blue p-8 text-center text-tnky-white shadow-tnky-2"
-              >
-                <p className="font-display font-tnky-black leading-none text-stat-lg text-tnky-safety">
-                  {s.value}
-                </p>
-                <p className="mt-3 text-body font-medium leading-relaxed text-tnky-cream/90 [text-wrap:pretty]">
-                  {s.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </FadeInSection>
-
-      {/* ── ROI — a business decision, not a donation ─────────────── */}
-      <FadeInSection className="bg-tnky-cream">
-        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading center eyebrow="The Return">
-              A Business Decision, Not a Donation
-            </SectionHeading>
-            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              Supporting TradesNKY isn&apos;t philanthropy — it&apos;s a strategic
-              investment in workforce stability, regional competitiveness, and
-              long-term business growth. Here&apos;s the return.
-            </p>
-          </div>
-          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-            {[
-              {
-                icon: Wallet,
-                title: "Lower Recruiting Costs",
-                body: "Replacing one entry-level skilled worker costs 20–30% of annual salary. Early access to trained, informed students cuts that cost and shortens hiring timelines.",
-              },
-              {
-                icon: BadgeCheck,
-                title: "Better-Prepared Hires",
-                body: "Students who complete structured CTE or pre-apprenticeship pathways arrive with workplace skills and safety awareness — requiring far less onboarding.",
-              },
-              {
-                icon: Star,
-                title: "Stronger Community Reputation",
-                body: "80% of Gen Z wants to work for companies that give back. Supporting TradesNKY positions you as an employer of choice and a community leader.",
-              },
-            ].map((c) => {
-              const Icon = c.icon;
-              return (
-                <article
-                  key={c.title}
-                  className="flex flex-col rounded-2xl border border-tnky-edge bg-tnky-white p-8 shadow-tnky-2"
-                >
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-tnky-blue text-tnky-white">
-                    <Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
-                  </span>
-                  <h3 className="mt-5 font-display font-extrabold text-card-title text-tnky-ink [text-wrap:balance]">
-                    {c.title}
-                  </h3>
-                  <p className="mt-3 text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                    {c.body}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </FadeInSection>
-
-      {/* ── BENEFIT SECTIONS (from the website architecture doc) ──── */}
-      {BENEFITS.map((b, i) => {
-        const sectionWhite = i % 2 === 0;
-        const Icon = b.icon;
+      {/* ── SECTIONS (from Website Architecture & Content doc) ─────── */}
+      {SECTIONS.map((s, i) => {
+        const sectionWhite = i % 2 === 1;
         return (
           <FadeInSection
-            key={b.title}
+            key={s.title}
             className={sectionWhite ? "bg-tnky-white" : "bg-tnky-cream"}
           >
             <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
               <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
                 <div>
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-tnky-blue text-tnky-white">
-                    <Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
-                  </span>
-                  <div className="mt-5">
-                    <SectionHeading eyebrow={b.eyebrow}>{b.title}</SectionHeading>
+                  <SectionHeading eyebrow={s.eyebrow}>{s.title}</SectionHeading>
+                  <div className="mt-6 max-w-prose space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                    {s.intro.map((p) => (
+                      <p key={p}>{p}</p>
+                    ))}
                   </div>
-                  <p className="mt-6 max-w-prose text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                    {b.intro}
-                  </p>
                   <div className="mt-8 rounded-2xl border-l-4 border-tnky-blue bg-tnky-blue/5 p-5">
                     <p className="font-display font-bold uppercase tracking-tag text-meta text-tnky-blue">
                       The Result
                     </p>
                     <p className="mt-1.5 text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                      {b.result}
+                      {s.result}
                     </p>
                   </div>
                 </div>
@@ -347,7 +235,7 @@ export default function EmployersPage() {
                     className="mt-3 h-[3px] w-10 rounded-full bg-tnky-safety"
                   />
                   <ul className="mt-5 space-y-4">
-                    {b.why.map((w) => (
+                    {s.why.map((w) => (
                       <li
                         key={w}
                         className="flex items-start gap-3 text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
@@ -367,50 +255,6 @@ export default function EmployersPage() {
           </FadeInSection>
         );
       })}
-
-      {/* ── WAYS TO PARTNER ─────────────────────────────────────── */}
-      <FadeInSection className="bg-tnky-cream">
-        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading center eyebrow="Get Involved">
-              Ways to Partner
-            </SectionHeading>
-            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              Partnership scales to fit your business — from a simple listing to
-              full sponsorship. Every level strengthens the regional talent pipeline.
-            </p>
-          </div>
-          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-            {TIERS.map((t, i) => {
-              const Icon = t.icon;
-              return (
-                <article
-                  key={t.name}
-                  className="flex flex-col rounded-2xl border border-tnky-edge bg-tnky-white p-8 shadow-tnky-2"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-tnky-blue text-tnky-white">
-                      <Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
-                    </span>
-                    <span className="font-display font-tnky-black text-h3 text-tnky-edge">
-                      {`0${i + 1}`}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 font-display font-extrabold text-card-title text-tnky-ink">
-                    {t.name}
-                  </h3>
-                  <p className="mt-3 text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                    {t.body}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </FadeInSection>
-
-      {/* ── THE TRADESNKY PATHWAY (shared) ──────────────────────── */}
-      <SimplePathwaySection />
 
       {/* ── CTA ─────────────────────────────────────────────────── */}
       <FadeInSection className="bg-tnky-blue">
