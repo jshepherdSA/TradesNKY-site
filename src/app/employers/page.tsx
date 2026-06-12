@@ -115,20 +115,15 @@ const SECTIONS: {
 ];
 
 function SectionHeading({
-  eyebrow,
   children,
   center = false,
 }: {
-  eyebrow: string;
   children: ReactNode;
   center?: boolean;
 }) {
   return (
     <div className={center ? "text-center" : undefined}>
-      <p className="font-display font-bold uppercase tracking-eyebrow text-eyebrow text-tnky-blue">
-        {eyebrow}
-      </p>
-      <h2 className="mt-3 font-display italic font-extrabold text-3xl md:text-4xl text-tnky-ink [text-wrap:balance]">
+      <h2 className="font-display italic font-extrabold text-3xl md:text-4xl text-tnky-ink [text-wrap:balance]">
         {children}
       </h2>
       <div
@@ -206,7 +201,7 @@ export default function EmployersPage() {
             <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
               <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
                 <div>
-                  <SectionHeading eyebrow={s.eyebrow}>{s.title}</SectionHeading>
+                  <SectionHeading>{s.title}</SectionHeading>
                   <div className="mt-6 max-w-prose space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
                     {s.intro.map((p) => (
                       <p key={p}>{p}</p>

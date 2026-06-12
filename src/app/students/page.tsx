@@ -77,20 +77,15 @@ const OWNERS: {
 // Eyebrow → bold-italic display heading (text-3xl md:text-4xl) → yellow
 // underline. The consistent treatment for every section heading.
 function SectionHeading({
-  eyebrow,
   children,
   center = false,
 }: {
-  eyebrow: string;
   children: ReactNode;
   center?: boolean;
 }) {
   return (
     <div className={center ? "text-center" : undefined}>
-      <p className="font-display font-bold uppercase tracking-eyebrow text-eyebrow text-tnky-blue">
-        {eyebrow}
-      </p>
-      <h2 className="mt-3 font-display italic font-extrabold text-3xl md:text-4xl text-tnky-ink [text-wrap:balance]">
+      <h2 className="font-display italic font-extrabold text-3xl md:text-4xl text-tnky-ink [text-wrap:balance]">
         {children}
       </h2>
       <div
@@ -194,7 +189,7 @@ export default function StudentsPage() {
       <FadeInSection className="bg-tnky-white">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="mx-auto max-w-3xl">
-            <SectionHeading eyebrow="Find Your Fit">
+            <SectionHeading>
               Turn Your Interests Into a Future You&apos;re Proud Of
             </SectionHeading>
             <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
@@ -220,7 +215,7 @@ export default function StudentsPage() {
       <FadeInSection className="bg-tnky-cream">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading center eyebrow="Modern Careers">
+            <SectionHeading center>
               The Technology Behind Modern Careers
             </SectionHeading>
             <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
@@ -268,7 +263,7 @@ export default function StudentsPage() {
       <FadeInSection className="bg-tnky-white">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="max-w-3xl">
-            <SectionHeading eyebrow="Earn While You Learn">
+            <SectionHeading>
               Build Skills. Build Financial Independence
             </SectionHeading>
             <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
@@ -324,7 +319,7 @@ export default function StudentsPage() {
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-10 lg:gap-16">
             <div className="lg:col-span-7">
-              <SectionHeading eyebrow="Built to Last">
+              <SectionHeading>
                 Career Security In An Uncertain World
               </SectionHeading>
               <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
@@ -397,7 +392,7 @@ export default function StudentsPage() {
       <FadeInSection className="bg-tnky-white">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="max-w-3xl">
-            <SectionHeading eyebrow="From Apprentice to Owner">
+            <SectionHeading>
               Today&apos;s Skilled Professional. Tomorrow&apos;s Business Owner.
             </SectionHeading>
             <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">

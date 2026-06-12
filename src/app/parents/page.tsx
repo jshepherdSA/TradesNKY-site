@@ -38,20 +38,15 @@ const TIMELINE: { icon: LucideIcon; label: string }[] = [
 ];
 
 function SectionHeading({
-  eyebrow,
   children,
   center = false,
 }: {
-  eyebrow: string;
   children: ReactNode;
   center?: boolean;
 }) {
   return (
     <div className={center ? "text-center" : undefined}>
-      <p className="font-display font-bold uppercase tracking-eyebrow text-eyebrow text-tnky-blue">
-        {eyebrow}
-      </p>
-      <h2 className="mt-3 font-display italic font-extrabold text-3xl md:text-4xl text-tnky-ink [text-wrap:balance]">
+      <h2 className="font-display italic font-extrabold text-3xl md:text-4xl text-tnky-ink [text-wrap:balance]">
         {children}
       </h2>
       <div
@@ -113,7 +108,7 @@ export default function ParentsPage() {
       <FadeInSection className="bg-tnky-cream">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="mx-auto max-w-3xl">
-            <SectionHeading eyebrow="Why It Matters">
+            <SectionHeading>
               Every Child Deserves a Pathway to Success
             </SectionHeading>
             <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
@@ -154,7 +149,7 @@ export default function ParentsPage() {
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
-              <SectionHeading eyebrow="Where It Leads">
+              <SectionHeading>
                 A Foundation for Whatever Comes Next
               </SectionHeading>
               <div className="mt-6 max-w-prose space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
@@ -218,7 +213,7 @@ export default function ParentsPage() {
       <FadeInSection className="bg-tnky-cream">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="mx-auto max-w-3xl">
-            <SectionHeading eyebrow="Real Value">
+            <SectionHeading>
               Financial Independence Without Unnecessary Debt
             </SectionHeading>
             <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
@@ -252,7 +247,7 @@ export default function ParentsPage() {
       <FadeInSection className="bg-tnky-white">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="mx-auto max-w-4xl">
-            <SectionHeading eyebrow="A Modern Workplace">
+            <SectionHeading>
               Not the Trades You Remember
             </SectionHeading>
             <div className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
@@ -304,7 +299,7 @@ export default function ParentsPage() {
       <FadeInSection className="bg-tnky-cream">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="mx-auto max-w-3xl">
-            <SectionHeading eyebrow="In Demand Now">
+            <SectionHeading>
               High-Demand Careers in Our Community
             </SectionHeading>
             <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
@@ -343,7 +338,7 @@ export default function ParentsPage() {
       <FadeInSection className="bg-tnky-cream">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
           <div className="mx-auto max-w-3xl">
-            <SectionHeading eyebrow="Where Ambition Leads">
+            <SectionHeading>
               A Foundation for Leadership and Entrepreneurship
             </SectionHeading>
             <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
