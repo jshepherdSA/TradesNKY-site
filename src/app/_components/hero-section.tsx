@@ -3,7 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  type Transition,
+  type Variants,
+} from "framer-motion";
 import {
   BookOpen,
   Briefcase,
@@ -13,7 +19,6 @@ import {
   Heart,
   Landmark,
   MapPin,
-  Phone,
   type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -48,35 +53,91 @@ const AUDIENCES: Audience[] = [
 ];
 
 type HeroSectionProps = {
-  titlePrefix?: string;
-  rotatingWords?: string[];
-  interval?: number;
   subtitle?: string;
   primaryCta?: CtaLink;
   secondaryCta?: CtaLink;
   backgroundImage?: { src: string; alt: string };
   contactInfo?: {
     website: { label: string; href: string };
-    phone: { label: string; href: string };
     address: string;
   };
 };
 
-const DEFAULT_ROTATING = ["Skills.", "Futures.", "A Career.", "Connections."];
+// Two-part rotating headline: [PILLAR] [PAIRED]. The pillar (left) holds while
+// its pool of paired words (right) cycles, then advances to the next pillar.
+// Order and pools are fixed; the first visible pair is always BUILD FUTURES.
+const PILLAR_PAIRS: {
+  pillar: string;
+  /** Tailwind text-color class for the pillar's DESIGN.md color token. */
+  pillarColor: string;
+  pairs: string[];
+}[] = [
+  {
+    pillar: "Build",
+    pillarColor: "text-pillar-build",
+    pairs: ["Futures", "Homes", "Systems", "Infrastructure", "Paths"],
+  },
+  {
+    pillar: "Make",
+    pillarColor: "text-pillar-make",
+    pairs: ["Machines", "Robots", "Products", "Cars", "Components"],
+  },
+  {
+    pillar: "Power",
+    pillarColor: "text-pillar-power",
+    pairs: [
+      "Your City",
+      "Your Community",
+      "Sustainably",
+      "America",
+      "Local Businesses",
+    ],
+  },
+  {
+    pillar: "Move",
+    pillarColor: "text-pillar-move",
+    pairs: ["People", "Products", "Food", "Packages", "Freight"],
+  },
+  {
+    pillar: "Protect",
+    pillarColor: "text-pillar-protect",
+    pairs: [
+      "Your Community",
+      "Local Businesses",
+      "Public Health",
+      "The Workforce",
+      "The Environment",
+    ],
+  },
+];
+
+const WORD_TRANSITION: Transition = { duration: 0.5, ease: EASE };
+
+type Rotation = { pillarIndex: number; poolIndices: number[] };
+
+// Advance both words one step: the pillar cycles BUILD → MAKE → POWER → MOVE →
+// PROTECT, and every time the cycle returns to the first pillar each pillar's
+// own pool counter advances — so a pillar shows its next paired word each time
+// it comes back around.
+function advanceRotation(prev: Rotation): Rotation {
+  const pillarIndex = (prev.pillarIndex + 1) % PILLAR_PAIRS.length;
+  const poolIndices =
+    pillarIndex === 0
+      ? prev.poolIndices.map((c, i) => (c + 1) % PILLAR_PAIRS[i].pairs.length)
+      : prev.poolIndices;
+  return { pillarIndex, poolIndices };
+}
+
 const DEFAULT_BG = {
   src: "/images/student-excavator.jpg",
   alt: "A student operates a compact excavator at a Northern Kentucky trades program",
 };
 const DEFAULT_CONTACT = {
   website: { label: "tradesnky.org", href: "https://tradesnky.org" },
-  phone: { label: "(859) 555-0100", href: "tel:+18595550100" },
   address: "Northern Kentucky",
 };
 
 export function HeroSection({
-  titlePrefix = "Build",
-  rotatingWords = DEFAULT_ROTATING,
-  interval = 7000,
   subtitle = "Connecting students, families, and employers to high-demand careers in construction, electrical, HVAC, and more.",
   primaryCta = { text: "Take the Quiz", href: "/students/quiz" },
   secondaryCta = { text: "Explore Careers", href: "#five-pillars-heading" },
@@ -85,8 +146,11 @@ export function HeroSection({
 }: HeroSectionProps) {
   const [started, setStarted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
-  const [wordIndex, setWordIndex] = useState(0);
-  const [firstAdvanceDone, setFirstAdvanceDone] = useState(false);
+  const [rotation, setRotation] = useState<Rotation>({
+    pillarIndex: 0,
+    poolIndices: PILLAR_PAIRS.map(() => 0),
+  });
+  const [rotationStarted, setRotationStarted] = useState(false);
   const reducedMotion = useReducedMotion();
 
   // Hero arrow visibility — true while the hero <section> is in the viewport
@@ -121,24 +185,25 @@ export function HeroSection({
   // clip reveal is the only desktop-gated motion).
   const introOn = started && !reducedMotion;
 
-  // First advance fires once 2s after the component is animation-ready;
-  // subsequent advances run on a normal setInterval at `interval`.
+  // Headline rotation. BUILD FUTURES holds for 2s on mount (the existing timing
+  // fix), then both words advance together every 2.5s. Disabled under
+  // prefers-reduced-motion, leaving BUILD FUTURES static.
   useEffect(() => {
-    if (!animationsOn || firstAdvanceDone) return;
+    if (reducedMotion) return;
     const id = setTimeout(() => {
-      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
-      setFirstAdvanceDone(true);
+      setRotation(advanceRotation);
+      setRotationStarted(true);
     }, 2000);
     return () => clearTimeout(id);
-  }, [animationsOn, firstAdvanceDone, rotatingWords.length]);
+  }, [reducedMotion]);
 
   useEffect(() => {
-    if (!animationsOn || !firstAdvanceDone) return;
+    if (reducedMotion || !rotationStarted) return;
     const id = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
-    }, interval);
+      setRotation(advanceRotation);
+    }, 2500);
     return () => clearInterval(id);
-  }, [animationsOn, firstAdvanceDone, interval, rotatingWords.length]);
+  }, [reducedMotion, rotationStarted]);
 
   const containerVariants: Variants = {
     hidden: {},
@@ -180,10 +245,12 @@ export function HeroSection({
     },
   };
 
-  const longestWord = rotatingWords.reduce(
-    (a, b) => (b.length > a.length ? b : a),
-    "",
-  );
+  const activePillar = PILLAR_PAIRS[rotation.pillarIndex];
+  const current = {
+    pillar: activePillar.pillar,
+    pillarColor: activePillar.pillarColor,
+    pair: activePillar.pairs[rotation.poolIndices[rotation.pillarIndex]],
+  };
 
   return (
     <section
@@ -200,37 +267,51 @@ export function HeroSection({
             initial="hidden"
             animate={started ? "visible" : "hidden"}
           >
-            {/* Headline with rotating word */}
+            {/* Two-part rotating headline: [PILLAR] [PAIRED]. */}
             <motion.h1
               variants={itemVariants}
               className="font-display italic font-tnky-black whitespace-nowrap leading-none tracking-[-0.025em] text-[length:clamp(2rem,4.5vw,4.5rem)]"
             >
-              <span className="inline-block px-1 text-tnky-black">
-                {titlePrefix}
-              </span>{" "}
-              <span className="relative inline-block h-[1em] overflow-hidden px-1 align-bottom text-tnky-blue">
+              {/* Pillar word (left): enters from above, exits upward; only
+                  re-keys — and therefore animates — when the pillar changes. */}
+              <span className="relative inline-block h-[1.2em] overflow-hidden px-1 align-bottom">
                 <span aria-hidden="true" className="invisible">
-                  {longestWord}
+                  {current.pillar}
                 </span>
-                {rotatingWords.map((word, i) => (
+                <AnimatePresence initial={false}>
                   <motion.span
-                    key={word}
-                    className="absolute left-0 top-0"
-                    initial={i === 0 ? false : { opacity: 0, y: -100 }}
-                    animate={
-                      wordIndex === i
-                        ? { opacity: 1, y: 0 }
-                        : { opacity: 0, y: wordIndex > i ? -150 : 150 }
-                    }
-                    transition={
-                      animationsOn
-                        ? { duration: 0.5, ease: EASE }
-                        : { duration: 0 }
-                    }
+                    key={current.pillar}
+                    className={cn(
+                      "absolute left-1 top-0 whitespace-nowrap",
+                      current.pillarColor,
+                    )}
+                    initial={{ y: -40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 40, opacity: 0 }}
+                    transition={WORD_TRANSITION}
                   >
-                    {word}
+                    {current.pillar}
                   </motion.span>
-                ))}
+                </AnimatePresence>
+              </span>{" "}
+              {/* Paired word (right): enters from below, exits downward;
+                  re-keys on every cycle. */}
+              <span className="relative inline-block h-[1.2em] overflow-hidden px-1 align-bottom text-tnky-blue">
+                <span aria-hidden="true" className="invisible">
+                  {current.pair}
+                </span>
+                <AnimatePresence initial={false}>
+                  <motion.span
+                    key={`${rotation.pillarIndex}-${rotation.poolIndices[rotation.pillarIndex]}`}
+                    className="absolute left-1 top-0 whitespace-nowrap"
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -40, opacity: 0 }}
+                    transition={WORD_TRANSITION}
+                  >
+                    {current.pair}
+                  </motion.span>
+                </AnimatePresence>
               </span>
             </motion.h1>
 
@@ -285,16 +366,6 @@ export function HeroSection({
                   aria-hidden="true"
                 />
                 {contactInfo.website.label}
-              </a>
-              <a
-                href={contactInfo.phone.href}
-                className="inline-flex items-center gap-2 rounded-sm transition-colors duration-150 hover:text-tnky-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-cream"
-              >
-                <Phone
-                  className="h-4 w-4 shrink-0 text-tnky-blue"
-                  aria-hidden="true"
-                />
-                {contactInfo.phone.label}
               </a>
               <span className="inline-flex items-center gap-2">
                 <MapPin

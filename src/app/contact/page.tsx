@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { SVGProps } from "react";
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { ContactForm } from "../_components/contact-form";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
 
@@ -136,24 +136,6 @@ export default function ContactPage() {
                     className="mt-1 inline-block text-body text-tnky-ink underline-offset-4 transition-colors duration-150 hover:text-tnky-blue hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2"
                   >
                     info@tradesnky.org
-                  </a>
-                </div>
-              </li>
-
-              <li className="flex items-start gap-3">
-                <Phone
-                  aria-hidden="true"
-                  className="mt-0.5 h-5 w-5 shrink-0 text-tnky-blue"
-                />
-                <div>
-                  <p className="font-display font-bold uppercase tracking-tag text-eyebrow text-tnky-mute">
-                    Phone
-                  </p>
-                  <a
-                    href="tel:+18595550100"
-                    className="mt-1 inline-block text-body text-tnky-ink underline-offset-4 transition-colors duration-150 hover:text-tnky-blue hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2"
-                  >
-                    (859) 555-0100
                   </a>
                 </div>
               </li>

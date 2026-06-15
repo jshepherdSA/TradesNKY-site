@@ -160,6 +160,13 @@ const NAV_ITEMS: NavItem[] = [
             pillarColor: "var(--color-tnky-blue)",
           },
           {
+            label: "What is TradesNKY?",
+            description: "How the program works, from K-12 through post-graduation.",
+            href: "/about/what-is-tradesnky",
+            icon: BookOpen,
+            pillarColor: "var(--color-tnky-blue)",
+          },
+          {
             label: "Board of Directors",
             description: "The leaders steering the organization.",
             href: "/about/board",
