@@ -75,24 +75,12 @@ export function AudienceHero({
         className="object-cover object-center"
       />
 
-      {/* Layered tnky-blue overlay — left-heavy so the headline always reads,
-          with a diagonal wedge on desktop echoing the homepage clip-path. */}
-      <div aria-hidden="true" className="absolute inset-0 bg-tnky-ink/30" />
+      {/* Single tnky-blue gradient overlay — solid across the left half, then
+          fading to fully transparent on the right so the headline always
+          reads while the image stays visible on the right. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-tnky-blue via-tnky-blue/80 to-tnky-blue/25"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-y-0 left-0 hidden w-[60%] bg-tnky-blue/55 md:block md:[clip-path:polygon(0_0,100%_0,72%_100%,0_100%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-tnky-safety/10 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-28 -left-24 h-96 w-96 rounded-full bg-tnky-white/5 blur-3xl"
+        className="absolute inset-0 bg-gradient-to-r from-tnky-blue/85 via-tnky-blue/85 to-transparent"
       />
 
       <div className="relative z-10 max-w-content mx-auto w-full px-4 py-20 sm:px-8">
