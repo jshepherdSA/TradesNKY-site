@@ -23,7 +23,7 @@ const EXECUTIVE_DIRECTOR: BoardMemberCardProps = {
   title: "Executive Director",
   bio: "TradesNKY's staff lead, anchoring the organization's day-to-day work across Northern Kentucky.",
   role: "Leadership",
-  image: PLACEHOLDER_PHOTO,
+  image: "/brand/board/lorraine-omoore.webp",
   imageAlt: "",
   featured: true,
 };
@@ -34,7 +34,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     title: "President",
     bio: "AnyWeather Companies",
     role: "Officer",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/phil-griffin.jpg",
     imageAlt: "",
   },
   {
@@ -42,7 +42,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     title: "Vice President",
     bio: "CVG Airport",
     role: "Officer",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/larisa-sims.png",
     imageAlt: "",
   },
   {
@@ -50,7 +50,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     title: "Treasurer",
     bio: "Blue and Co. LLC",
     role: "Officer",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/stephen-mann.jpg",
     imageAlt: "",
   },
   {
@@ -58,7 +58,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     title: "Secretary",
     bio: "Bray Construction Services",
     role: "Officer",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/sara-bray.png",
     imageAlt: "",
   },
   {
@@ -66,7 +66,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     title: "Member",
     bio: "DBL Law",
     role: "Member",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/jeff-schlosser.jpg",
     imageAlt: "",
   },
   {
@@ -74,7 +74,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     title: "Member",
     bio: "Valley Interior Systems",
     role: "Member",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/john-strawser.webp",
     imageAlt: "",
   },
   {
@@ -82,7 +82,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     title: "Member",
     bio: "Safran Landing Systems",
     role: "Member",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/phillipe-garnier.jpg",
     imageAlt: "",
   },
   {
@@ -90,7 +90,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     title: "Member",
     bio: "Campbell County Fiscal Court",
     role: "Member",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/steve-pendery.webp",
     imageAlt: "",
   },
   {
@@ -106,7 +106,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     title: "Member",
     bio: "Campbell County ATC",
     role: "Member",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/carolyn-stewart.jpg",
     imageAlt: "",
   },
   {
@@ -114,7 +114,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     title: "Member",
     bio: "Riegler Blacktop",
     role: "Member",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/michael-taylor.jpeg",
     imageAlt: "",
   },
 ];

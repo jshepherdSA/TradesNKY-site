@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -153,11 +153,6 @@ export function HeroSection({
   const [rotationStarted, setRotationStarted] = useState(false);
   const reducedMotion = useReducedMotion();
 
-  // Hero arrow visibility — true while the hero <section> is in the viewport
-  // (driven by the IntersectionObserver below). Starts true for first paint.
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const [heroVisible, setHeroVisible] = useState(true);
-
   useEffect(() => {
     setStarted(true);
     const mq = window.matchMedia("(min-width: 768px)");
@@ -165,19 +160,6 @@ export function HeroSection({
     update();
     mq.addEventListener("change", update);
     return () => mq.removeEventListener("change", update);
-  }, []);
-
-  // Fade the hero arrow out once the hero scrolls out of view, and back in
-  // when it returns. Watches the hero <section> itself.
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => setHeroVisible(entry.isIntersecting),
-      { threshold: 0 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
   }, []);
 
   const animationsOn = started && isDesktop && !reducedMotion;
@@ -254,7 +236,6 @@ export function HeroSection({
 
   return (
     <section
-      ref={sectionRef}
       className="relative overflow-hidden bg-tnky-cream md:h-[calc(100vh_-_var(--nav-h,64px))]"
     >
       <div className="max-w-content mx-auto h-full px-4 sm:px-8">
@@ -400,31 +381,6 @@ export function HeroSection({
           </motion.div>
         </div>
       </div>
-
-      {/* Hand-drawn arrow image aimed up at the "Take the Quiz" button in the
-          nav. Desktop only (z-30); fades in on load with a short delay and
-          tracks the hero's viewport visibility via the IntersectionObserver
-          above. Rotated so the upward-pointing tip angles toward the top-right
-          where the nav button sits. */}
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[11%] top-[2%] z-30 hidden md:block"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: heroVisible ? 1 : 0 }}
-        transition={
-          reducedMotion
-            ? { duration: 0.2 }
-            : { duration: 0.5, delay: 0.6, ease: EASE }
-        }
-      >
-        <Image
-          src="/brand/arrow.png"
-          alt=""
-          width={140}
-          height={140}
-          className="rotate-[26deg]"
-        />
-      </motion.div>
 
       {/* Audience banner — full-bleed, absolutely pinned to the bottom of the
           hero. Diagonal top (down-right) interlocks with the hero image; the

@@ -38,11 +38,11 @@ const CORNERSTONE_PARTNERS: CornerstonePartner[] = [
       "/brand/partners/benkygrowthpartnership%20Background%20Removed.png",
   },
   {
-    name: "Spirit of Construction Foundation",
+    name: "The Fisher Fam Foundation",
     description:
-      "A Greater Cincinnati non-profit dedicated to advancing careers in construction. Funds scholarships, education, and workforce-development efforts across the trades.",
-    website: "https://www.spiritofconstruction.org/",
-    logoSrc: "/brand/partners/spiritofconstruction.png",
+      "Dedicated to supporting Northern Kentucky and Greater Cincinnati children and families in need through improved access to shelter, nutrition, education, and mental and physical health services, creating a path to self-actualization.",
+    website: "#",
+    logoSrc: "/brand/partners/fisherfamfoundation.png",
     logoSize: "large",
   },
 ];
@@ -67,6 +67,7 @@ const GROUPS: PartnerTileGroup[] = [
           "One of the country's largest builders and a Greater Cincinnati pillar of large-scale commercial construction, with deep apprenticeship and trades partnerships across the region.",
         website: "https://www.turnerconstruction.com/",
         logoSrc: "/brand/partners/turner.png",
+        logoClassName: "scale-[1.3] origin-left",
       },
       {
         name: "O'Rourke Wrecking Company",
@@ -90,7 +91,31 @@ const GROUPS: PartnerTileGroup[] = [
         description:
           "A Northern Kentucky residential and commercial roofing, HVAC, and exterior contractor — hiring and training skilled-trades workers across the region.",
         website: "https://anyweatherhvac.com/",
-        logoSrc: "/brand/partners/anyweather.png",
+        logoSrc: "/brand/partners/anyweather-2025.png",
+      },
+      {
+        name: "Perfection Group",
+        category: "Power Partner",
+        description:
+          "A Cincinnati-area facility-performance and energy-services company delivering mechanical design-build, HVAC, and performance contracting for schools, healthcare, and commercial clients across the region.",
+        website: "https://perfectiongroup.com",
+        logoSrc: "/brand/partners/perfectiongroup.png",
+      },
+      {
+        name: "The Butler Foundation",
+        category: "Power Partner",
+        description:
+          "A Covington-based charitable foundation funding public charities that serve low-income Northern Kentucky residents through grants, hardship assistance, and education scholarships.",
+        website: "https://butlerfoundationnky.org",
+        logoSrc: "/brand/partners/butlerfoundation.png",
+      },
+      {
+        name: "The Duke Energy Foundation",
+        category: "Power Partner",
+        description:
+          "The philanthropic arm of Duke Energy, investing in workforce development, education, and community vitality across the communities it serves.",
+        website: "https://foundation.duke-energy.com",
+        logoSrc: "/brand/partners/dukeenergyfoundation.png",
       },
     ],
   },
@@ -129,6 +154,22 @@ const GROUPS: PartnerTileGroup[] = [
           "Northern Kentucky's primary technical and community college — anchoring diesel, welding, HVAC, and advanced-manufacturing pathways across its Edgewood and Boone County campuses.",
         website: "https://gateway.kctcs.edu/index.aspx",
         logoSrc: "/brand/partners/gateway.png",
+      },
+      {
+        name: "Zion Christian Academy",
+        category: "Educational Partner",
+        description:
+          "A Christ-centered K-12 school in Florence, Kentucky, preparing students for life and career through faith-based, college- and career-ready education.",
+        website: "https://www.zionchristianacademy.com",
+        logoSrc: "/brand/partners/zionchristian.png",
+      },
+      {
+        name: "Holy Cross Elementary",
+        category: "Educational Partner",
+        description:
+          "A Catholic K-8 parish school in the Latonia neighborhood of Covington, Kentucky, part of the historic Holy Cross campus in the Diocese of Covington.",
+        website: "https://www.holycrosselem.com",
+        logoSrc: "/brand/partners/holycross.png",
       },
     ],
   },

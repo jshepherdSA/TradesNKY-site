@@ -14,6 +14,9 @@ export type PartnerTile = {
   website: string;
   /** Logo path under /public. When omitted, a gray placeholder is shown. */
   logoSrc?: string;
+  /** Optional extra classes for the logo image — e.g. a scale to make one
+   *  partner's mark read larger than the others in its row. */
+  logoClassName?: string;
 };
 
 export type PartnerTileGroup = {
@@ -68,7 +71,7 @@ export function PartnerTiles({ groups }: { groups: PartnerTileGroup[] }) {
                           alt={`${p.name} logo`}
                           fill
                           sizes="(min-width: 768px) 20vw, 50vw"
-                          className="object-contain object-left"
+                          className={cn("object-contain object-left", p.logoClassName)}
                         />
                       ) : (
                         <div
