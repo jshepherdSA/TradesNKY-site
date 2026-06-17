@@ -21,6 +21,9 @@ export type PartnerTile = {
 
 export type PartnerTileGroup = {
   label: string;
+  /** Optional descriptive paragraph rendered beneath the label + rule,
+   *  explaining what this tier of partners contributes. */
+  description?: string;
   partners: PartnerTile[];
   /** Tailwind grid-column classes controlling how this row's tiles lay out
    *  (e.g. "grid-cols-2 md:grid-cols-3"). */
@@ -48,6 +51,12 @@ export function PartnerTiles({ groups }: { groups: PartnerTileGroup[] }) {
             aria-hidden="true"
             className="mt-2 h-[3px] w-12 rounded-full bg-tnky-safety"
           />
+
+          {group.description && (
+            <p className="mt-3 max-w-3xl text-body text-tnky-mute [text-wrap:pretty]">
+              {group.description}
+            </p>
+          )}
 
           <div className={cn("mt-6 grid gap-6", group.gridCols)}>
             {group.partners.map((p) => {

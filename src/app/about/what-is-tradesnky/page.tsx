@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { Fragment, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
   BookOpen,
   Briefcase,
-  ChevronRight,
-  GraduationCap,
-  HardHat,
+  ClipboardCheck,
+  Compass,
+  Hammer,
+  Handshake,
+  Settings,
   TrendingUp,
+  Users,
+  Zap,
 } from "lucide-react";
 import { FadeInSection } from "../../_components/fade-in-section";
 import { SimplePathwaySection } from "../../_components/simple-pathway-section";
@@ -27,48 +31,60 @@ const BTN_PRIMARY =
 const BTN_OUTLINE =
   "inline-flex items-center justify-center gap-2 rounded-pill border-2 border-tnky-white px-8 py-4 font-display font-bold text-button text-tnky-white transition-all duration-200 ease-tnky hover:-translate-y-px hover:bg-tnky-white hover:text-tnky-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-white focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-blue";
 
-const EVENT_TYPES: { icon: typeof GraduationCap; label: string; blurb: string }[] =
-  [
-    {
-      icon: GraduationCap,
-      label: "Career Discovery Fairs",
-      blurb:
-        "Elementary and middle schoolers meet tradespeople and see careers up close.",
-    },
-    {
-      icon: HardHat,
-      label: "Job Site Visits",
-      blurb:
-        "High schoolers tour active job sites and watch real work happen.",
-    },
-    {
-      icon: Briefcase,
-      label: "Employer Showcases",
-      blurb:
-        "Local employers demo equipment, careers, and hiring pathways.",
-    },
-  ];
-
-const STEPS: { num: string; title: string; desc: string }[] = [
+// The TradesNKY Approach — the program's core offering. Each item pairs a
+// short bold label with a description; `featured` flags skillUP, the flagship
+// regional event, for a filled-blue treatment within the grid.
+const APPROACH: {
+  icon: typeof BookOpen;
+  label: string;
+  desc: string;
+  featured?: boolean;
+}[] = [
   {
-    num: "01",
-    title: "Partner with Schools",
-    desc: "We work directly with NKY school districts to integrate career awareness into the classroom starting in elementary school.",
+    icon: BookOpen,
+    label: "Industry-Informed Curriculum",
+    desc: "Aligned with Kentucky Department of Education (KDE) standards and designed for all middle school students in grades 6–8, with flexible 9-week and 18-week implementation options.",
   },
   {
-    num: "02",
-    title: "Connect with Employers",
-    desc: "Local employers and trade organizations join as partners, providing real-world exposure, mentorship, and hiring pipelines.",
+    icon: Hammer,
+    label: "Hands-On Learning",
+    desc: "Engaging, project-based lessons that help students discover the skills, technologies, and careers that power our communities.",
   },
   {
-    num: "03",
-    title: "Guide Students Through the Pathway",
-    desc: "Students move through Expose, Explore, Engage, and Earn stages with support at every level.",
+    icon: Settings,
+    label: "Customized Implementation",
+    desc: "Tailored to the unique goals, schedules, and needs of each school district, classroom, and student.",
   },
   {
-    num: "04",
-    title: "Create Workforce Outcomes",
-    desc: "Students graduate into apprenticeships, certifications, and careers — employers gain the skilled workforce they need.",
+    icon: Handshake,
+    label: "Dedicated School Partnerships",
+    desc: "One-on-one support throughout implementation to ensure successful program delivery.",
+  },
+  {
+    icon: Users,
+    label: "Educator Support",
+    desc: "The Essential Workforce Educator Network gives teachers professional development, resources, and a community of practice.",
+  },
+  {
+    icon: Briefcase,
+    label: "Industry Engagement",
+    desc: "Professionals come into classrooms to share their career journeys, workplace experiences, and industry expertise.",
+  },
+  {
+    icon: Compass,
+    label: "Career Exploration Experiences",
+    desc: "Job site visits and facility tours that give students firsthand exposure to the essential trades in action.",
+  },
+  {
+    icon: Zap,
+    label: "skillUP",
+    desc: "Our annual regional career exploration event, where students interact directly with employers and discover careers across the BUILD, MAKE, MOVE, POWER, and PROTECT pathways.",
+    featured: true,
+  },
+  {
+    icon: ClipboardCheck,
+    label: "Employer Engagement Toolkit",
+    desc: "Helps employers understand how to hire students for pre-apprentice and apprenticeship programs.",
   },
 ];
 
@@ -105,7 +121,7 @@ function SectionHeading({
   );
 }
 
-// Shared treatment for the two "coming soon" placeholder sections.
+// Shared treatment for the "coming soon" roadmap placeholder.
 function PlaceholderCard({
   icon: Icon,
   title,
@@ -165,7 +181,44 @@ export default function WhatIsTradesNkyPage() {
         </div>
       </section>
 
-      {/* ── SECTION 1 — THE PATHWAY ─────────────────────────────── */}
+      {/* ── OVERVIEW — THE ESSENTIAL WORKFORCE ──────────────────── */}
+      <FadeInSection className="bg-tnky-cream">
+        <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+            <div>
+              <SectionHeading>The Essential Workforce</SectionHeading>
+              <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                <p>
+                  The essential workforce keeps our communities running, from
+                  constructing buildings and manufacturing products to powering
+                  infrastructure, transporting goods, and protecting public
+                  safety. TradesNKY ensures students understand these
+                  opportunities before making important decisions about their
+                  futures.
+                </p>
+                <p>
+                  By bringing education and industry together, we create
+                  hands-on learning experiences — through both a robust
+                  curriculum and in-depth career exploration — that inspire
+                  students, support educators, and strengthen the workforce that
+                  will shape Northern Kentucky for generations.
+                </p>
+              </div>
+            </div>
+            <div className="relative min-h-[20rem] w-full overflow-hidden rounded-xl shadow-tnky-2 lg:h-full">
+              <Image
+                src="/images/students-event.jpg"
+                alt="Students connecting with tradespeople at a TradesNKY career event"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </FadeInSection>
+
+      {/* ── THE PATHWAY ─────────────────────────────────────────── */}
       <div id="the-pathway" className="scroll-mt-[var(--nav-h,64px)]">
         <FadeInSection className="bg-tnky-white">
           <div className="max-w-content mx-auto px-4 pt-20 sm:px-8 md:pt-24">
@@ -181,72 +234,60 @@ export default function WhatIsTradesNkyPage() {
         <SimplePathwaySection />
       </div>
 
-      {/* ── SECTION 2 — CURRICULUM (placeholder) ────────────────── */}
+      {/* ── THE TRADESNKY APPROACH ──────────────────────────────── */}
       <FadeInSection className="bg-tnky-cream">
         <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
-          <SectionHeading center>What Students Learn</SectionHeading>
-          <PlaceholderCard icon={BookOpen} title="Curriculum Details Coming Soon">
-            We are currently developing detailed curriculum documentation. Check
-            back soon for a full breakdown of what students experience at each
-            stage of the pathway.
-          </PlaceholderCard>
-        </div>
-      </FadeInSection>
-
-      {/* ── SECTION 3 — WHAT EVENTS ARE LIKE ────────────────────── */}
-      <FadeInSection className="bg-tnky-white">
-        <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <SectionHeading>What Our Events Are Like</SectionHeading>
-              <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                <p>
-                  TradesNKY events bring students face-to-face with real
-                  tradespeople, working equipment, and career possibilities they
-                  may never have considered. From elementary school career fairs
-                  to high school job site visits and employer showcases, our
-                  events are designed to spark curiosity, build connections, and
-                  make skilled trades feel real and attainable.
-                </p>
-                <p>
-                  Events are hands-on by design. Students don&apos;t just watch —
-                  they try things, ask questions, and meet the people who built
-                  careers doing work they love. Educators bring students.
-                  Employers show up. Communities connect.
-                </p>
-              </div>
-            </div>
-            <div className="relative min-h-[18rem] w-full overflow-hidden rounded-xl shadow-tnky-2 lg:h-full">
-              <Image
-                src="/images/students-event.jpg"
-                alt="Students connecting with tradespeople at a TradesNKY career event"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+          <div className="mx-auto max-w-3xl text-center">
+            <SectionHeading center>The TradesNKY Approach</SectionHeading>
+            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+              TradesNKY partners directly with schools, educators, and industry
+              to deliver meaningful career exploration experiences that connect
+              classroom learning with the real world.
+            </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {EVENT_TYPES.map((ev) => {
-              const EvIcon = ev.icon;
+          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {APPROACH.map((item) => {
+              const Icon = item.icon;
+              if (item.featured) {
+                return (
+                  <div
+                    key={item.label}
+                    className="flex flex-col rounded-2xl bg-tnky-blue p-6 shadow-tnky-2"
+                  >
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tnky-safety text-tnky-safety-ink">
+                      <Icon
+                        className="h-6 w-6"
+                        strokeWidth={1.75}
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <h3 className="mt-4 font-display italic font-tnky-black leading-none text-h4 text-tnky-white">
+                      {item.label}
+                    </h3>
+                    <p className="mt-2 text-small font-medium leading-relaxed text-tnky-white/85 [text-wrap:pretty]">
+                      {item.desc}
+                    </p>
+                  </div>
+                );
+              }
               return (
                 <div
-                  key={ev.label}
-                  className="rounded-xl border border-tnky-edge bg-tnky-cream p-6"
+                  key={item.label}
+                  className="flex flex-col rounded-2xl border border-tnky-edge bg-tnky-white p-6 shadow-tnky-1"
                 >
                   <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tnky-blue/10 text-tnky-blue">
-                    <EvIcon
+                    <Icon
                       className="h-6 w-6"
                       strokeWidth={1.75}
                       aria-hidden="true"
                     />
                   </span>
-                  <h3 className="mt-4 font-display font-extrabold text-card-title text-tnky-ink">
-                    {ev.label}
+                  <h3 className="mt-4 font-display font-extrabold text-card-title text-tnky-ink [text-wrap:balance]">
+                    {item.label}
                   </h3>
                   <p className="mt-2 text-small font-medium leading-relaxed text-tnky-mute [text-wrap:pretty]">
-                    {ev.blurb}
+                    {item.desc}
                   </p>
                 </div>
               );
@@ -255,52 +296,7 @@ export default function WhatIsTradesNkyPage() {
         </div>
       </FadeInSection>
 
-      {/* ── SECTION 4 — THE HOW ─────────────────────────────────── */}
-      <FadeInSection className="bg-tnky-blue">
-        <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
-          <SectionHeading light>How TradesNKY Works</SectionHeading>
-          <div className="mt-12 flex flex-col gap-6 md:flex-row md:items-stretch md:gap-2">
-            {STEPS.map((step, i) => (
-              <Fragment key={step.num}>
-                <div className="flex-1">
-                  <span
-                    aria-hidden="true"
-                    className="font-display font-tnky-black leading-none text-stat-lg text-tnky-safety"
-                  >
-                    {step.num}
-                  </span>
-                  <h3 className="mt-3 font-display font-extrabold text-card-title text-tnky-white [text-wrap:balance]">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-body font-medium leading-relaxed text-tnky-white/80 [text-wrap:pretty]">
-                    {step.desc}
-                  </p>
-                </div>
-                {i < STEPS.length - 1 && (
-                  <ChevronRight
-                    aria-hidden="true"
-                    className="hidden h-8 w-8 shrink-0 self-center text-tnky-safety md:block"
-                    strokeWidth={2}
-                  />
-                )}
-              </Fragment>
-            ))}
-          </div>
-        </div>
-      </FadeInSection>
-
-      {/* ── SECTION 5 — WHERE WE ARE GOING (placeholder) ────────── */}
-      <FadeInSection className="bg-tnky-cream">
-        <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
-          <SectionHeading center>Where We Are Going</SectionHeading>
-          <PlaceholderCard icon={TrendingUp} title="Our Roadmap Is Coming Soon">
-            TradesNKY is growing. We are documenting our next phase of expansion
-            across Northern Kentucky. Details coming soon.
-          </PlaceholderCard>
-        </div>
-      </FadeInSection>
-
-      {/* ── SECTION 6 — THE FIVE PILLARS ────────────────────────── */}
+      {/* ── THE FIVE PILLARS ────────────────────────────────────── */}
       <FadeInSection className="bg-tnky-white">
         <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
           <div className="mx-auto max-w-2xl text-center">
@@ -347,6 +343,17 @@ export default function WhatIsTradesNkyPage() {
               );
             })}
           </div>
+        </div>
+      </FadeInSection>
+
+      {/* ── WHERE WE ARE GOING (placeholder) ────────────────────── */}
+      <FadeInSection className="bg-tnky-cream">
+        <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
+          <SectionHeading center>Where We Are Going</SectionHeading>
+          <PlaceholderCard icon={TrendingUp} title="Our Roadmap Is Coming Soon">
+            TradesNKY is growing. We are documenting our next phase of expansion
+            across Northern Kentucky. Details coming soon.
+          </PlaceholderCard>
         </div>
       </FadeInSection>
 

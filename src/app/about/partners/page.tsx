@@ -30,6 +30,14 @@ type CornerstonePartner = {
 
 const CORNERSTONE_PARTNERS: CornerstonePartner[] = [
   {
+    name: "Spirit of Construction Foundation",
+    description:
+      "A Greater Cincinnati non-profit dedicated to advancing careers in construction. Funds scholarships, education, and workforce-development efforts across the trades.",
+    website: "https://www.spiritofconstruction.org/",
+    logoSrc: "/brand/partners/spiritofconstruction.png",
+    logoSize: "large",
+  },
+  {
     name: "BE NKY Growth Partnership",
     description:
       "The economic-development organization powering Northern Kentucky's growth strategy — connecting Boone, Kenton, and Campbell counties with the employers and industries that shape the regional workforce.",
@@ -38,7 +46,7 @@ const CORNERSTONE_PARTNERS: CornerstonePartner[] = [
       "/brand/partners/benkygrowthpartnership%20Background%20Removed.png",
   },
   {
-    name: "The Fisher Fam Foundation",
+    name: "Fischer Family Foundation",
     description:
       "Dedicated to supporting Northern Kentucky and Greater Cincinnati children and families in need through improved access to shelter, nutrition, education, and mental and physical health services, creating a path to self-actualization.",
     website: "#",
@@ -49,69 +57,30 @@ const CORNERSTONE_PARTNERS: CornerstonePartner[] = [
 
 const GROUPS: PartnerTileGroup[] = [
   {
-    label: "Power Partners",
+    label: "Project Partners",
+    description:
+      "These partners provide flexible, project-based funding that helps launch new initiatives, expand programming, and support emerging needs in schools and workforce engagement efforts.",
     gridCols: "grid-cols-2 md:grid-cols-3",
     partners: [
       {
-        name: "Bray Construction Services Inc.",
-        category: "Power Partner",
-        description:
-          "A regional commercial and industrial construction firm building across Northern Kentucky and the Greater Cincinnati corridor.",
-        website: "https://brayinc.com/",
-        logoSrc: "/brand/partners/bray.png",
-      },
-      {
-        name: "Turner Construction Company",
-        category: "Power Partner",
-        description:
-          "One of the country's largest builders and a Greater Cincinnati pillar of large-scale commercial construction, with deep apprenticeship and trades partnerships across the region.",
-        website: "https://www.turnerconstruction.com/",
-        logoSrc: "/brand/partners/turner.png",
-        logoClassName: "scale-[1.3] origin-left",
-      },
-      {
-        name: "O'Rourke Wrecking Company",
-        category: "Power Partner",
-        description:
-          "A demolition and dismantling specialist with deep roots in Greater Cincinnati and Northern Kentucky's industrial and commercial sites.",
-        website: "https://orourkewrecking.com/",
-        logoSrc: "/brand/partners/orourke.png",
-      },
-      {
-        name: "Valley Interior Systems",
-        category: "Power Partner",
-        description:
-          "Northern Kentucky's commercial interior contractor of choice — drywall, framing, ceilings, and finishes across thousands of regional projects.",
-        website: "https://buildwithvalley.com/",
-        logoSrc: "/brand/partners/valley.png",
-      },
-      {
-        name: "AnyWeather",
-        category: "Power Partner",
-        description:
-          "A Northern Kentucky residential and commercial roofing, HVAC, and exterior contractor — hiring and training skilled-trades workers across the region.",
-        website: "https://anyweatherhvac.com/",
-        logoSrc: "/brand/partners/anyweather-2025.png",
-      },
-      {
-        name: "Perfection Group",
-        category: "Power Partner",
-        description:
-          "A Cincinnati-area facility-performance and energy-services company delivering mechanical design-build, HVAC, and performance contracting for schools, healthcare, and commercial clients across the region.",
-        website: "https://perfectiongroup.com",
-        logoSrc: "/brand/partners/perfectiongroup.png",
-      },
-      {
         name: "The Butler Foundation",
-        category: "Power Partner",
+        category: "Project Partner",
         description:
           "A Covington-based charitable foundation funding public charities that serve low-income Northern Kentucky residents through grants, hardship assistance, and education scholarships.",
         website: "https://butlerfoundationnky.org",
         logoSrc: "/brand/partners/butlerfoundation.png",
       },
       {
+        name: "Perfection Group",
+        category: "Project Partner",
+        description:
+          "A Cincinnati-area facility-performance and energy-services company delivering mechanical design-build, HVAC, and performance contracting for schools, healthcare, and commercial clients across the region.",
+        website: "https://perfectiongroup.com",
+        logoSrc: "/brand/partners/perfectiongroup.png",
+      },
+      {
         name: "The Duke Energy Foundation",
-        category: "Power Partner",
+        category: "Project Partner",
         description:
           "The philanthropic arm of Duke Energy, investing in workforce development, education, and community vitality across the communities it serves.",
         website: "https://foundation.duke-energy.com",
@@ -120,7 +89,58 @@ const GROUPS: PartnerTileGroup[] = [
     ],
   },
   {
+    label: "Industry Partners",
+    description:
+      "These partners step directly into the learning environment. By sharing their time, talent, and expertise, they connect students to the real-world skills behind the essential workforce careers.",
+    gridCols: "grid-cols-2 md:grid-cols-3",
+    partners: [
+      {
+        name: "AnyWeather",
+        category: "Industry Partner",
+        description:
+          "A Northern Kentucky residential and commercial roofing, HVAC, and exterior contractor — hiring and training skilled-trades workers across the region.",
+        website: "https://anyweatherhvac.com/",
+        logoSrc: "/brand/partners/anyweather-2025.png",
+      },
+      {
+        name: "Bray Construction Services Inc.",
+        category: "Industry Partner",
+        description:
+          "A regional commercial and industrial construction firm building across Northern Kentucky and the Greater Cincinnati corridor.",
+        website: "https://brayinc.com/",
+        logoSrc: "/brand/partners/bray.png",
+      },
+      {
+        name: "O'Rourke Wrecking Company",
+        category: "Industry Partner",
+        description:
+          "A demolition and dismantling specialist with deep roots in Greater Cincinnati and Northern Kentucky's industrial and commercial sites.",
+        website: "https://orourkewrecking.com/",
+        logoSrc: "/brand/partners/orourke.png",
+      },
+      {
+        name: "Turner Construction Company",
+        category: "Industry Partner",
+        description:
+          "One of the country's largest builders and a Greater Cincinnati pillar of large-scale commercial construction, with deep apprenticeship and trades partnerships across the region.",
+        website: "https://www.turnerconstruction.com/",
+        logoSrc: "/brand/partners/turner.png",
+        logoClassName: "scale-[1.3] origin-left",
+      },
+      {
+        name: "Valley Interior Systems",
+        category: "Industry Partner",
+        description:
+          "Northern Kentucky's commercial interior contractor of choice — drywall, framing, ceilings, and finishes across thousands of regional projects.",
+        website: "https://buildwithvalley.com/",
+        logoSrc: "/brand/partners/valley.png",
+      },
+    ],
+  },
+  {
     label: "Educational Partners",
+    description:
+      "These are the schools and districts where the work happens. Together, we implement curriculum, engage students, and build clear pathways from classroom to career.",
     gridCols: "grid-cols-2 md:grid-cols-3",
     partners: [
       {
@@ -140,20 +160,20 @@ const GROUPS: PartnerTileGroup[] = [
         logoSrc: "/brand/partners/covindschools.png",
       },
       {
+        name: "Holy Cross Elementary",
+        category: "Educational Partner",
+        description:
+          "A Catholic K-8 parish school in the Latonia neighborhood of Covington, Kentucky, part of the historic Holy Cross campus in the Diocese of Covington.",
+        website: "https://www.holycrosselem.com",
+        logoSrc: "/brand/partners/holycross.png",
+      },
+      {
         name: "Kenton County School District",
         category: "Educational Partner",
         description:
           "Northern Kentucky's largest school district, partnering on dual-credit and career-readiness pathways across its eight high schools.",
         website: "https://www.kenton.kyschools.us/",
         logoSrc: "/brand/partners/kentoncounty.png",
-      },
-      {
-        name: "Gateway Community & Technical College",
-        category: "Educational Partner",
-        description:
-          "Northern Kentucky's primary technical and community college — anchoring diesel, welding, HVAC, and advanced-manufacturing pathways across its Edgewood and Boone County campuses.",
-        website: "https://gateway.kctcs.edu/index.aspx",
-        logoSrc: "/brand/partners/gateway.png",
       },
       {
         name: "Zion Christian Academy",
@@ -163,13 +183,30 @@ const GROUPS: PartnerTileGroup[] = [
         website: "https://www.zionchristianacademy.com",
         logoSrc: "/brand/partners/zionchristian.png",
       },
+    ],
+  },
+  {
+    label: "Community Catalysts",
+    description:
+      "These partners provide key expertise, resources, and collaboration that help strengthen and scale our work.",
+    gridCols: "grid-cols-2 md:grid-cols-3",
+    partners: [
       {
-        name: "Holy Cross Elementary",
-        category: "Educational Partner",
+        name: "Gateway Community & Technical College",
+        category: "Community Catalyst",
         description:
-          "A Catholic K-8 parish school in the Latonia neighborhood of Covington, Kentucky, part of the historic Holy Cross campus in the Diocese of Covington.",
-        website: "https://www.holycrosselem.com",
-        logoSrc: "/brand/partners/holycross.png",
+          "Northern Kentucky's primary technical and community college — anchoring diesel, welding, HVAC, and advanced-manufacturing pathways across its Edgewood and Boone County campuses.",
+        website: "https://gateway.kctcs.edu/index.aspx",
+        logoSrc: "/brand/partners/gateway.png",
+      },
+      {
+        name: "Learning Labs",
+        category: "Community Catalyst",
+        // TODO(client): provide logo, official website, and an approved
+        // description. Placeholder copy + "#" link until then.
+        description:
+          "A collaboration partner supporting TradesNKY's hands-on, lab-based approach to trades education across Northern Kentucky.",
+        website: "#",
       },
     ],
   },
@@ -219,9 +256,15 @@ export default function PartnersPage() {
               aria-hidden="true"
               className="mt-3 h-[3px] w-14 rounded-full bg-tnky-safety"
             />
+            <p className="mt-4 max-w-3xl text-body text-tnky-mute [text-wrap:pretty]">
+              These partners have laid the foundation that sustains and expands
+              TradesNKY programs across the region. Their investment strengthens
+              curriculum development, school partnerships, and long-term
+              workforce impact.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
             {CORNERSTONE_PARTNERS.map((partner) => (
               <article
                 key={partner.name}
@@ -269,10 +312,10 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* Partner tiles — two static rows (Power Partners + Educational
-          Partners). The "Our Partners" heading + description sit above;
-          PartnerTiles renders each category row with hover-reveal
-          dropdowns. */}
+      {/* Partner tiles — the partner tiers (Project, Industry, Educational,
+          Community Catalysts). The "Our Partners" heading + description sit
+          above; PartnerTiles renders each tier as a row of tiles with
+          hover-reveal dropdowns. */}
       <section
         aria-labelledby="partners-tiles-heading"
         className="bg-tnky-cream"
@@ -292,9 +335,8 @@ export default function PartnersPage() {
               />
             </div>
             <p className="max-w-xl text-body text-tnky-mute [text-wrap:pretty] md:text-right">
-              Power Partners and Educational Partners — the contractors,
-              school districts, and colleges building the Northern Kentucky
-              trades workforce.
+              The funders, employers, schools, and collaborators building
+              Northern Kentucky&apos;s skilled-trades workforce.
             </p>
           </div>
 
