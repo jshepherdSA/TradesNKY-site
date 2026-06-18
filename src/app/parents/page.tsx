@@ -97,11 +97,9 @@ export default function ParentsPage() {
                 </div>
               </figure>
               <p>
-                Every student has unique talents, interests, and goals. While some
-                thrive in traditional academic settings, others excel through
-                hands-on learning and real-world experiences. TradesNKY helps
-                students explore careers, build practical skills, and discover
-                pathways that align with their strengths.
+                Every student has unique talents, interests, and goals. TradesNKY
+                helps all students, regardless of their learning style, explore
+                careers and discover pathways that align with their strengths.
               </p>
               <p>
                 Research shows that students who participate in high-quality career
@@ -135,16 +133,14 @@ export default function ParentsPage() {
                 <p>
                   The most successful careers are rarely built in a straight line.
                   Today&apos;s workforce rewards people who continue learning,
-                  developing new skills, and adapting to new opportunities throughout
-                  their lives.
+                  developing new skills, and adapting to new opportunities.
                 </p>
                 <p>
                   TradesNKY introduces students to career pathways that can lead to
-                  certifications, apprenticeships, associate degrees, bachelor&apos;s
-                  degrees, leadership opportunities, and even business ownership. By
-                  helping students build practical skills and real-world experience
-                  early, they gain a foundation that supports future success—wherever
-                  their journey leads.
+                  certifications, apprenticeships, degrees, leadership opportunities,
+                  and even business ownership. By helping students build skills and
+                  experience early, they gain a foundation that can support any
+                  future they dream up.
                 </p>
               </div>
             </div>
@@ -300,21 +296,15 @@ export default function ParentsPage() {
                 </div>
               </figure>
               <p className="mb-4">
-                Technology, automation, and improved safety standards have transformed
-                many industries. Today&apos;s skilled professionals spend as much time
-                troubleshooting systems, analyzing data, and operating advanced
-                equipment as they do performing traditional hands-on work.
-              </p>
-              <p className="mb-4">
-                As technology advances, employers need more workers with technical
-                skills. Research shows demand is shifting toward workers who can
-                operate, maintain, and improve increasingly sophisticated systems.
+                Technology, automation, and improved safety standards have
+                transformed modern labor. Today&apos;s professionals spend as much
+                time with software as they do hardware.
               </p>
               <p>
-                Many skilled careers are among the least likely to be replaced by
-                artificial intelligence or outsourced because they require hands-on
-                problem-solving, critical thinking, adaptability, and real-world
-                decision-making.
+                Research has shown that as technology has advanced, demand has
+                shifted toward workers who are increasingly hard to replace: those
+                who can operate sophisticated systems, think critically, and most
+                importantly, solve problems themselves.
               </p>
             </div>
           </div>
@@ -350,12 +340,9 @@ export default function ParentsPage() {
                 to meaningful careers.
               </p>
               <p>
-                Early exposure to skilled trades helps students discover their
-                interests, strengths, and talents before making important decisions
-                about their future. By connecting learning to real-world careers,
-                students gain a better understanding of how they can build
-                meaningful, purposeful careers that make a difference in their
-                communities.
+                By connecting learning to real-world careers, students discover
+                their interests and strengths before making important decisions
+                about their future.
               </p>
             </div>
             <div className="mt-8 rounded-2xl border-l-4 border-tnky-blue bg-tnky-blue/5 p-5">
