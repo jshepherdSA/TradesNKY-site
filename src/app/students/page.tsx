@@ -150,7 +150,7 @@ export default function StudentsPage() {
       <AudienceHero
         audience="students"
         title="Build Something Bigger Than Yourself"
-        subtitle="The roads you travel, the schools you attend, the hospitals that care for families, and the technology that powers our world all depend on skilled professionals. Explore careers that allow you to make a real impact while building a future you're proud of."
+        subtitle="Explore careers where you can make an impact and build a future."
         image={{
           src: "/images/students-handson.jpg",
           alt: "Students in hard hats taking part in a hands-on TradesNKY workshop",
@@ -161,36 +161,37 @@ export default function StudentsPage() {
       {/* ── FIRST SECTION — Turn Your Interests Into a Future ─────── */}
       <FadeInSection className="bg-tnky-white">
         <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="mx-auto flow-root max-w-3xl">
-            <SectionHeading>
-              Turn Your Interests Into a Future You&apos;re Proud Of
-            </SectionHeading>
-            <figure className="mt-6 w-full overflow-hidden rounded-xl md:float-left md:mb-4 md:mr-6 md:mt-2 md:w-2/5">
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src="/images/student-woodworking.jpg"
-                  alt="A student turning a hands-on interest into real, marketable skills"
-                  fill
-                  sizes="(min-width: 768px) 40vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <figure className="relative aspect-[4/3] w-full overflow-hidden rounded-xl shadow-tnky-2">
+              <Image
+                src="/images/student-woodworking.jpg"
+                alt="A student turning a hands-on interest into real, marketable skills"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
             </figure>
-            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              The things you enjoy today could lead to an exciting career tomorrow.
-              Whether you&apos;re interested in technology, building things, solving
-              problems, or working with your hands, there are career paths that match
-              your strengths. The best careers aren&apos;t about following someone
-              else&apos;s plan—they&apos;re about finding opportunities that fit who
-              you are and where you want to go.
-            </p>
-            <a
-              href="#students-quiz-cta"
-              className="mt-8 inline-flex items-center gap-2 rounded-sm font-display font-bold text-lead text-tnky-blue underline-offset-4 transition-colors duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-white"
-            >
-              Take the Career Quiz
-              <ChevronDown className="h-5 w-5" aria-hidden="true" />
-            </a>
+            <div>
+              <SectionHeading>
+                Turn Your Interests Into a Future You&apos;re Proud Of
+              </SectionHeading>
+              <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+                The things you enjoy today could lead to an exciting career
+                tomorrow. Whether you&apos;re interested in technology, building
+                things, solving problems, or working with your hands, there are
+                career paths that match your strengths. The best careers
+                aren&apos;t about following someone else&apos;s plan—they&apos;re
+                about finding opportunities that fit who you are and where you
+                want to go.
+              </p>
+              <a
+                href="#students-quiz-cta"
+                className="mt-8 inline-flex items-center gap-2 rounded-sm font-display font-bold text-lead text-tnky-blue underline-offset-4 transition-colors duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-white"
+              >
+                Take the Career Quiz
+                <ChevronDown className="h-5 w-5" aria-hidden="true" />
+              </a>
+            </div>
           </div>
         </div>
       </FadeInSection>
@@ -212,19 +213,15 @@ export default function StudentsPage() {
                   />
                 </div>
               </figure>
-              <p className="mb-4">
-                Today&apos;s skilled careers combine hands-on work with some of the
-                most advanced technology in the workforce. From robotics and
-                automation to drones, smart sensors, computer-controlled equipment,
-                and advanced manufacturing systems, technology is transforming how
-                things are designed, built, repaired, and maintained.
-              </p>
               <p>
-                Whether you&apos;re interested in solving problems, working with
-                cutting-edge tools, or seeing the results of your work in the real
-                world, skilled careers offer opportunities to work at the
-                intersection of technology, innovation, and practical know-how. The
-                people building tomorrow&apos;s communities aren&apos;t just using
+                Today&apos;s skilled careers combine hands-on work with advanced
+                technology that transforms how things are designed, built,
+                repaired, and maintained. Whether you&apos;re interested in
+                solving problems, working with cutting-edge tools, or seeing the
+                results of your work in the real world, skilled careers offer
+                opportunities to work at the intersection of technology,
+                innovation, and practical know-how. The people building
+                tomorrow&apos;s communities aren&apos;t just using
                 technology—they&apos;re helping create and operate it.
               </p>
             </div>
@@ -260,13 +257,10 @@ export default function StudentsPage() {
               Build Skills. Build Financial Independence
             </SectionHeading>
             <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              The sooner you develop valuable skills, the sooner you can start
-              building the life you want. Many skilled career pathways allow you to
-              earn while you learn, gain real-world experience, and create
-              opportunities for yourself—all while continuing your education and
-              training. Whether your future includes certifications, apprenticeships,
-              college, or a combination of pathways, you&apos;ll be building skills
-              that can help you achieve greater independence and long-term success.
+              Whether your future includes certifications, apprenticeships,
+              college, or a combination of pathways, you&apos;ll be building
+              skills that can help you achieve greater independence and long-term
+              success.
             </p>
           </div>
 
@@ -280,12 +274,11 @@ export default function StudentsPage() {
                 className="mt-3 h-[3px] w-10 rounded-full bg-tnky-safety"
               />
               <p className="mt-4 text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                Many skilled careers offer competitive pay, benefits, and advancement
-                opportunities without spending years waiting to start your career.
-                Whether you want to buy your first vehicle, move into your own place,
-                travel, continue your education, or save for the future, developing
-                in-demand skills can help you build financial independence and create
-                more options for yourself.
+                Many skilled careers offer competitive pay, benefits, and
+                advancement opportunities without requiring a college degree. No
+                matter what you want to save up for, developing in-demand skills
+                can help you become financially independent and thrive without
+                paying for a high-priced diploma.
               </p>
             </article>
             <article className="rounded-2xl border border-tnky-edge bg-tnky-cream p-8 shadow-tnky-2">

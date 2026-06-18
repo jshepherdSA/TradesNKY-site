@@ -68,7 +68,7 @@ export default function ParentsPage() {
       <AudienceHero
         audience="parents"
         title="Success Doesn't Have Just One Path"
-        subtitle="Through skilled trades and technical education, students can gain valuable skills, earn while they learn, pursue higher education, advance into leadership roles, and even start businesses of their own. TradesNKY helps students discover pathways that create opportunity today while keeping doors open for tomorrow."
+        subtitle="TradesNKY helps students discover pathways that create opportunity today while keeping doors open for tomorrow."
         image={{
           src: "/images/mentor-student.jpg",
           alt: "A mentor and a young adult working together in a Northern Kentucky trades setting",
@@ -110,11 +110,6 @@ export default function ParentsPage() {
                 prepared for their next step. By connecting classroom learning to
                 real-world applications, TradesNKY helps students build confidence,
                 direction, and a strong foundation for future success.
-              </p>
-              <p>
-                Whether a student&apos;s path includes a skilled trade, higher
-                education, entrepreneurship, leadership, or a combination of
-                opportunities, TradesNKY helps them move forward with confidence.
               </p>
             </div>
             <div className="mt-10 border-l-4 border-tnky-safety pl-6 md:pl-8">
@@ -305,12 +300,6 @@ export default function ParentsPage() {
                 </div>
               </figure>
               <p className="mb-4">
-                Modern professionals use robotics, automation, digital diagnostics,
-                computer-controlled equipment, and advanced manufacturing systems to
-                solve complex problems every day. These careers combine technical
-                knowledge with hands-on expertise.
-              </p>
-              <p className="mb-4">
                 Technology, automation, and improved safety standards have transformed
                 many industries. Today&apos;s skilled professionals spend as much time
                 troubleshooting systems, analyzing data, and operating advanced
@@ -318,19 +307,14 @@ export default function ParentsPage() {
               </p>
               <p className="mb-4">
                 As technology advances, employers need more workers with technical
-                skills—not fewer. Research shows demand is shifting toward workers who
-                can operate, maintain, and improve increasingly sophisticated systems.
+                skills. Research shows demand is shifting toward workers who can
+                operate, maintain, and improve increasingly sophisticated systems.
               </p>
-              <p className="mb-4">
+              <p>
                 Many skilled careers are among the least likely to be replaced by
                 artificial intelligence or outsourced because they require hands-on
                 problem-solving, critical thinking, adaptability, and real-world
                 decision-making.
-              </p>
-              <p>
-                Today&apos;s skilled careers offer modern work environments, long-term
-                growth opportunities, and technical skills that will remain valuable
-                for decades to come.
               </p>
             </div>
           </div>
@@ -445,24 +429,19 @@ export default function ParentsPage() {
                 </div>
               </figure>
               <p>
-                Many successful business owners started by learning a valuable skill.
-                Electricians, welders, HVAC technicians, mechanics, contractors, and
-                manufacturers often begin their careers working alongside experienced
-                professionals, developing expertise that becomes the foundation for
-                future growth.
+                Many successful business owners started by learning a valuable
+                skill and working with experienced professionals, developing
+                expertise that becomes the foundation for advancements into
+                supervisory and management positions. Research highlights clear
+                career pathways that can lead from trainee to specialist,
+                supervisor, manager, and entrepreneur.
               </p>
               <p>
-                As their knowledge and experience increase, many skilled
-                professionals advance into supervisory and management positions,
-                oversee major projects, lead teams, and eventually start businesses
-                of their own. Research highlights clear career pathways that can lead
-                from trainee to specialist, supervisor, manager, and entrepreneur.
-              </p>
-              <p>
-                Trade education is about more than preparing students for their first
-                job. It helps them develop technical expertise, problem-solving
-                abilities, leadership skills, and real-world experience that can
-                create opportunities throughout their careers.
+                Trade education is about more than preparing students for their
+                first job. It helps them develop technical expertise,
+                problem-solving abilities, leadership skills, and real-world
+                experience that can create opportunities throughout their
+                careers.
               </p>
               <p className="font-display italic font-bold text-2xl text-tnky-blue [text-wrap:balance]">
                 For many students, learning a skilled trade is not the destination—it
