@@ -3,6 +3,9 @@ type PathwayTile = {
   name: string;
   grade: string;
   blurb: string;
+  /** Grade-band highlights drawn from the TradesNKY Student Pathway document.
+   *  Rendered only in the `detailed` variant (the What is TradesNKY page). */
+  highlights: string[];
 };
 
 const TILES: PathwayTile[] = [
@@ -12,6 +15,11 @@ const TILES: PathwayTile[] = [
     grade: "K–5th Grade",
     blurb:
       "Classroom visits, hands-on demos, and real conversations with tradespeople plant the seed early — students learn these careers exist, matter, and pay well.",
+    highlights: [
+      "Career clusters & guest speakers",
+      "Hands-on demos and Touch-a-Truck events",
+      "STEM toys, maker activities & family nights",
+    ],
   },
   {
     stage: "02",
@@ -19,6 +27,11 @@ const TILES: PathwayTile[] = [
     grade: "6th–8th Grade",
     blurb:
       "Job-site visits and career-discovery events turn curiosity into direction as students meet welders, electricians, HVAC techs, and project managers.",
+    highlights: [
+      "9- and 18-week trades curriculum",
+      "Industry terminology, technology & simulators",
+      "skillUP career fairs + aptitude assessments",
+    ],
   },
   {
     stage: "03",
@@ -26,6 +39,11 @@ const TILES: PathwayTile[] = [
     grade: "9th–12th Grade",
     blurb:
       "Dual enrollment, registered apprenticeships, and CTE courses let students earn real credentials alongside their diploma.",
+    highlights: [
+      "NCCER Core & OSHA certifications",
+      "CTE courses, dual credits & site visits",
+      "ATC partner training + career coaching",
+    ],
   },
   {
     stage: "04",
@@ -33,10 +51,22 @@ const TILES: PathwayTile[] = [
     grade: "Post-Graduation",
     blurb:
       "NKY employers are hiring at strong wages — pathway graduates step into apprenticeships, jobs, or technical college ready on day one.",
+    highlights: [
+      "Co-ops, internships & pre-apprenticeships",
+      "Stackable industry credentials in hand",
+      "Graduate career-ready or college-bound",
+    ],
   },
 ];
 
-export function SimplePathwaySection() {
+export function SimplePathwaySection({
+  detailed = false,
+}: {
+  /** When true, each stage tile also lists the grade-band activities from
+   *  the TradesNKY Student Pathway document. Off by default so the homepage
+   *  and educators page keep the compact treatment. */
+  detailed?: boolean;
+}) {
   return (
     <section className="bg-tnky-white py-20 md:py-24">
       <div className="max-w-content mx-auto px-4 sm:px-8">
@@ -80,6 +110,22 @@ export function SimplePathwaySection() {
               <p className="mt-3 text-small leading-relaxed text-tnky-mute [text-wrap:pretty]">
                 {tile.blurb}
               </p>
+              {detailed && (
+                <ul className="mt-4 space-y-2 border-t border-tnky-edge pt-4">
+                  {tile.highlights.map((h) => (
+                    <li
+                      key={h}
+                      className="flex items-start gap-2 text-mini font-medium leading-snug text-tnky-ink [text-wrap:pretty]"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-tnky-safety"
+                      />
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </article>
           ))}
         </div>

@@ -9,8 +9,18 @@ import {
 
 export type CareerCard = {
   title: string;
+  /** Annual wage. Client-provided figures are real; "$XX,XXX / yr" is a
+   *  placeholder where no verified figure was supplied. */
   wage: string;
   description: string;
+};
+
+/** Open-role counts by geography. All values are placeholders ("XX,XXX")
+ *  pending verified labor-market data. */
+export type OpenRoles = {
+  nky: string;
+  cincy: string;
+  ky: string;
 };
 
 export type PathData = {
@@ -24,7 +34,17 @@ export type PathData = {
   /** Shown after the path name in the hero — cycles in the rotating-word slot. */
   rotatingWords: string[];
   careers: CareerCard[];
-  jobCount: number;
+  openRoles: OpenRoles;
+  /** Named NKY employers in this industry. Client-provided names only; empty
+   *  arrays render a "coming soon" placeholder. */
+  companies: string[];
+};
+
+// Placeholder token reused for every open-role count until verified data lands.
+const OPEN_ROLES_PLACEHOLDER: OpenRoles = {
+  nky: "XX,XXX",
+  cincy: "XX,XXX",
+  ky: "XX,XXX",
 };
 
 export const PATHS: Record<string, PathData> = {
@@ -59,42 +79,43 @@ export const PATHS: Record<string, PathData> = {
     careers: [
       {
         title: "Electrician",
-        wage: "$64,000 / yr",
+        wage: "$67,328 / yr",
         description:
           "Install and maintain the wiring, lighting, and power systems in homes, plants, and job sites.",
       },
       {
         title: "Carpenter",
-        wage: "$56,000 / yr",
+        wage: "$56,192 / yr",
         description:
           "Frame, finish, and build structures from blueprints — residential through commercial.",
       },
       {
         title: "Plumber",
-        wage: "$61,000 / yr",
+        wage: "$62,208 / yr",
         description:
           "Run and repair the water, gas, and drainage systems every building depends on.",
       },
       {
         title: "HVAC Technician",
-        wage: "$58,000 / yr",
+        wage: "$67,840 / yr",
         description:
           "Install and service the heating, cooling, and ventilation systems that run year-round.",
       },
       {
         title: "Construction Project Manager",
-        wage: "$82,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Plan, budget, and run job sites from groundbreaking through final handover.",
       },
       {
         title: "Ironworker",
-        wage: "$63,000 / yr",
+        wage: "$60,160 / yr",
         description:
           "Assemble the structural steel skeletons behind bridges, plants, and high-rises.",
       },
     ],
-    jobCount: 1240,
+    openRoles: OPEN_ROLES_PLACEHOLDER,
+    companies: [],
   },
 
   make: {
@@ -121,42 +142,43 @@ export const PATHS: Record<string, PathData> = {
     careers: [
       {
         title: "CNC Machinist",
-        wage: "$57,000 / yr",
+        wage: "$58,112 / yr",
         description:
           "Program and run the precision machines that cut metal parts to exact spec.",
       },
       {
         title: "Welder",
-        wage: "$54,000 / yr",
+        wage: "$56,064 / yr",
         description:
           "Join metal for everything from auto components to structural assemblies.",
       },
       {
         title: "Robotics Technician",
-        wage: "$66,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Set up, program, and troubleshoot the automated cells on a modern production line.",
       },
       {
         title: "Industrial Maintenance Technician",
-        wage: "$62,000 / yr",
+        wage: "$57,216 / yr",
         description:
           "Keep plant equipment running — mechanical, electrical, and hydraulic systems.",
       },
       {
         title: "Tool & Die Maker",
-        wage: "$68,000 / yr",
+        wage: "$62,208 / yr",
         description:
           "Build and repair the molds, jigs, and dies that shape manufactured goods.",
       },
       {
         title: "Quality Inspector",
-        wage: "$52,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Measure, test, and certify that parts meet tolerance before they ship.",
       },
     ],
-    jobCount: 980,
+    openRoles: OPEN_ROLES_PLACEHOLDER,
+    companies: [],
   },
 
   move: {
@@ -183,42 +205,43 @@ export const PATHS: Record<string, PathData> = {
     careers: [
       {
         title: "CDL Truck Driver",
-        wage: "$59,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Haul freight across the region and the country on local and long-haul routes.",
       },
       {
         title: "Diesel Mechanic",
-        wage: "$58,000 / yr",
+        wage: "$64,768 / yr",
         description:
           "Diagnose and repair the engines and systems that keep fleets on the road.",
       },
       {
         title: "Logistics Coordinator",
-        wage: "$54,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Schedule shipments and route freight so it arrives on time and on budget.",
       },
       {
         title: "Warehouse Supervisor",
-        wage: "$56,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Lead the teams that receive, store, and ship goods through NKY's distribution centers.",
       },
       {
         title: "Dispatcher",
-        wage: "$48,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Coordinate drivers, loads, and routes in real time so nothing sits idle.",
       },
       {
         title: "Supply Chain Analyst",
-        wage: "$67,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Use data to cut cost and delay out of how goods move from origin to dock.",
       },
     ],
-    jobCount: 1510,
+    openRoles: OPEN_ROLES_PLACEHOLDER,
+    companies: ["CVG Airport"],
   },
 
   power: {
@@ -251,42 +274,43 @@ export const PATHS: Record<string, PathData> = {
     careers: [
       {
         title: "Electrical Lineworker",
-        wage: "$78,000 / yr",
+        wage: "$57,088 / yr",
         description:
           "Build and repair the overhead and underground lines that carry power to the region.",
       },
       {
         title: "Power Plant Operator",
-        wage: "$81,000 / yr",
+        wage: "$85,504 / yr",
         description:
           "Control and monitor the equipment that generates electricity around the clock.",
       },
       {
         title: "Wind Turbine Technician",
-        wage: "$61,000 / yr",
+        wage: "$65,280 / yr",
         description:
           "Climb, inspect, and maintain the turbines that add renewable capacity to the grid.",
       },
       {
         title: "Substation Technician",
-        wage: "$74,000 / yr",
+        wage: "$52,096 / yr",
         description:
           "Test and maintain the switchgear and transformers that route power where it's needed.",
       },
       {
         title: "Gas Utility Technician",
-        wage: "$63,000 / yr",
+        wage: "$52,736 / yr",
         description:
           "Install, inspect, and service the natural-gas distribution network.",
       },
       {
         title: "Relay Technician",
-        wage: "$79,000 / yr",
+        wage: "$52,096 / yr",
         description:
           "Calibrate the protective systems that keep the grid safe and stable.",
       },
     ],
-    jobCount: 620,
+    openRoles: OPEN_ROLES_PLACEHOLDER,
+    companies: ["Duke Energy"],
   },
 
   protect: {
@@ -319,42 +343,43 @@ export const PATHS: Record<string, PathData> = {
     careers: [
       {
         title: "Facilities Maintenance Technician",
-        wage: "$55,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Keep buildings, systems, and grounds safe, clean, and running every day.",
       },
       {
         title: "Firefighter / EMT",
-        wage: "$52,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Respond to emergencies and protect Northern Kentucky communities.",
       },
       {
         title: "Cybersecurity Analyst",
-        wage: "$86,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Defend the networks and data that regional employers and agencies rely on.",
       },
       {
         title: "Water Treatment Operator",
-        wage: "$58,000 / yr",
+        wage: "$60,928 / yr",
         description:
           "Run and monitor the plants that keep public drinking water safe.",
       },
       {
         title: "Building Automation Technician",
-        wage: "$64,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Program and maintain the controls that run lighting, HVAC, and security in modern facilities.",
       },
       {
         title: "Public Safety Dispatcher",
-        wage: "$49,000 / yr",
+        wage: "$XX,XXX / yr",
         description:
           "Coordinate police, fire, and EMS response when seconds count.",
       },
     ],
-    jobCount: 740,
+    openRoles: OPEN_ROLES_PLACEHOLDER,
+    companies: [],
   },
 };
 

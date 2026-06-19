@@ -254,7 +254,7 @@ export default function ParentsPage() {
                   <ul className="mt-5 space-y-3">
                     {[
                       "Tuition often paid up front through loans",
-                      "~$38K average student-loan debt",
+                      "~$XXK average student-loan debt",
                       "First full-time paycheck after graduation",
                     ].map((item) => (
                       <li
@@ -364,17 +364,17 @@ export default function ParentsPage() {
           <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-3 sm:gap-6">
             {[
               {
-                stat: "40%",
+                stat: "XX%",
                 label:
                   "of the skilled-trades workforce is nearing retirement this decade",
               },
               {
-                stat: "3 in 4",
+                stat: "X in X",
                 label:
                   "employers report difficulty finding the skilled workers they need",
               },
               {
-                stat: "1,000s",
+                stat: "XX,XXX",
                 label:
                   "of open skilled roles across Northern Kentucky's key industries",
               },

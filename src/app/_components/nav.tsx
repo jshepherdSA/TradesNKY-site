@@ -306,10 +306,10 @@ export function Nav() {
               aria-label="Trades NKY home"
             >
               <Image
-                src="/brand/logo-primary.svg"
+                src="/brand/tradesnkylogo-clean.png"
                 alt="Trades NKY"
-                width={240}
-                height={80}
+                width={497}
+                height={100}
                 priority
                 style={{ width: "auto" }}
                 className="h-10 md:h-12 xl:h-14"

@@ -231,7 +231,7 @@ export default function EducatorsPage() {
             {[
               {
                 icon: GraduationCap,
-                stat: "94%",
+                stat: "XX%",
                 label: "graduation rate for CTE concentrators",
               },
               {
@@ -246,7 +246,7 @@ export default function EducatorsPage() {
               },
               {
                 icon: Compass,
-                stat: "8 in 10",
+                stat: "X in XX",
                 label: "graduate with a clear next step",
               },
             ].map((tile) => {

@@ -4,6 +4,7 @@ import { Montserrat, Comfortaa, Geist } from "next/font/google";
 import "./globals.css";
 import { Nav } from "./_components/nav";
 import { NavHeightObserver } from "./_components/nav-height-observer";
+import { ScrollManager } from "./_components/scroll-manager";
 import { Footer } from "./_components/Footer";
 import { cn } from "@/lib/utils";
 
@@ -60,6 +61,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-tnky-cream text-tnky-ink font-body antialiased">
         <Nav />
         <NavHeightObserver />
+        <ScrollManager />
         <div className="flex-1">{children}</div>
         <Footer />
       </body>

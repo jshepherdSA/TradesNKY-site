@@ -299,12 +299,12 @@ export default function PolicymakersPage() {
                   <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-3 sm:gap-6">
                     {[
                       {
-                        stat: "40%",
+                        stat: "XX%",
                         label:
                           "of the regional skilled workforce is nearing retirement this decade",
                       },
                       {
-                        stat: "1,000s",
+                        stat: "XX,XXX",
                         label:
                           "of family-supporting jobs to fill across Northern Kentucky",
                       },

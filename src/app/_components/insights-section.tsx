@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { INSIGHTS } from "../insights/insights-data";
 
 type FeaturedPost = {
   eyebrow: string;
@@ -31,46 +32,26 @@ const DEFAULT_HEADING = "Latest Insights";
 const DEFAULT_SUBHEADING =
   "News, stories, and resources from the TradesNKY community";
 
+// Homepage teaser — derived from the shared insights data so it stays in sync
+// with the Insights page. Featured = newest insight; supporting = next three.
 const DEFAULT_FEATURED: FeaturedPost = {
   eyebrow: "Featured Story",
-  tag: "Program News",
-  title: "TradesNKY Launches Apprenticeship Pipeline With 12 Regional Employers",
-  description:
-    "A new partnership connects Northern Kentucky high schoolers directly to paid apprenticeships in construction, manufacturing, and energy — no degree, no debt.",
-  date: "May 12, 2026",
-  dateTime: "2026-05-12",
-  href: "/insights/apprenticeship-pipeline-launch",
+  tag: INSIGHTS[0].category,
+  title: INSIGHTS[0].title,
+  description: INSIGHTS[0].excerpt,
+  date: INSIGHTS[0].date,
+  dateTime: INSIGHTS[0].dateTime,
+  href: `/insights/${INSIGHTS[0].slug}`,
 };
 
-const DEFAULT_POSTS: SupportingPost[] = [
-  {
-    tag: "Student Stories",
-    title: "From Ryle High Shop Class to a Signed Welding Apprenticeship",
-    excerpt:
-      "How one senior traded a question mark for a career before graduation.",
-    date: "April 29, 2026",
-    dateTime: "2026-04-29",
-    href: "/insights/ryle-high-welding-apprenticeship",
-  },
-  {
-    tag: "Employer Spotlight",
-    title: "Why a Florence Plumbing Company Hires Straight From Local Schools",
-    excerpt:
-      "Three apprentices, zero regrets — a Boone County employer on building its own talent.",
-    date: "April 22, 2026",
-    dateTime: "2026-04-22",
-    href: "/insights/florence-plumbing-hires-local",
-  },
-  {
-    tag: "Program Update",
-    title: "New Dual-Credit Manufacturing Course Opens at Two NKY High Schools",
-    excerpt:
-      "Students can now earn college credit and industry certifications before they graduate.",
-    date: "April 10, 2026",
-    dateTime: "2026-04-10",
-    href: "/insights/dual-credit-manufacturing-course",
-  },
-];
+const DEFAULT_POSTS: SupportingPost[] = INSIGHTS.slice(1, 4).map((i) => ({
+  tag: i.category,
+  title: i.title,
+  excerpt: i.excerpt,
+  date: i.date,
+  dateTime: i.dateTime,
+  href: `/insights/${i.slug}`,
+}));
 
 const ACCENT_BASE =
   "absolute bg-tnky-blue opacity-0 transition-all duration-500 ease-tnky motion-safe:md:group-hover:opacity-100 motion-safe:md:group-focus-visible:opacity-100";

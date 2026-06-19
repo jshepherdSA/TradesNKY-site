@@ -106,18 +106,53 @@ export default async function PillarPage({
         </div>
       </section>
 
-      {/* 3. Available jobs count — prominent pillar-colored stat band */}
+      {/* 3. Open roles + employers — pillar-colored stat band. Counts are
+          placeholders ("XX,XXX") pending verified labor-market data; company
+          names are client-provided only. */}
       <section className={`${path.bgClass} text-tnky-white py-band`}>
-        <div className="max-w-content mx-auto px-4 text-center sm:px-8">
-          <p className="mb-3 font-display font-extrabold uppercase text-eyebrow text-tnky-white/80">
+        <div className="max-w-content mx-auto px-4 sm:px-8">
+          <p className="mb-8 text-center font-display font-extrabold uppercase text-eyebrow text-tnky-white/80">
             Open roles right now
           </p>
-          <p className="font-display font-tnky-black italic text-stat-xl leading-none">
-            {path.jobCount.toLocaleString()}
-          </p>
-          <p className="mt-3 text-lead text-tnky-white/85 [text-wrap:pretty]">
-            {path.name} jobs available across Northern Kentucky
-          </p>
+          <div className="grid grid-cols-1 gap-8 text-center sm:grid-cols-3 sm:gap-6">
+            {[
+              { value: path.openRoles.nky, label: "Open roles in Northern Kentucky" },
+              {
+                value: path.openRoles.cincy,
+                label: "Open roles in the Greater Cincinnati MSA",
+              },
+              { value: path.openRoles.ky, label: "Open roles across Kentucky" },
+            ].map((s) => (
+              <div key={s.label}>
+                <p className="font-display font-tnky-black italic text-stat-xl leading-none">
+                  {s.value}
+                </p>
+                <p className="mx-auto mt-3 max-w-xs text-body text-tnky-white/85 [text-wrap:pretty]">
+                  {s.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-14 border-t border-tnky-white/15 pt-10 text-center">
+            <p className="mb-5 font-display font-extrabold uppercase text-eyebrow text-tnky-white/80">
+              Companies in this industry in Northern Kentucky
+            </p>
+            {path.companies.length > 0 ? (
+              <ul className="flex flex-wrap items-center justify-center gap-3">
+                {path.companies.map((c) => (
+                  <li
+                    key={c}
+                    className="rounded-pill border border-tnky-white/30 bg-tnky-white/10 px-5 py-2 font-display font-bold text-button text-tnky-white"
+                  >
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-body text-tnky-white/60">Coming soon</p>
+            )}
+          </div>
         </div>
       </section>
 

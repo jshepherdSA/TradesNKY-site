@@ -41,6 +41,12 @@ const APPROACH: {
   featured?: boolean;
 }[] = [
   {
+    icon: Zap,
+    label: "skillUP",
+    desc: "Our annual regional career exploration event, where students interact directly with employers and discover careers across the BUILD, MAKE, MOVE, POWER, and PROTECT pathways.",
+    featured: true,
+  },
+  {
     icon: BookOpen,
     label: "Industry-Informed Curriculum",
     desc: "Aligned with Kentucky Department of Education (KDE) standards and designed for all middle school students in grades 6–8, with flexible 9-week and 18-week implementation options.",
@@ -74,12 +80,6 @@ const APPROACH: {
     icon: Compass,
     label: "Career Exploration Experiences",
     desc: "Job site visits and facility tours that give students firsthand exposure to the essential trades in action.",
-  },
-  {
-    icon: Zap,
-    label: "skillUP",
-    desc: "Our annual regional career exploration event, where students interact directly with employers and discover careers across the BUILD, MAKE, MOVE, POWER, and PROTECT pathways.",
-    featured: true,
   },
   {
     icon: ClipboardCheck,
@@ -231,7 +231,7 @@ export default function WhatIsTradesNkyPage() {
             </p>
           </div>
         </FadeInSection>
-        <SimplePathwaySection />
+        <SimplePathwaySection detailed />
       </div>
 
       {/* ── THE TRADESNKY APPROACH ──────────────────────────────── */}

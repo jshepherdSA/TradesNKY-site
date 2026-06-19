@@ -101,12 +101,21 @@ function SectionHeading({
 }
 
 // SVG donut — `percent` highlighted in tnky-safety against a tnky-edge ring.
-function DonutChart({ percent }: { percent: number }) {
+function DonutChart({
+  percent,
+  valueLabel,
+}: {
+  percent: number;
+  /** When set, the chart renders as a placeholder: this label replaces the
+   *  numeric percent and the safety arc is hidden (no value implied). */
+  valueLabel?: string;
+}) {
+  const isPlaceholder = valueLabel !== undefined;
   return (
     <svg
       viewBox="0 0 36 36"
       role="img"
-      aria-label={`${percent} percent`}
+      aria-label={isPlaceholder ? "Figure pending" : `${percent} percent`}
       className="h-28 w-28 shrink-0"
     >
       <circle
@@ -117,17 +126,19 @@ function DonutChart({ percent }: { percent: number }) {
         fill="none"
         strokeWidth="3.6"
       />
-      <circle
-        className="stroke-tnky-safety"
-        cx="18"
-        cy="18"
-        r="15.9155"
-        fill="none"
-        strokeWidth="3.6"
-        strokeLinecap="round"
-        strokeDasharray={`${percent} ${100 - percent}`}
-        transform="rotate(-90 18 18)"
-      />
+      {!isPlaceholder && (
+        <circle
+          className="stroke-tnky-safety"
+          cx="18"
+          cy="18"
+          r="15.9155"
+          fill="none"
+          strokeWidth="3.6"
+          strokeLinecap="round"
+          strokeDasharray={`${percent} ${100 - percent}`}
+          transform="rotate(-90 18 18)"
+        />
+      )}
       <text
         className="fill-tnky-ink font-display"
         x="18"
@@ -137,7 +148,7 @@ function DonutChart({ percent }: { percent: number }) {
         fontSize="8"
         fontWeight="800"
       >
-        {percent}%
+        {valueLabel ?? `${percent}%`}
       </text>
     </svg>
   );
@@ -321,7 +332,7 @@ export default function StudentsPage() {
                   Average 4-Year Path
                 </p>
                 <p className="mt-3 font-display font-tnky-black text-stat-xl leading-none text-tnky-mute">
-                  $38K
+                  $XXK
                 </p>
                 <p className="mt-2 text-body font-bold text-tnky-ink">
                   Average student-loan debt
@@ -358,10 +369,10 @@ export default function StudentsPage() {
               </div>
 
               <div className="mt-10 flex items-center gap-6">
-                <DonutChart percent={40} />
+                <DonutChart percent={40} valueLabel="XX%" />
                 <p className="max-w-xs text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
                   Did you know: more than{" "}
-                  <span className="font-display font-extrabold">40%</span> of
+                  <span className="font-display font-extrabold">XX%</span> of
                   today&apos;s skilled trades workforce is expected to retire within
                   the next decade, creating strong demand for the next generation of
                   skilled professionals.
