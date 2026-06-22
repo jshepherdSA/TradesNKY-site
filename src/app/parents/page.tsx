@@ -439,28 +439,30 @@ export default function ParentsPage() {
         </div>
       </FadeInSection>
 
-      {/* ── CTA ─────────────────────────────────────────────────── */}
+      {/* ── CTA — start a conversation + reach out to the school ──── */}
       <FadeInSection className="bg-tnky-blue">
-        <div className="max-w-content mx-auto px-4 py-24 text-center sm:px-8 md:py-28">
+        <div className="max-w-content mx-auto flex min-h-[22rem] flex-col items-center justify-center px-4 py-6 text-center sm:px-8">
           <h2 className="mx-auto max-w-3xl font-display italic font-extrabold text-3xl md:text-4xl text-tnky-white [text-wrap:balance]">
-            Help Your Child Find Their Path
+            Start the Conversation
           </h2>
           <div
             aria-hidden="true"
             className="mx-auto mt-4 h-[3px] w-14 rounded-full bg-tnky-safety"
           />
+          <p className="mx-auto mt-6 max-w-lead text-lead font-medium text-tnky-cream/90 [text-wrap:pretty]">
+            Talk to your student about what excites them. Then reach out to their
+            school counselor or CTE coordinator to learn what skilled trades
+            pathways are available.
+          </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link href="/students/quiz" className={BTN_YELLOW_BLUE}>
-              Take the Career Quiz
+              Take the Career Quiz with Your Student
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
-            <Link href="/about" className={BTN_OUTLINE_BLUE}>
-              About TradesNKY
+            <Link href="/contact" className={BTN_OUTLINE_BLUE}>
+              Find Your School&apos;s CTE Program
             </Link>
           </div>
-          <p className="mt-6 text-small font-medium text-tnky-white/80">
-            No commitment. Just discovery.
-          </p>
         </div>
       </FadeInSection>
 

@@ -19,6 +19,7 @@ import {
 import { FadeInSection } from "../_components/fade-in-section";
 import { AudienceHero } from "../_components/audience-hero";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
+import { ShareButton } from "../_components/share-button";
 import { PATHS, PATH_SLUGS } from "./pillars/data";
 import { cn } from "@/lib/utils";
 
@@ -31,6 +32,9 @@ export const metadata: Metadata = {
 // Pill CTA on tnky-blue (hero).
 const BTN_YELLOW_BLUE =
   "inline-flex items-center justify-center gap-2 rounded-pill bg-tnky-safety px-8 py-4 font-display font-bold text-button text-tnky-safety-ink shadow-tnky-safety transition-all duration-200 ease-tnky hover:-translate-y-px hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-white focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-blue";
+// White-outline pill CTA on tnky-blue (secondary).
+const BTN_OUTLINE_BLUE =
+  "inline-flex items-center justify-center gap-2 rounded-pill border-2 border-tnky-white px-8 py-4 font-display font-bold text-button text-tnky-white transition-all duration-200 ease-tnky hover:-translate-y-px hover:bg-tnky-white hover:text-tnky-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-white focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-blue";
 
 const TECH: { icon: LucideIcon; label: string }[] = [
   { icon: Bot, label: "Robotics" },
@@ -493,26 +497,28 @@ export default function StudentsPage() {
         </div>
       </FadeInSection>
 
-      {/* ── CALL TO ACTION — quiz CTA ─────────────────────────────── */}
+      {/* ── CALL TO ACTION — share with parents & friends ─────────── */}
       <div id="students-quiz-cta" className="scroll-mt-[var(--nav-h,64px)]">
         <FadeInSection className="bg-tnky-blue">
-          <div className="max-w-content mx-auto px-4 py-24 text-center sm:px-8 md:py-28">
+          <div className="max-w-content mx-auto flex min-h-[22rem] flex-col items-center justify-center px-4 py-6 text-center sm:px-8">
             <h2 className="mx-auto max-w-3xl font-display italic font-extrabold text-3xl md:text-4xl text-tnky-white [text-wrap:balance]">
-              Ready to Get Started?
+              Know Someone Who Should See This?
             </h2>
             <div
               aria-hidden="true"
               className="mx-auto mt-4 h-[3px] w-14 rounded-full bg-tnky-safety"
             />
             <p className="mx-auto mt-6 max-w-lead text-lead font-medium text-tnky-cream/90 [text-wrap:pretty]">
-              Take the five-minute career quiz and find the skilled-trades path that
-              fits who you are.
+              Share TradesNKY with a parent, a friend, or anyone who&apos;s trying
+              to figure out their next step. The right career path might be closer
+              than they think.
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/students/quiz" className={BTN_YELLOW_BLUE}>
                 Take the Career Quiz
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
+              <ShareButton className={BTN_OUTLINE_BLUE} />
             </div>
           </div>
         </FadeInSection>

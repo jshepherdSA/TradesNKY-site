@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Fragment, type ReactNode } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
-  ArrowRight,
   Check,
   Compass,
   GraduationCap,
@@ -16,6 +14,7 @@ import { FadeInSection } from "../_components/fade-in-section";
 import { AudienceHero } from "../_components/audience-hero";
 import { SimplePathwaySection } from "../_components/simple-pathway-section";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
+import { AudienceContactForm } from "../_components/audience-contact-form";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -23,11 +22,6 @@ export const metadata: Metadata = {
   description:
     "Stronger student outcomes, stronger schools. TradesNKY helps districts improve College & Career Readiness, increase engagement, strengthen graduation outcomes, and ensure every student has a plan.",
 };
-
-const BTN_YELLOW_BLUE =
-  "inline-flex items-center justify-center gap-2 rounded-pill bg-tnky-safety px-8 py-4 font-display font-bold text-button text-tnky-safety-ink shadow-tnky-safety transition-all duration-200 ease-tnky hover:-translate-y-px hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-white focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-blue";
-const BTN_OUTLINE_BLUE =
-  "inline-flex items-center justify-center gap-2 rounded-pill border-2 border-tnky-white px-8 py-4 font-display font-bold text-button text-tnky-white transition-all duration-200 ease-tnky hover:-translate-y-px hover:bg-tnky-white hover:text-tnky-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-white focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-blue";
 
 // Section content from the TradesNKY Website Architecture & Content doc
 // (Educational Professionals page).
@@ -388,30 +382,38 @@ export default function EducatorsPage() {
         );
       })}
 
-      {/* ── CTA ─────────────────────────────────────────────────── */}
-      <FadeInSection className="bg-tnky-blue">
-        <div className="max-w-content mx-auto px-4 py-24 text-center sm:px-8 md:py-28">
-          <h2 className="mx-auto max-w-3xl font-display italic font-extrabold text-3xl md:text-4xl text-tnky-white [text-wrap:balance]">
-            Bring TradesNKY to Your School
-          </h2>
-          <div
-            aria-hidden="true"
-            className="mx-auto mt-4 h-[3px] w-14 rounded-full bg-tnky-safety"
-          />
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link href="/contact" className={BTN_YELLOW_BLUE}>
-              Partner With Us
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link href="/about" className={BTN_OUTLINE_BLUE}>
-              About TradesNKY
-            </Link>
+      {/* ── CTA — direct contact with TradesNKY ───────────────────── */}
+      <section className="bg-tnky-blue">
+        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display italic font-extrabold text-3xl md:text-4xl text-tnky-white [text-wrap:balance]">
+              Get in Touch with TradesNKY
+            </h2>
+            <div
+              aria-hidden="true"
+              className="mx-auto mt-4 h-[3px] w-14 rounded-full bg-tnky-safety"
+            />
+            <p className="mt-6 text-lead font-medium text-tnky-cream/90 [text-wrap:pretty]">
+              Interested in bringing TradesNKY to your school or district? We
+              would love to connect.
+            </p>
           </div>
-          <p className="mt-6 text-small font-medium text-tnky-white/80">
-            Stronger outcomes for your students. Stronger results for your district.
+
+          <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-tnky-edge bg-tnky-white p-6 shadow-tnky-3 md:p-8">
+            <AudienceContactForm defaultRole="Educator" />
+          </div>
+
+          <p className="mx-auto mt-6 max-w-2xl text-center text-small text-tnky-white/70">
+            Or email us directly at{" "}
+            <a
+              href="mailto:info@tradesnky.org"
+              className="font-semibold text-tnky-white underline underline-offset-4 transition-colors duration-150 hover:text-tnky-safety focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-white focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-blue"
+            >
+              info@tradesnky.org
+            </a>
           </p>
         </div>
-      </FadeInSection>
+      </section>
 
       <NewsletterBanner />
     </main>

@@ -80,7 +80,7 @@ export function CtaCard({
   };
 
   return (
-    <section className="relative overflow-hidden bg-tnky-blue py-band">
+    <section className="relative flex min-h-[22rem] items-center overflow-hidden bg-tnky-blue py-band">
       <Image
         src={imageSrc}
         alt={imageAlt}
@@ -95,7 +95,7 @@ export function CtaCard({
         whileInView={reducedMotion ? undefined : "visible"}
         viewport={{ once: true, margin: "-100px" }}
         variants={reducedMotion ? undefined : containerVariants}
-        className="relative z-10 mx-auto grid max-w-content grid-cols-1 items-center gap-x-12 gap-y-6 px-4 sm:px-8 md:grid-cols-2 md:gap-y-4"
+        className="relative z-10 mx-auto grid w-full max-w-content grid-cols-1 items-center gap-x-12 gap-y-6 px-4 sm:px-8 md:grid-cols-2 md:gap-y-4"
       >
         <motion.h2
           variants={reducedMotion ? undefined : itemVariants}

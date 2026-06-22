@@ -359,7 +359,7 @@ export default function WhatIsTradesNkyPage() {
 
       {/* ── CTA ─────────────────────────────────────────────────── */}
       <FadeInSection className="bg-tnky-blue">
-        <div className="max-w-content mx-auto px-4 py-20 text-center sm:px-8 md:py-24">
+        <div className="max-w-content mx-auto flex min-h-[22rem] flex-col items-center justify-center px-4 py-6 text-center sm:px-8">
           <h2 className="mx-auto max-w-3xl font-display italic font-extrabold text-3xl md:text-4xl text-tnky-white [text-wrap:balance]">
             Ready to Get Involved?
           </h2>
