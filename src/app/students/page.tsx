@@ -20,6 +20,7 @@ import { FadeInSection } from "../_components/fade-in-section";
 import { AudienceHero } from "../_components/audience-hero";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
 import { ShareButton } from "../_components/share-button";
+import { ReadMore } from "../_components/read-more";
 import { PATHS, PATH_SLUGS } from "./pillars/data";
 import { cn } from "@/lib/utils";
 
@@ -190,15 +191,13 @@ export default function StudentsPage() {
               <SectionHeading>
                 Turn Your Interests Into a Future You&apos;re Proud Of
               </SectionHeading>
-              <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                The things you enjoy today could lead to an exciting career
-                tomorrow. Whether you&apos;re interested in technology, building
-                things, solving problems, or working with your hands, there are
-                career paths that match your strengths. The best careers
-                aren&apos;t about following someone else&apos;s plan—they&apos;re
-                about finding opportunities that fit who you are and where you
-                want to go.
-              </p>
+              <ReadMore
+                className="mt-6"
+                pClassName="text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+                paragraphs={[
+                  "The things you enjoy today could lead to an exciting career tomorrow. Whether you're interested in technology, building things, solving problems, or working with your hands, there are career paths that match your strengths. The best careers aren't about following someone else's plan—they're about finding opportunities that fit who you are and where you want to go.",
+                ]}
+              />
               <a
                 href="#students-quiz-cta"
                 className="mt-8 inline-flex items-center gap-2 rounded-sm font-display font-bold text-lead text-tnky-blue underline-offset-4 transition-colors duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-white"
@@ -228,17 +227,12 @@ export default function StudentsPage() {
                   />
                 </div>
               </figure>
-              <p>
-                Today&apos;s skilled careers combine hands-on work with advanced
-                technology that transforms how things are designed, built,
-                repaired, and maintained. Whether you&apos;re interested in
-                solving problems, working with cutting-edge tools, or seeing the
-                results of your work in the real world, skilled careers offer
-                opportunities to work at the intersection of technology,
-                innovation, and practical know-how. The people building
-                tomorrow&apos;s communities aren&apos;t just using
-                technology—they&apos;re helping create and operate it.
-              </p>
+              <ReadMore
+                pClassName="text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+                paragraphs={[
+                  "Today's skilled careers combine hands-on work with advanced technology that transforms how things are designed, built, repaired, and maintained. Whether you're interested in solving problems, working with cutting-edge tools, or seeing the results of your work in the real world, skilled careers offer opportunities to work at the intersection of technology, innovation, and practical know-how. The people building tomorrow's communities aren't just using technology—they're helping create and operate it.",
+                ]}
+              />
             </div>
           </div>
 
@@ -360,13 +354,12 @@ export default function StudentsPage() {
                 Career Security In An Uncertain World
               </SectionHeading>
               <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                <p>
-                  The world is changing fast. AI and automation are transforming how
-                  we work. But communities will always need skilled people—people who
-                  can build, repair, maintain, and improve the systems that keep our
-                  world running. That&apos;s why skilled professionals remain in high
-                  demand across Northern Kentucky and throughout the country.
-                </p>
+                <ReadMore
+                  pClassName="text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+                  paragraphs={[
+                    "The world is changing fast. AI and automation are transforming how we work. But communities will always need skilled people—people who can build, repair, maintain, and improve the systems that keep our world running. That's why skilled professionals remain in high demand across Northern Kentucky and throughout the country.",
+                  ]}
+                />
                 <p className="font-display italic font-bold text-2xl text-tnky-blue [text-wrap:balance]">
                   The technology may change. The need for skilled people won&apos;t.
                 </p>
@@ -447,18 +440,15 @@ export default function StudentsPage() {
               aria-hidden="true"
               className="mt-4 h-[3px] w-14 rounded-full bg-tnky-safety"
             />
-            <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-white/90 [text-wrap:pretty]">
-              <p>
-                Many successful entrepreneurs started by mastering a valuable skill.
-                Electricians, welders, mechanics, HVAC technicians, and contractors
-                often go on to lead teams, manage operations, and build companies of
-                their own.
-              </p>
-              <p>
-                A skilled career can be more than a job—it can be the foundation for
-                leadership, entrepreneurship, and creating opportunities for others.
-              </p>
-            </div>
+            <ReadMore
+              className="mt-6"
+              tone="light"
+              pClassName="text-lead font-medium leading-relaxed text-tnky-white/90 [text-wrap:pretty]"
+              paragraphs={[
+                "Many successful entrepreneurs started by mastering a valuable skill. Electricians, welders, mechanics, HVAC technicians, and contractors often go on to lead teams, manage operations, and build companies of their own.",
+                "A skilled career can be more than a job—it can be the foundation for leadership, entrepreneurship, and creating opportunities for others.",
+              ]}
+            />
           </div>
         </div>
       </section>

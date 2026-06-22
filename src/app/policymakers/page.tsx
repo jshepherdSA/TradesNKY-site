@@ -14,6 +14,7 @@ import { FadeInSection } from "../_components/fade-in-section";
 import { AudienceHero } from "../_components/audience-hero";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
 import { AudienceContactForm } from "../_components/audience-contact-form";
+import { ReadMore } from "../_components/read-more";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -190,9 +191,10 @@ export default function PolicymakersPage() {
                         />
                       </div>
                     </figure>
-                    {s.intro.map((p) => (
-                      <p key={p}>{p}</p>
-                    ))}
+                    <ReadMore
+                      paragraphs={s.intro}
+                      pClassName="text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+                    />
                   </div>
                   <div className="mt-8 rounded-2xl border-l-4 border-tnky-blue bg-tnky-blue/5 p-5">
                     <p className="font-display font-bold uppercase tracking-tag text-meta text-tnky-blue">

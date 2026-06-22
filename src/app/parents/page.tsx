@@ -15,6 +15,7 @@ import {
 import { FadeInSection } from "../_components/fade-in-section";
 import { AudienceHero } from "../_components/audience-hero";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
+import { ReadMore } from "../_components/read-more";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -96,19 +97,13 @@ export default function ParentsPage() {
                   />
                 </div>
               </figure>
-              <p>
-                Every student has unique talents, interests, and goals. TradesNKY
-                helps all students, regardless of their learning style, explore
-                careers and discover pathways that align with their strengths.
-              </p>
-              <p>
-                Research shows that students who participate in high-quality career
-                and technical education programs are often more engaged in school,
-                perform better academically, and are more likely to graduate
-                prepared for their next step. By connecting classroom learning to
-                real-world applications, TradesNKY helps students build confidence,
-                direction, and a strong foundation for future success.
-              </p>
+              <ReadMore
+                pClassName="text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+                paragraphs={[
+                  "Every student has unique talents, interests, and goals. TradesNKY helps all students, regardless of their learning style, explore careers and discover pathways that align with their strengths.",
+                  "Research shows that students who participate in high-quality career and technical education programs are often more engaged in school, perform better academically, and are more likely to graduate prepared for their next step. By connecting classroom learning to real-world applications, TradesNKY helps students build confidence, direction, and a strong foundation for future success.",
+                ]}
+              />
             </div>
             <div className="mt-10 border-l-4 border-tnky-safety pl-6 md:pl-8">
               <p className="font-display italic font-bold text-2xl md:text-3xl leading-snug text-tnky-blue [text-wrap:balance]">
@@ -129,20 +124,14 @@ export default function ParentsPage() {
               <SectionHeading>
                 A Foundation for Whatever Comes Next
               </SectionHeading>
-              <div className="mt-6 max-w-prose space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                <p>
-                  The most successful careers are rarely built in a straight line.
-                  Today&apos;s workforce rewards people who continue learning,
-                  developing new skills, and adapting to new opportunities.
-                </p>
-                <p>
-                  TradesNKY introduces students to career pathways that can lead to
-                  certifications, apprenticeships, degrees, leadership opportunities,
-                  and even business ownership. By helping students build skills and
-                  experience early, they gain a foundation that can support any
-                  future they dream up.
-                </p>
-              </div>
+              <ReadMore
+                className="mt-6 max-w-prose"
+                pClassName="text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+                paragraphs={[
+                  "The most successful careers are rarely built in a straight line. Today's workforce rewards people who continue learning, developing new skills, and adapting to new opportunities.",
+                  "TradesNKY introduces students to career pathways that can lead to certifications, apprenticeships, degrees, leadership opportunities, and even business ownership. By helping students build skills and experience early, they gain a foundation that can support any future they dream up.",
+                ]}
+              />
             </div>
 
             <div className="lg:col-span-5">
@@ -191,19 +180,14 @@ export default function ParentsPage() {
             <SectionHeading>
               Financial Independence Without Unnecessary Debt
             </SectionHeading>
-            <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              <p>
-                Parents want their children to have the skills, confidence, and
-                opportunities needed to build successful, independent lives.
-              </p>
-              <p>
-                TradesNKY introduces students to careers that are in high demand,
-                offer strong earning potential, and provide opportunities to earn
-                while they learn. Many students can begin gaining valuable experience
-                and industry credentials while avoiding unnecessary debt that burdens
-                so many young adults.
-              </p>
-            </div>
+            <ReadMore
+              className="mt-6"
+              pClassName="text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+              paragraphs={[
+                "Parents want their children to have the skills, confidence, and opportunities needed to build successful, independent lives.",
+                "TradesNKY introduces students to careers that are in high demand, offer strong earning potential, and provide opportunities to earn while they learn. Many students can begin gaining valuable experience and industry credentials while avoiding unnecessary debt that burdens so many young adults.",
+              ]}
+            />
             <div className="mt-8 rounded-2xl border-l-4 border-tnky-blue bg-tnky-blue/5 p-5">
               <p className="text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
                 <span className="font-display font-extrabold text-tnky-blue">
@@ -295,17 +279,13 @@ export default function ParentsPage() {
                   />
                 </div>
               </figure>
-              <p className="mb-4">
-                Technology, automation, and improved safety standards have
-                transformed modern labor. Today&apos;s professionals spend as much
-                time with software as they do hardware.
-              </p>
-              <p>
-                Research has shown that as technology has advanced, demand has
-                shifted toward workers who are increasingly hard to replace: those
-                who can operate sophisticated systems, think critically, and most
-                importantly, solve problems themselves.
-              </p>
+              <ReadMore
+                pClassName="text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+                paragraphs={[
+                  "Technology, automation, and improved safety standards have transformed modern labor. Today's professionals spend as much time with software as they do hardware.",
+                  "Research has shown that as technology has advanced, demand has shifted toward workers who are increasingly hard to replace: those who can operate sophisticated systems, think critically, and most importantly, solve problems themselves.",
+                ]}
+              />
             </div>
           </div>
         </div>
@@ -330,20 +310,14 @@ export default function ParentsPage() {
                   />
                 </div>
               </figure>
-              <p>
-                In the Northern Kentucky region, manufacturing, construction, and
-                technical industries continue to face workforce shortages as
-                experienced workers retire and demand grows.
-              </p>
-              <p>
-                This means more opportunities, stronger demand, and a clearer pathway
-                to meaningful careers.
-              </p>
-              <p>
-                By connecting learning to real-world careers, students discover
-                their interests and strengths before making important decisions
-                about their future.
-              </p>
+              <ReadMore
+                pClassName="text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+                paragraphs={[
+                  "In the Northern Kentucky region, manufacturing, construction, and technical industries continue to face workforce shortages as experienced workers retire and demand grows.",
+                  "This means more opportunities, stronger demand, and a clearer pathway to meaningful careers.",
+                  "By connecting learning to real-world careers, students discover their interests and strengths before making important decisions about their future.",
+                ]}
+              />
             </div>
             <div className="mt-8 rounded-2xl border-l-4 border-tnky-blue bg-tnky-blue/5 p-5">
               <p className="text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
