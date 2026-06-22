@@ -21,16 +21,9 @@ export default function HomePage() {
 
       <FivePathsAccordion />
 
-      {/* Yellow accent rule above NKYStatsBanner — visually brackets the
-          stats band against the section above. */}
-      <div
-        aria-hidden="true"
-        style={{
-          width: "100%",
-          height: "1px",
-          backgroundColor: "var(--color-tnky-safety)",
-        }}
-      />
+      {/* Blank whitespace band above NKYStatsBanner — separates the pillars
+          accordion from the stats band with breathing room instead of a rule. */}
+      <div aria-hidden="true" className="h-16 bg-tnky-white md:h-20" />
 
       <NKYStatsBanner />
 
