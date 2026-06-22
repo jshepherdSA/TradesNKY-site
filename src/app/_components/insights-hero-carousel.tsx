@@ -133,7 +133,7 @@ export function InsightsHeroCarousel({ posts, interval = 3000 }: Props) {
       {/* Foreground layout — main content centered in the upper region,
           the title-box nav strip pinned across the bottom edge. */}
       <div className="absolute inset-0 z-10 flex flex-col">
-        <div className="flex flex-1 items-center justify-center">
+        <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden">
           <div className="max-w-content mx-auto w-full px-4 pb-8 pt-24 sm:px-6 lg:px-8">
             <AnimatePresence mode="wait">
               <motion.div
@@ -151,10 +151,10 @@ export function InsightsHeroCarousel({ posts, interval = 3000 }: Props) {
                 <span className="inline-block rounded-pill bg-tnky-safety px-3 py-1 font-display font-extrabold uppercase tracking-tag text-meta text-tnky-safety-ink">
                   {active.category}
                 </span>
-                <h2 className="mt-5 font-display font-extrabold italic leading-none text-h1 text-tnky-white [text-shadow:0_2px_16px_rgba(0,0,0,0.65)] [text-wrap:balance]">
+                <h2 className="mt-5 line-clamp-3 font-display font-extrabold italic leading-none text-h1 text-tnky-white [text-shadow:0_2px_16px_rgba(0,0,0,0.65)] [text-wrap:balance]">
                   {active.title}
                 </h2>
-                <p className="mx-auto mt-5 max-w-2xl text-lead text-tnky-cream/95 [text-shadow:0_1px_10px_rgba(0,0,0,0.7)] [text-wrap:pretty]">
+                <p className="mx-auto mt-5 line-clamp-2 max-w-2xl text-lead text-tnky-cream/95 [text-shadow:0_1px_10px_rgba(0,0,0,0.7)] [text-wrap:pretty]">
                   {active.excerpt}
                 </p>
                 <Link

@@ -396,49 +396,6 @@ export default function ParentsPage() {
         </div>
       </section>
 
-      {/* ── SIXTH SECTION — Leadership and Entrepreneurship ───────── */}
-      <FadeInSection className="bg-tnky-cream">
-        <div className="max-w-content mx-auto px-4 py-24 sm:px-8 md:py-28">
-          <div className="mx-auto max-w-3xl">
-            <SectionHeading>
-              A Foundation for Leadership and Entrepreneurship
-            </SectionHeading>
-            <div className="mt-6 flow-root space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              <figure className="w-full overflow-hidden rounded-xl md:float-right md:mb-4 md:ml-6 md:w-2/5">
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80"
-                    alt="Skilled professionals advancing into leadership roles"
-                    fill
-                    sizes="(min-width: 768px) 40vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-              </figure>
-              <p>
-                Many successful business owners started by learning a valuable
-                skill and working with experienced professionals, developing
-                expertise that becomes the foundation for advancements into
-                supervisory and management positions. Research highlights clear
-                career pathways that can lead from trainee to specialist,
-                supervisor, manager, and entrepreneur.
-              </p>
-              <p>
-                Trade education is about more than preparing students for their
-                first job. It helps them develop technical expertise,
-                problem-solving abilities, leadership skills, and real-world
-                experience that can create opportunities throughout their
-                careers.
-              </p>
-              <p className="font-display italic font-bold text-2xl text-tnky-blue [text-wrap:balance]">
-                For many students, learning a skilled trade is not the destination—it
-                is the first step toward building something much bigger.
-              </p>
-            </div>
-          </div>
-        </div>
-      </FadeInSection>
-
       {/* ── CTA — start a conversation + reach out to the school ──── */}
       <FadeInSection className="bg-tnky-blue">
         <div className="max-w-content mx-auto flex min-h-[22rem] flex-col items-center justify-center px-4 py-6 text-center sm:px-8">
