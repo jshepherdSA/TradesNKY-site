@@ -8,8 +8,10 @@ import {
   Briefcase,
   ClipboardCheck,
   Compass,
+  Flag,
   Hammer,
   Handshake,
+  Play,
   Settings,
   TrendingUp,
   Users,
@@ -32,8 +34,9 @@ const BTN_OUTLINE =
   "inline-flex items-center justify-center gap-2 rounded-pill border-2 border-tnky-white px-8 py-4 font-display font-bold text-button text-tnky-white transition-all duration-200 ease-tnky hover:-translate-y-px hover:bg-tnky-white hover:text-tnky-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-white focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-blue";
 
 // The TradesNKY Approach — the program's core offering. Each item pairs a
-// short bold label with a description; `featured` flags skillUP, the flagship
-// regional event, for a filled-blue treatment within the grid.
+// short bold label with a description; `featured` flags the Industry-Informed
+// Curriculum, the heart of the program, for a prominent full-width treatment
+// above the supporting grid.
 const APPROACH: {
   icon: typeof BookOpen;
   label: string;
@@ -41,15 +44,10 @@ const APPROACH: {
   featured?: boolean;
 }[] = [
   {
-    icon: Zap,
-    label: "skillUP",
-    desc: "Our annual regional career exploration event, where students interact directly with employers and discover careers across the BUILD, MAKE, MOVE, POWER, and PROTECT pathways.",
-    featured: true,
-  },
-  {
     icon: BookOpen,
     label: "Industry-Informed Curriculum",
     desc: "Aligned with Kentucky Department of Education (KDE) standards and designed for all middle school students in grades 6–8, with flexible 9-week and 18-week implementation options.",
+    featured: true,
   },
   {
     icon: Hammer,
@@ -121,30 +119,38 @@ function SectionHeading({
   );
 }
 
-// Shared treatment for the "coming soon" roadmap placeholder.
-function PlaceholderCard({
-  icon: Icon,
-  title,
-  children,
-}: {
+// Roadmap — past / present / future. The bullet copy is supplied by the
+// client; until then each column renders a placeholder. Fill the `bullets`
+// arrays to populate the lists (the markup renders them automatically).
+const ROADMAP: {
   icon: typeof BookOpen;
+  tense: string;
   title: string;
-  children: ReactNode;
-}) {
-  return (
-    <div className="mx-auto mt-12 max-w-2xl rounded-2xl border border-tnky-edge bg-tnky-white p-10 text-center shadow-tnky-1">
-      <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-tnky-blue/10 text-tnky-blue">
-        <Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
-      </span>
-      <h3 className="mt-5 font-display font-extrabold text-card-title text-tnky-ink">
-        {title}
-      </h3>
-      <p className="mt-3 text-body font-medium leading-relaxed text-tnky-mute [text-wrap:pretty]">
-        {children}
-      </p>
-    </div>
-  );
-}
+  note: string;
+  bullets: string[];
+}[] = [
+  {
+    icon: Flag,
+    tense: "Past",
+    title: "How It Started",
+    note: "What the trades started off as.",
+    bullets: [],
+  },
+  {
+    icon: Hammer,
+    tense: "Present",
+    title: "What We Do",
+    note: "What TradesNKY does currently.",
+    bullets: [],
+  },
+  {
+    icon: TrendingUp,
+    tense: "Future",
+    title: "Where We're Going",
+    note: "Things coming down the line.",
+    bullets: [],
+  },
+];
 
 export default function WhatIsTradesNkyPage() {
   return (
@@ -220,19 +226,61 @@ export default function WhatIsTradesNkyPage() {
 
       {/* ── THE PATHWAY ─────────────────────────────────────────── */}
       <div id="the-pathway" className="scroll-mt-[var(--nav-h,64px)]">
-        <FadeInSection className="bg-tnky-white">
-          <div className="max-w-content mx-auto px-4 pt-20 sm:px-8 md:pt-24">
-            <p className="mx-auto max-w-3xl text-center text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              From a fifth-grader&apos;s first classroom demo to a
-              graduate&apos;s first paycheck, TradesNKY guides students through
-              four connected stages — a K-12 through post-graduation journey
-              that turns early curiosity into real skills, credentials, and
-              careers.
-            </p>
-          </div>
-        </FadeInSection>
         <SimplePathwaySection detailed />
       </div>
+
+      {/* ── skillUP — flagship regional event ───────────────────── */}
+      <FadeInSection className="bg-tnky-blue">
+        <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            {/* Left — copy */}
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-pill bg-tnky-safety px-4 py-1.5 font-display font-bold uppercase tracking-label text-mini text-tnky-safety-ink">
+                <Zap className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+                Flagship Event
+              </span>
+              <h2 className="mt-5 font-display italic font-tnky-black leading-[1.04] tracking-[-0.02em] text-tnky-safety text-[length:clamp(2.5rem,5vw,4rem)]">
+                skillUP
+              </h2>
+              <div
+                aria-hidden="true"
+                className="mt-5 h-1 w-20 rounded-full bg-tnky-safety"
+              />
+              <p className="mt-6 max-w-lead text-lead font-medium leading-relaxed text-tnky-white/90 [text-wrap:pretty]">
+                Our annual regional career exploration event, where students
+                interact directly with employers and discover careers across the
+                BUILD, MAKE, MOVE, POWER, and PROTECT pathways.
+              </p>
+            </div>
+
+            {/* Right — landscape video player (source uploaded later) */}
+            <div className="relative aspect-video w-full overflow-hidden rounded-2xl border-4 border-tnky-safety bg-tnky-ink shadow-tnky-2">
+              {/* TODO(video): replace this placeholder with the uploaded
+                  landscape video, e.g.:
+                  <video
+                    className="h-full w-full object-cover"
+                    controls
+                    playsInline
+                    poster="/images/skillup-poster.jpg"
+                  >
+                    <source src="/videos/skillup.mp4" type="video/mp4" />
+                  </video> */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-tnky-blue to-tnky-ink">
+                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-tnky-safety text-tnky-safety-ink shadow-tnky-2">
+                  <Play
+                    className="ml-1 h-9 w-9 fill-current"
+                    strokeWidth={0}
+                    aria-hidden="true"
+                  />
+                </span>
+                <p className="font-display font-semibold uppercase tracking-label text-mini text-tnky-white/70">
+                  Video coming soon
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </FadeInSection>
 
       {/* ── THE TRADESNKY APPROACH ──────────────────────────────── */}
       <FadeInSection className="bg-tnky-cream">
@@ -246,31 +294,42 @@ export default function WhatIsTradesNkyPage() {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {APPROACH.map((item) => {
-              const Icon = item.icon;
-              if (item.featured) {
-                return (
-                  <div
-                    key={item.label}
-                    className="flex flex-col rounded-2xl bg-tnky-blue p-6 shadow-tnky-2"
-                  >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tnky-safety text-tnky-safety-ink">
-                      <Icon
-                        className="h-6 w-6"
-                        strokeWidth={1.75}
-                        aria-hidden="true"
-                      />
-                    </span>
-                    <h3 className="mt-4 font-display italic font-tnky-black leading-none text-h4 text-tnky-white">
+          {/* Featured — the Industry-Informed Curriculum leads as the core of
+              the program, full-width above the supporting practices. */}
+          {APPROACH.filter((item) => item.featured).map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.label}
+                className="mt-12 rounded-2xl bg-tnky-blue p-8 shadow-tnky-2 md:p-10"
+              >
+                <div className="flex flex-col gap-6 md:flex-row md:items-center">
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-tnky-safety text-tnky-safety-ink">
+                    <Icon
+                      className="h-8 w-8"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <div>
+                    <p className="font-display font-bold uppercase tracking-label text-mini text-tnky-safety">
+                      The Core of Our Program
+                    </p>
+                    <h3 className="mt-1 font-display italic font-tnky-black leading-tight text-h3 text-tnky-white">
                       {item.label}
                     </h3>
-                    <p className="mt-2 text-small font-medium leading-relaxed text-tnky-white/85 [text-wrap:pretty]">
+                    <p className="mt-3 max-w-3xl text-body font-medium leading-relaxed text-tnky-white/85 [text-wrap:pretty]">
                       {item.desc}
                     </p>
                   </div>
-                );
-              }
+                </div>
+              </div>
+            );
+          })}
+
+          <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {APPROACH.filter((item) => !item.featured).map((item) => {
+              const Icon = item.icon;
               return (
                 <div
                   key={item.label}
@@ -346,14 +405,65 @@ export default function WhatIsTradesNkyPage() {
         </div>
       </FadeInSection>
 
-      {/* ── WHERE WE ARE GOING (placeholder) ────────────────────── */}
+      {/* ── OUR ROADMAP — past / present / future ───────────────── */}
       <FadeInSection className="bg-tnky-cream">
         <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
-          <SectionHeading center>Where We Are Going</SectionHeading>
-          <PlaceholderCard icon={TrendingUp} title="Our Roadmap Is Coming Soon">
-            TradesNKY is growing. We are documenting our next phase of expansion
-            across Northern Kentucky. Details coming soon.
-          </PlaceholderCard>
+          <div className="mx-auto max-w-2xl text-center">
+            <SectionHeading center>Our Roadmap</SectionHeading>
+            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+              Where TradesNKY has been, what we do today, and where we are
+              headed next.
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {ROADMAP.map((col) => {
+              const Icon = col.icon;
+              return (
+                <div
+                  key={col.title}
+                  className="flex flex-col rounded-2xl border border-tnky-edge bg-tnky-white p-6 shadow-tnky-1 md:p-8"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tnky-blue/10 text-tnky-blue">
+                    <Icon
+                      className="h-6 w-6"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <p className="mt-4 font-display font-bold uppercase tracking-label text-mini text-tnky-blue">
+                    {col.tense}
+                  </p>
+                  <h3 className="mt-1 font-display italic font-extrabold text-card-title text-tnky-ink [text-wrap:balance]">
+                    {col.title}
+                  </h3>
+                  <p className="mt-2 text-small font-medium leading-relaxed text-tnky-mute [text-wrap:pretty]">
+                    {col.note}
+                  </p>
+                  {col.bullets.length > 0 ? (
+                    <ul className="mt-5 space-y-2.5 border-t border-tnky-edge pt-5">
+                      {col.bullets.map((b) => (
+                        <li
+                          key={b}
+                          className="flex items-start gap-2 text-small font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-tnky-safety"
+                          />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="mt-5 border-t border-tnky-edge pt-5 text-small font-medium italic text-tnky-mute">
+                      Bullet points coming soon.
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </FadeInSection>
 

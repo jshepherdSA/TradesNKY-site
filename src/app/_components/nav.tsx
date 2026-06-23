@@ -167,8 +167,8 @@ const NAV_ITEMS: NavItem[] = [
             pillarColor: "var(--color-tnky-blue)",
           },
           {
-            label: "Board of Directors",
-            description: "The leaders steering the organization.",
+            label: "Our Team",
+            description: "The board and staff steering the organization.",
             href: "/about/board",
             icon: Briefcase,
             pillarColor: "var(--color-tnky-blue)",

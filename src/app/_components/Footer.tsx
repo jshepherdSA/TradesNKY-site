@@ -83,7 +83,6 @@ export function Footer() {
         </div>
         <div className="pt-7 flex flex-col md:flex-row gap-3 md:justify-between text-tnky-white/50 text-mini">
           <span>© Trades NKY · 501(c)(3)</span>
-          <span>Florence · Covington · Newport · Boone · Kenton · Campbell</span>
         </div>
       </div>
     </footer>

@@ -40,13 +40,15 @@ import { cn } from "@/lib/utils";
 export interface BoardMemberCardProps {
   /** Board member's full name. */
   name: string;
-  /** Their role on the board ("Executive Director", "Board Chair", …). */
-  title: string;
-  /** One-line bio shown beneath the title. */
-  bio: string;
-  /** Short category tag rendered as a tnky-blue pill ("Leadership",
-   *  "Governance", "Education", …). */
-  role: string;
+  /** Optional job title shown as the uppercase accent line ("Executive
+   *  Director", …). Omitted for board members, who show only name +
+   *  organization. */
+  title?: string;
+  /** Optional one-line bio / organization shown beneath the title. */
+  bio?: string;
+  /** Optional category tag rendered as a tnky-blue pill ("Leadership",
+   *  "Governance", "Education", …). Omitted when not supplied. */
+  role?: string;
   /** Cover image URL — used by `next/image` with `fill`. */
   image: string;
   /** Optional descriptive alt; defaults to "" for purely decorative
@@ -127,7 +129,7 @@ export function BoardMemberCard({
     <motion.article
       data-slot="board-member-card"
       tabIndex={0}
-      aria-label={`${name}, ${title}`}
+      aria-label={title ? `${name}, ${title}` : name}
       initial="rest"
       whileHover="hover"
       whileFocus="hover"
@@ -161,12 +163,8 @@ export function BoardMemberCard({
         />
       </motion.div>
 
-      {/* Single consolidated bottom-fade scrim — replaces the four
-          overlapping layers in the source. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-tnky-ink/90 via-tnky-ink/45 to-transparent"
-      />
+      {/* No scrim — the gradient was darkening faces. Legibility now
+          comes from per-element drop shadows on the text below. */}
 
       {/* Content block — fades + slides in on mount, role pill at the
           top of the stack where the follow button used to be. */}
@@ -176,11 +174,13 @@ export function BoardMemberCard({
         animate="visible"
         className="absolute bottom-0 left-0 right-0 flex flex-col gap-3 p-5 md:p-6"
       >
-        <motion.div variants={itemVariants}>
-          <span className="inline-flex items-center rounded-pill bg-tnky-blue px-3 py-1 font-display font-bold uppercase tracking-tag text-meta text-tnky-white">
-            {role}
-          </span>
-        </motion.div>
+        {role ? (
+          <motion.div variants={itemVariants}>
+            <span className="inline-flex items-center rounded-pill bg-tnky-blue px-3 py-1 font-display font-bold uppercase tracking-tag text-meta text-tnky-white">
+              {role}
+            </span>
+          </motion.div>
+        ) : null}
 
         <motion.h3
           variants={itemVariants}
@@ -192,7 +192,7 @@ export function BoardMemberCard({
           // same cn() call. The arbitrary form sits in its own group and
           // survives the merge.
           className={cn(
-            "font-display font-extrabold leading-tight [color:var(--color-tnky-white)] [text-wrap:balance] [text-shadow:0_1px_2px_rgba(16,16,16,0.55),0_2px_10px_rgba(16,16,16,0.4)]",
+            "font-display font-extrabold leading-tight [color:var(--color-tnky-white)] [text-wrap:balance] [text-shadow:0_1px_3px_rgba(16,16,16,0.85),0_2px_12px_rgba(16,16,16,0.65)]",
             featured
               ? "text-section md:text-h1"
               : "text-card-title md:text-h3",
@@ -201,19 +201,23 @@ export function BoardMemberCard({
           {name}
         </motion.h3>
 
-        <motion.p
-          variants={itemVariants}
-          className="font-display font-bold uppercase tracking-tag text-eyebrow text-tnky-safety"
-        >
-          {title}
-        </motion.p>
+        {title ? (
+          <motion.p
+            variants={itemVariants}
+            className="font-display font-bold uppercase tracking-tag text-eyebrow text-tnky-safety [text-shadow:0_1px_3px_rgba(16,16,16,0.9),0_2px_10px_rgba(16,16,16,0.7)]"
+          >
+            {title}
+          </motion.p>
+        ) : null}
 
-        <motion.p
-          variants={itemVariants}
-          className="max-w-prose text-small leading-relaxed text-tnky-cream/95 [text-wrap:pretty]"
-        >
-          {bio}
-        </motion.p>
+        {bio ? (
+          <motion.p
+            variants={itemVariants}
+            className="max-w-prose text-small leading-relaxed text-tnky-white [text-wrap:pretty] [text-shadow:0_1px_3px_rgba(16,16,16,0.95),0_2px_10px_rgba(16,16,16,0.8)]"
+          >
+            {bio}
+          </motion.p>
+        ) : null}
       </motion.div>
     </motion.article>
   );

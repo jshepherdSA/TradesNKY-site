@@ -6,120 +6,129 @@ import {
 import { CtaCard as NewsletterBanner } from "../../_components/CtaCard";
 
 export const metadata: Metadata = {
-  title: "Board of Directors | Trades NKY",
+  title: "Our Team | Trades NKY",
   description:
-    "The TradesNKY Board of Directors — workforce, education, industry, and community leaders driving Northern Kentucky's skilled-trades pipeline.",
+    "The TradesNKY board of directors and staff — workforce, education, industry, and community leaders driving Northern Kentucky's skilled-trades pipeline.",
 };
 
-// Profiles taken from https://tradesnky.org/about-us/board-of-directors/.
-// Source page lists names, board roles, and company affiliations; no
-// bios are published, so the `bio` slot here renders the company /
-// affiliation line. Cover photos use a neutral placeholder avatar until
-// real headshots are supplied.
+// Board profiles taken from https://tradesnky.org/about-us/board-of-directors/.
+// Per request, board cards show only name + organization (the member /
+// officer / secretary labels have been dropped). Cover photos use a neutral
+// placeholder avatar until real headshots are supplied.
 const PLACEHOLDER_PHOTO = "/brand/avatar-placeholder.svg";
 
-const EXECUTIVE_DIRECTOR: BoardMemberCardProps = {
-  name: "Lorraine O'Moore",
-  title: "Executive Director",
-  bio: "TradesNKY's staff lead, anchoring the organization's day-to-day work across Northern Kentucky.",
-  role: "Leadership",
-  image: "/brand/board/lorraine-omoore.webp",
-  imageAlt: "",
-  featured: true,
-};
-
+// ── Board of Directors ──────────────────────────────────────────────
+// `bio` carries the organization line; `title` / `role` intentionally
+// omitted so each card renders just the name and affiliation.
 const BOARD_MEMBERS: BoardMemberCardProps[] = [
   {
     name: "Phil Griffin",
-    title: "President",
     bio: "AnyWeather Companies",
-    role: "Officer",
     image: "/brand/board/phil-griffin.jpg",
     imageAlt: "",
   },
   {
     name: "Larisa Sims",
-    title: "Vice President",
     bio: "CVG Airport",
-    role: "Officer",
     image: "/brand/board/larisa-sims.png",
     imageAlt: "",
   },
   {
     name: "Stephen Mann",
-    title: "Treasurer",
     bio: "Blue and Co. LLC",
-    role: "Officer",
     image: "/brand/board/stephen-mann.jpg",
     imageAlt: "",
   },
   {
     name: "Sara Bray",
-    title: "Secretary",
     bio: "Bray Construction Services",
-    role: "Officer",
     image: "/brand/board/sara-bray.png",
     imageAlt: "",
   },
   {
     name: "Jeff Schlosser",
-    title: "Member",
     bio: "DBL Law",
-    role: "Member",
     image: "/brand/board/jeff-schlosser.jpg",
     imageAlt: "",
   },
   {
     name: "John Strawser",
-    title: "Member",
     bio: "Valley Interior Systems",
-    role: "Member",
     image: "/brand/board/john-strawser.webp",
     imageAlt: "",
   },
   {
     name: "Phillipe Garnier",
-    title: "Member",
     bio: "Safran Landing Systems",
-    role: "Member",
     image: "/brand/board/phillipe-garnier.jpg",
     imageAlt: "",
   },
   {
     name: "Steve Pendery",
-    title: "Member",
     bio: "Campbell County Fiscal Court",
-    role: "Member",
     image: "/brand/board/steve-pendery.webp",
     imageAlt: "",
   },
   {
     name: "Randy Hemmerle",
-    title: "Member",
     bio: "Krauss Maffei",
-    role: "Member",
     image: PLACEHOLDER_PHOTO,
     imageAlt: "",
   },
   {
     name: "Carolyn Stewart",
-    title: "Member",
     bio: "Campbell County ATC",
-    role: "Member",
     image: "/brand/board/carolyn-stewart.jpg",
     imageAlt: "",
   },
   {
     name: "Michael Taylor",
-    title: "Member",
     bio: "Riegler Blacktop",
-    role: "Member",
     image: "/brand/board/michael-taylor.jpeg",
+    imageAlt: "",
+  },
+  {
+    // TODO: add Kevin's last name, organization, and headshot when supplied.
+    name: "Kevin",
+    image: PLACEHOLDER_PHOTO,
     imageAlt: "",
   },
 ];
 
-export default function BoardPage() {
+// ── Team (staff) ────────────────────────────────────────────────────
+const TEAM_MEMBERS: BoardMemberCardProps[] = [
+  {
+    name: "Lorraine O'Moore",
+    title: "Executive Director",
+    bio: "TradesNKY's staff lead, anchoring the organization's day-to-day work across Northern Kentucky.",
+    image: "/brand/board/lorraine-omoore.webp",
+    imageAlt: "",
+  },
+  {
+    // TODO: add Ellie's last name, title, and headshot when supplied.
+    name: "Ellie",
+    image: PLACEHOLDER_PHOTO,
+    imageAlt: "",
+  },
+];
+
+// Section heading — display italic title + yellow underline, matching the
+// other About sub-pages.
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-8">
+      <h2 className="font-display italic font-extrabold text-3xl md:text-4xl text-tnky-ink [text-wrap:balance]">
+        {children}
+      </h2>
+      <div
+        aria-hidden="true"
+        className="mt-4 h-[3px] w-14 rounded-full bg-tnky-safety"
+      />
+    </div>
+  );
+}
+
+export default function OurTeamPage() {
   return (
     <main className="bg-tnky-cream">
       {/* Hero — same compact tnky-blue treatment as the other About
@@ -128,7 +137,7 @@ export default function BoardPage() {
         <div className="max-w-content mx-auto grid grid-cols-1 items-center gap-8 px-4 py-10 sm:px-8 md:grid-cols-2 md:gap-10 md:py-12 lg:py-14">
           <div>
             <h1 className="font-display font-tnky-black italic leading-none tracking-wide text-h1 text-tnky-white [text-wrap:balance]">
-              <span className="inline-block px-1">Board of Directors</span>
+              <span className="inline-block px-1">Our Team</span>
             </h1>
             <div
               aria-hidden="true"
@@ -136,22 +145,32 @@ export default function BoardPage() {
             />
           </div>
           <p className="max-w-xl text-lead text-tnky-cream/95 [text-wrap:pretty] md:justify-self-end">
-            Workforce, education, industry, and community leaders steering
-            TradesNKY&apos;s work across Northern Kentucky.
+            The board members and staff steering TradesNKY&apos;s work across
+            Northern Kentucky.
           </p>
         </div>
       </section>
 
-      {/* Board grid — Executive Director full-width on top, then the
-          11 board members in a 1 / 2 / 3-column grid. */}
+      {/* ── Board of Directors ──────────────────────────────────── */}
       <section className="bg-tnky-cream">
-        <div className="max-w-content mx-auto px-4 py-10 sm:px-8 md:py-12 lg:py-14">
-          <div className="mb-6 h-72 md:mb-8">
-            <BoardMemberCard {...EXECUTIVE_DIRECTOR} />
-          </div>
-
+        <div className="max-w-content mx-auto px-4 pt-10 sm:px-8 md:pt-12 lg:pt-14">
+          <SectionHeading>Board of Directors</SectionHeading>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 md:gap-8">
             {BOARD_MEMBERS.map((member) => (
+              <div key={member.name} className="h-80">
+                <BoardMemberCard {...member} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Team ─────────────────────────────────────────────────── */}
+      <section className="bg-tnky-cream">
+        <div className="max-w-content mx-auto px-4 py-10 sm:px-8 md:py-12 lg:py-14">
+          <SectionHeading>Team</SectionHeading>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:max-w-3xl">
+            {TEAM_MEMBERS.map((member) => (
               <div key={member.name} className="h-80">
                 <BoardMemberCard {...member} />
               </div>
