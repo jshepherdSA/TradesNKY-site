@@ -338,19 +338,19 @@ export default function ParentsPage() {
           <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-3 sm:gap-6">
             {[
               {
-                stat: "XX%",
+                stat: "40%",
                 label:
                   "of the skilled-trades workforce is nearing retirement this decade",
               },
               {
-                stat: "X in X",
+                stat: "7 in 10",
                 label:
                   "employers report difficulty finding the skilled workers they need",
               },
               {
-                stat: "XX,XXX",
+                stat: "90,863",
                 label:
-                  "of open skilled roles across Northern Kentucky's key industries",
+                  "open skilled roles across Northern Kentucky's Essential Workforce Industries",
               },
             ].map((s) => (
               <div key={s.stat}>
@@ -366,6 +366,46 @@ export default function ParentsPage() {
                 </p>
               </div>
             ))}
+          </div>
+
+          {/* KY Essential Workforce open-role breakdown (Pillars + Data). */}
+          <div className="mt-12 border-t border-tnky-white/15 pt-10">
+            <p className="text-center font-display font-extrabold uppercase text-eyebrow text-tnky-white/80">
+              Open skilled roles across Kentucky&apos;s Essential Workforce
+              Industries
+            </p>
+            <ul className="mx-auto mt-6 grid max-w-3xl grid-cols-1 gap-x-10 gap-y-1 sm:grid-cols-2">
+              {[
+                ["Transportation", "158,075"],
+                ["Installation, Maintenance & Repair", "44,872"],
+                ["Construction & Extraction", "35,603"],
+                ["Protective Service", "22,157"],
+                ["Building & Grounds Cleaning & Maintenance", "43,407"],
+              ].map(([label, value]) => (
+                <li
+                  key={label}
+                  className="flex items-baseline justify-between gap-4 border-b border-tnky-white/10 py-2.5"
+                >
+                  <span className="text-body text-tnky-white/85 [text-wrap:pretty]">
+                    {label}
+                  </span>
+                  <span className="shrink-0 font-display font-tnky-black text-tnky-white">
+                    {value}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <div className="mx-auto mt-5 flex max-w-3xl items-baseline justify-between gap-4">
+              <span className="font-display font-extrabold uppercase tracking-tag text-meta text-tnky-safety">
+                Total
+              </span>
+              <span className="font-display font-tnky-black text-stat-md leading-none text-tnky-white">
+                304,114
+              </span>
+            </div>
+            <p className="mt-4 text-center text-mini text-tnky-white/55">
+              Source: KYStats
+            </p>
           </div>
         </div>
       </section>

@@ -9,17 +9,14 @@ import {
 
 export type CareerCard = {
   title: string;
-  /** Annual wage. Client-provided figures are real; "$XX,XXX / yr" is a
-   *  placeholder where no verified figure was supplied. */
+  /** Annual wage, client-provided (Pillars + Data). */
   wage: string;
   description: string;
 };
 
-/** Open-role counts by geography. All values are placeholders ("XX,XXX")
- *  pending verified labor-market data. */
+/** Open-role counts by geography, client-provided (Pillars + Data). */
 export type OpenRoles = {
   nky: string;
-  cincy: string;
   ky: string;
 };
 
@@ -38,13 +35,6 @@ export type PathData = {
   /** Named NKY employers in this industry. Client-provided names only; empty
    *  arrays render a "coming soon" placeholder. */
   companies: string[];
-};
-
-// Placeholder token reused for every open-role count until verified data lands.
-const OPEN_ROLES_PLACEHOLDER: OpenRoles = {
-  nky: "XX,XXX",
-  cincy: "XX,XXX",
-  ky: "XX,XXX",
 };
 
 export const PATHS: Record<string, PathData> = {
@@ -103,7 +93,7 @@ export const PATHS: Record<string, PathData> = {
       },
       {
         title: "Construction Project Manager",
-        wage: "$XX,XXX / yr",
+        wage: "$110,812 / yr",
         description:
           "Plan, budget, and run job sites from groundbreaking through final handover.",
       },
@@ -113,8 +103,14 @@ export const PATHS: Record<string, PathData> = {
         description:
           "Assemble the structural steel skeletons behind bridges, plants, and high-rises.",
       },
+      {
+        title: "Welder",
+        wage: "$56,064 / yr",
+        description:
+          "Join the steel and metal assemblies behind structures, bridges, and building systems.",
+      },
     ],
-    openRoles: OPEN_ROLES_PLACEHOLDER,
+    openRoles: { nky: "7,098", ky: "71,449" },
     companies: [],
   },
 
@@ -153,10 +149,10 @@ export const PATHS: Record<string, PathData> = {
           "Join metal for everything from auto components to structural assemblies.",
       },
       {
-        title: "Robotics Technician",
-        wage: "$XX,XXX / yr",
+        title: "Production Supervisor",
+        wage: "$77,971 / yr",
         description:
-          "Set up, program, and troubleshoot the automated cells on a modern production line.",
+          "Lead the crews and processes that keep a production line running safely and on schedule.",
       },
       {
         title: "Industrial Maintenance Technician",
@@ -172,12 +168,12 @@ export const PATHS: Record<string, PathData> = {
       },
       {
         title: "Quality Inspector",
-        wage: "$XX,XXX / yr",
+        wage: "$48,431 / yr",
         description:
           "Measure, test, and certify that parts meet tolerance before they ship.",
       },
     ],
-    openRoles: OPEN_ROLES_PLACEHOLDER,
+    openRoles: { nky: "22,463", ky: "213,525" },
     companies: [],
   },
 
@@ -205,7 +201,7 @@ export const PATHS: Record<string, PathData> = {
     careers: [
       {
         title: "CDL Truck Driver",
-        wage: "$XX,XXX / yr",
+        wage: "$72,091 / yr",
         description:
           "Haul freight across the region and the country on local and long-haul routes.",
       },
@@ -217,30 +213,30 @@ export const PATHS: Record<string, PathData> = {
       },
       {
         title: "Logistics Coordinator",
-        wage: "$XX,XXX / yr",
+        wage: "$78,686 / yr",
         description:
           "Schedule shipments and route freight so it arrives on time and on budget.",
       },
       {
         title: "Warehouse Supervisor",
-        wage: "$XX,XXX / yr",
+        wage: "$77,971 / yr",
         description:
           "Lead the teams that receive, store, and ship goods through NKY's distribution centers.",
       },
       {
-        title: "Dispatcher",
-        wage: "$XX,XXX / yr",
+        title: "Air Traffic Controller",
+        wage: "$134,528 / yr",
         description:
-          "Coordinate drivers, loads, and routes in real time so nothing sits idle.",
+          "Direct aircraft safely through the region's airspace and runways.",
       },
       {
         title: "Supply Chain Analyst",
-        wage: "$XX,XXX / yr",
+        wage: "$50,628 / yr",
         description:
           "Use data to cut cost and delay out of how goods move from origin to dock.",
       },
     ],
-    openRoles: OPEN_ROLES_PLACEHOLDER,
+    openRoles: { nky: "57,475", ky: "319,279" },
     companies: ["CVG Airport"],
   },
 
@@ -309,7 +305,7 @@ export const PATHS: Record<string, PathData> = {
           "Calibrate the protective systems that keep the grid safe and stable.",
       },
     ],
-    openRoles: OPEN_ROLES_PLACEHOLDER,
+    openRoles: { nky: "3,153", ky: "33,571" },
     companies: ["Duke Energy"],
   },
 
@@ -343,19 +339,19 @@ export const PATHS: Record<string, PathData> = {
     careers: [
       {
         title: "Facilities Maintenance Technician",
-        wage: "$XX,XXX / yr",
+        wage: "$45,839 / yr",
         description:
           "Keep buildings, systems, and grounds safe, clean, and running every day.",
       },
       {
         title: "Firefighter / EMT",
-        wage: "$XX,XXX / yr",
+        wage: "$44,755 / yr",
         description:
           "Respond to emergencies and protect Northern Kentucky communities.",
       },
       {
         title: "Cybersecurity Analyst",
-        wage: "$XX,XXX / yr",
+        wage: "$115,632 / yr",
         description:
           "Defend the networks and data that regional employers and agencies rely on.",
       },
@@ -366,19 +362,19 @@ export const PATHS: Record<string, PathData> = {
           "Run and monitor the plants that keep public drinking water safe.",
       },
       {
-        title: "Building Automation Technician",
-        wage: "$XX,XXX / yr",
+        title: "Detectives and Criminal Investigators",
+        wage: "$90,937 / yr",
         description:
-          "Program and maintain the controls that run lighting, HVAC, and security in modern facilities.",
+          "Investigate crimes and gather the evidence that keeps communities safe.",
       },
       {
-        title: "Public Safety Dispatcher",
-        wage: "$XX,XXX / yr",
+        title: "Police Patrol Officer",
+        wage: "$67,916 / yr",
         description:
-          "Coordinate police, fire, and EMS response when seconds count.",
+          "Protect and serve neighborhoods through everyday public-safety response.",
       },
     ],
-    openRoles: OPEN_ROLES_PLACEHOLDER,
+    openRoles: { nky: "5,385", ky: "44,412" },
     companies: [],
   },
 };

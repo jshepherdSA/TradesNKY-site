@@ -295,14 +295,14 @@ export default function PolicymakersPage() {
                   <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-3 sm:gap-6">
                     {[
                       {
-                        stat: "XX%",
+                        stat: "40%",
                         label:
                           "of the regional skilled workforce is nearing retirement this decade",
                       },
                       {
-                        stat: "XX,XXX",
+                        stat: "90,863",
                         label:
-                          "of family-supporting jobs to fill across Northern Kentucky",
+                          "open skilled roles across Northern Kentucky's Essential Workforce Industries",
                       },
                       {
                         stat: "Higher",

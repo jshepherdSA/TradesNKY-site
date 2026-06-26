@@ -65,7 +65,9 @@ type HeroSectionProps = {
 
 // Two-part rotating headline: [PILLAR] [PAIRED]. The pillar (left) holds while
 // its pool of paired words (right) cycles, then advances to the next pillar.
-// Order and pools are fixed; the first visible pair is always BUILD FUTURES.
+// Order and pools are fixed; the first visible pair is always BUILD SKILLS.
+// (The pillar pages keep their own word pools — see `rotatingWords` in
+// students/pillars/data.ts; this pool drives only the home hero.)
 const PILLAR_PAIRS: {
   pillar: string;
   /** Tailwind text-color class for the pillar's DESIGN.md color token. */
@@ -75,41 +77,36 @@ const PILLAR_PAIRS: {
   {
     pillar: "Build",
     pillarColor: "text-pillar-build",
-    pairs: ["Futures", "Homes", "Systems", "Infrastructure", "Paths"],
+    pairs: ["Skills", "Futures"],
   },
   {
     pillar: "Make",
     pillarColor: "text-pillar-make",
-    pairs: ["Machines", "Robots", "Products", "Cars", "Components"],
+    pairs: ["Machines", "Robots"],
   },
   {
     pillar: "Power",
     pillarColor: "text-pillar-power",
-    pairs: [
-      "Your City",
-      "Your Community",
-      "Sustainably",
-      "America",
-      "Local Businesses",
-    ],
+    pairs: ["Businesses", "Communities"],
   },
   {
     pillar: "Move",
     pillarColor: "text-pillar-move",
-    pairs: ["People", "Products", "Food", "Packages", "Freight"],
+    pairs: ["People", "Packages"],
   },
   {
     pillar: "Protect",
     pillarColor: "text-pillar-protect",
-    pairs: [
-      "Your Community",
-      "Local Businesses",
-      "Public Health",
-      "The Workforce",
-      "The Environment",
-    ],
+    pairs: ["Communities", "Workers"],
   },
 ];
+
+// Longest "[Pillar] [Paired]" phrase across the whole pool. Used as an
+// invisible sizer so the clipped headline box is always wide enough for every
+// phrase (e.g. "Protect Communities") and never cuts a word off.
+const LONGEST_PHRASE = PILLAR_PAIRS.flatMap((p) =>
+  p.pairs.map((pair) => `${p.pillar} ${pair}`),
+).reduce((a, b) => (b.length > a.length ? b : a), "");
 
 const WORD_TRANSITION: Transition = { duration: 0.5, ease: EASE };
 
@@ -167,9 +164,9 @@ export function HeroSection({
   // clip reveal is the only desktop-gated motion).
   const introOn = started && !reducedMotion;
 
-  // Headline rotation. BUILD FUTURES holds for 2s on mount (the existing timing
+  // Headline rotation. BUILD SKILLS holds for 2s on mount (the existing timing
   // fix), then both words advance together every 2.5s. Disabled under
-  // prefers-reduced-motion, leaving BUILD FUTURES static.
+  // prefers-reduced-motion, leaving BUILD SKILLS static.
   useEffect(() => {
     if (reducedMotion) return;
     const id = setTimeout(() => {
@@ -253,44 +250,25 @@ export function HeroSection({
               variants={itemVariants}
               className="font-display italic font-tnky-black whitespace-nowrap leading-none tracking-[-0.025em] text-[length:clamp(2rem,4.5vw,4.5rem)]"
             >
-              {/* Pillar word (left): enters from above, exits upward; only
-                  re-keys — and therefore animates — when the pillar changes. */}
-              <span className="relative inline-block h-[1.2em] overflow-hidden px-1 align-bottom">
-                <span aria-hidden="true" className="invisible">
-                  {current.pillar}
-                </span>
-                <AnimatePresence initial={false}>
-                  <motion.span
-                    key={current.pillar}
-                    className={cn(
-                      "absolute left-1 top-0 whitespace-nowrap",
-                      current.pillarColor,
-                    )}
-                    initial={{ y: -40, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: 40, opacity: 0 }}
-                    transition={WORD_TRANSITION}
-                  >
-                    {current.pillar}
-                  </motion.span>
-                </AnimatePresence>
-              </span>{" "}
-              {/* Paired word (right): enters from below, exits downward;
-                  re-keys on every cycle. */}
-              <span className="relative inline-block h-[1.2em] overflow-hidden px-1 align-bottom text-tnky-blue">
-                <span aria-hidden="true" className="invisible">
-                  {current.pair}
+              {/* One line: [PILLAR] [PAIRED] scroll up together as a single
+                  phrase. An invisible copy of the longest phrase fixes the
+                  box width, so the clipped box never resizes (no horizontal
+                  twitch) and is always wide enough to show every word. */}
+              <span className="relative inline-block h-[1.2em] overflow-hidden px-2 align-bottom">
+                <span aria-hidden="true" className="invisible whitespace-nowrap">
+                  {LONGEST_PHRASE}
                 </span>
                 <AnimatePresence initial={false}>
                   <motion.span
                     key={`${rotation.pillarIndex}-${rotation.poolIndices[rotation.pillarIndex]}`}
-                    className="absolute left-1 top-0 whitespace-nowrap"
-                    initial={{ y: 40, opacity: 0 }}
+                    className="absolute left-2 top-0 whitespace-nowrap"
+                    initial={{ y: "100%", opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -40, opacity: 0 }}
+                    exit={{ y: "-100%", opacity: 0 }}
                     transition={WORD_TRANSITION}
                   >
-                    {current.pair}
+                    <span className={current.pillarColor}>{current.pillar}</span>{" "}
+                    <span className="text-tnky-blue">{current.pair}</span>
                   </motion.span>
                 </AnimatePresence>
               </span>

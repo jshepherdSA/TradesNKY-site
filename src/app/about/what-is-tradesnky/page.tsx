@@ -8,7 +8,6 @@ import {
   Briefcase,
   ClipboardCheck,
   Compass,
-  Flag,
   Hammer,
   Handshake,
   Play,
@@ -119,36 +118,54 @@ function SectionHeading({
   );
 }
 
-// Roadmap — past / present / future. The bullet copy is supplied by the
-// client; until then each column renders a placeholder. Fill the `bullets`
-// arrays to populate the lists (the markup renders them automatically).
+// Roadmap timeline — copy taken from the client's "Roadmap Content"
+// document. Each entry is a year (or the forward-looking close) with one or
+// more narrative paragraphs.
 const ROADMAP: {
-  icon: typeof BookOpen;
-  tense: string;
+  year: string;
   title: string;
-  note: string;
-  bullets: string[];
+  body: string[];
+  /** Forward-looking close — rendered with the safety accent + arrow node. */
+  future?: boolean;
 }[] = [
   {
-    icon: Flag,
-    tense: "Past",
-    title: "How It Started",
-    note: "What the trades started off as.",
-    bullets: [],
+    year: "2023",
+    title: "A Vision Takes Shape",
+    body: [
+      "Phil Griffin, President and CEO of AnyWeather Companies, and Brandon and Sara Bray, owners of Bray Construction Services, experienced firsthand the growing shortage of skilled workers across Northern Kentucky. Rather than accepting the challenge as inevitable, they came together to create a long-term solution, one that would introduce students to rewarding career pathways before they ever entered high school. That vision became TradesNKY.",
+      "Later that year, TradesNKY launched its first partnership with Campbell County Middle School, piloting an industry-informed construction curriculum that connected classroom learning with real-world careers.",
+    ],
   },
   {
-    icon: Hammer,
-    tense: "Present",
-    title: "What We Do",
-    note: "What TradesNKY does currently.",
-    bullets: [],
+    year: "2024",
+    title: "Building the Foundation",
+    body: [
+      "Following a successful pilot, TradesNKY expanded the depth and scope of its curriculum. The program evolved from a single nine-week introductory course into a comprehensive curriculum spanning three years, including an introduction course, exploratory course, and advanced course in preparation for high school.",
+      "At the same time, the curriculum broadened beyond construction to represent the entire BUILD industry, introducing students to careers in carpentry, electrical, HVAC, masonry, plumbing, and more.",
+    ],
   },
   {
-    icon: TrendingUp,
-    tense: "Future",
-    title: "Where We're Going",
-    note: "Things coming down the line.",
-    bullets: [],
+    year: "2025",
+    title: "Expanding the Vision",
+    body: [
+      "Momentum accelerated with the addition of Holmes Middle School and transformative investments from the Spirit of Construction Foundation and BE NKY Growth Partnership. During this period, the organization's vision expanded beyond traditional construction careers to represent the entire essential workforce dealing with the growing labor shortage. New career pathways were introduced through the pillars of manufacturing (MAKE), transportation and logistics (MOVE), utilities and energy (POWER), and public safety (PROTECT).",
+    ],
+  },
+  {
+    year: "2026",
+    title: "Growing Regional Impact",
+    body: [
+      "With support from the Kenton County Fiscal Court, TradesNKY expanded from serving two schools to eight middle schools across Northern Kentucky, dramatically increasing student access to hands-on career exploration.",
+      "TradesNKY also hosted its inaugural skillUP Career Exploration Fair at Gateway Community & Technical College, bringing together students, educators, and industry partners for an immersive experience designed to build awareness of high-demand career pathways.",
+    ],
+  },
+  {
+    year: "Next",
+    title: "Looking Ahead",
+    future: true,
+    body: [
+      "TradesNKY remains committed to preparing the next generation of Kentucky's essential workforce. In the years ahead, we will continue expanding into additional school districts, strengthening partnerships with industry leaders, and developing innovative, hands-on curricula that connect students with meaningful careers across the BUILD, MAKE, MOVE, POWER, and PROTECT pathways.",
+    ],
   },
 ];
 
@@ -239,18 +256,53 @@ export default function WhatIsTradesNkyPage() {
                 <Zap className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
                 Flagship Event
               </span>
-              <h2 className="mt-5 font-display italic font-tnky-black leading-[1.04] tracking-[-0.02em] text-tnky-safety text-[length:clamp(2.5rem,5vw,4rem)]">
-                skillUP
+              <h2 className="mt-5">
+                <span className="inline-flex rounded-2xl bg-tnky-white p-5 shadow-tnky-2">
+                  <Image
+                    src="/brand/skillup-logo.png"
+                    alt="skillUP"
+                    width={256}
+                    height={256}
+                    className="h-28 w-28 md:h-32 md:w-32"
+                  />
+                </span>
               </h2>
               <div
                 aria-hidden="true"
                 className="mt-5 h-1 w-20 rounded-full bg-tnky-safety"
               />
               <p className="mt-6 max-w-lead text-lead font-medium leading-relaxed text-tnky-white/90 [text-wrap:pretty]">
-                Our annual regional career exploration event, where students
-                interact directly with employers and discover careers across the
-                BUILD, MAKE, MOVE, POWER, and PROTECT pathways.
+                skillUP is TradesNKY&apos;s annual interactive career exploration
+                event that connects middle school students with hands-on
+                experiences in the skilled trades. Students engage directly with
+                industry professionals and employers to discover rewarding career
+                pathways that are helping build the future of NKY.
               </p>
+
+              {/* 2026 event numbers */}
+              <div className="mt-8">
+                <p className="font-display font-bold uppercase tracking-label text-mini text-tnky-safety">
+                  skillUP 2026
+                </p>
+                <dl className="mt-3 flex flex-wrap gap-x-12 gap-y-4">
+                  <div>
+                    <dt className="font-display font-tnky-black text-stat-lg leading-none text-tnky-white">
+                      1,051
+                    </dt>
+                    <dd className="mt-1 text-small font-medium text-tnky-white/80">
+                      students attended
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-display font-tnky-black text-stat-lg leading-none text-tnky-white">
+                      45+
+                    </dt>
+                    <dd className="mt-1 text-small font-medium text-tnky-white/80">
+                      exhibitors
+                    </dd>
+                  </div>
+                </dl>
+              </div>
             </div>
 
             {/* Right — landscape video player (source uploaded later) */}
@@ -405,65 +457,70 @@ export default function WhatIsTradesNkyPage() {
         </div>
       </FadeInSection>
 
-      {/* ── OUR ROADMAP — past / present / future ───────────────── */}
+      {/* ── OUR ROADMAP — timeline ──────────────────────────────── */}
       <FadeInSection className="bg-tnky-cream">
         <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
           <div className="mx-auto max-w-2xl text-center">
             <SectionHeading center>Our Roadmap</SectionHeading>
             <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              Where TradesNKY has been, what we do today, and where we are
-              headed next.
+              From a shared vision to growing regional impact — how TradesNKY
+              has taken shape, year by year.
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {ROADMAP.map((col) => {
-              const Icon = col.icon;
+          <ol className="mx-auto mt-12 max-w-3xl">
+            {ROADMAP.map((item, i) => {
+              const isLast = i === ROADMAP.length - 1;
               return (
-                <div
-                  key={col.title}
-                  className="flex flex-col rounded-2xl border border-tnky-edge bg-tnky-white p-6 shadow-tnky-1 md:p-8"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tnky-blue/10 text-tnky-blue">
-                    <Icon
-                      className="h-6 w-6"
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <p className="mt-4 font-display font-bold uppercase tracking-label text-mini text-tnky-blue">
-                    {col.tense}
-                  </p>
-                  <h3 className="mt-1 font-display italic font-extrabold text-card-title text-tnky-ink [text-wrap:balance]">
-                    {col.title}
-                  </h3>
-                  <p className="mt-2 text-small font-medium leading-relaxed text-tnky-mute [text-wrap:pretty]">
-                    {col.note}
-                  </p>
-                  {col.bullets.length > 0 ? (
-                    <ul className="mt-5 space-y-2.5 border-t border-tnky-edge pt-5">
-                      {col.bullets.map((b) => (
-                        <li
-                          key={b}
-                          className="flex items-start gap-2 text-small font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]"
+                <li key={item.title} className="relative flex gap-5 sm:gap-6">
+                  {/* Year node + connecting rail. */}
+                  <div className="flex w-14 shrink-0 flex-col items-center">
+                    <span
+                      className={cn(
+                        "z-10 flex h-14 w-14 items-center justify-center rounded-full font-display font-tnky-black shadow-tnky-1",
+                        item.future
+                          ? "bg-tnky-safety text-tnky-safety-ink"
+                          : "bg-tnky-blue text-tnky-white",
+                      )}
+                    >
+                      {item.future ? (
+                        <TrendingUp
+                          className="h-6 w-6"
+                          strokeWidth={2}
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <span className="text-small">{item.year}</span>
+                      )}
+                    </span>
+                    {!isLast && (
+                      <span
+                        aria-hidden="true"
+                        className="w-0.5 flex-1 bg-tnky-edge"
+                      />
+                    )}
+                  </div>
+
+                  {/* Phase content. */}
+                  <div className={cn("flex-1", isLast ? "pb-0" : "pb-10")}>
+                    <h3 className="font-display italic font-extrabold text-card-title text-tnky-ink [text-wrap:balance]">
+                      {item.title}
+                    </h3>
+                    <div className="mt-3 space-y-3">
+                      {item.body.map((p) => (
+                        <p
+                          key={p}
+                          className="text-small font-medium leading-relaxed text-tnky-mute [text-wrap:pretty]"
                         >
-                          <span
-                            aria-hidden="true"
-                            className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-tnky-safety"
-                          />
-                          <span>{b}</span>
-                        </li>
+                          {p}
+                        </p>
                       ))}
-                    </ul>
-                  ) : (
-                    <p className="mt-5 border-t border-tnky-edge pt-5 text-small font-medium italic text-tnky-mute">
-                      Bullet points coming soon.
-                    </p>
-                  )}
-                </div>
+                    </div>
+                  </div>
+                </li>
               );
             })}
-          </div>
+          </ol>
         </div>
       </FadeInSection>
 

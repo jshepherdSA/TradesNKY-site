@@ -368,11 +368,11 @@ export default function EmployersPage() {
                         Cost to Replace
                       </p>
                       <p className="mt-3 font-display font-tnky-black text-stat-xl leading-none text-tnky-white">
-                        20–30%
+                        ½–2×
                       </p>
                       <p className="mt-3 text-body font-medium leading-relaxed text-tnky-white/85 [text-wrap:pretty]">
-                        of an employee&apos;s annual salary is the typical cost to find
-                        and train a replacement.
+                        an employee&apos;s annual salary is the typical cost to
+                        replace them.
                       </p>
                     </div>
                     <div className="bg-tnky-cream p-8 md:p-10 lg:col-span-3">

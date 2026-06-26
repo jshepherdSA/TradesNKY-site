@@ -106,21 +106,16 @@ export default async function PillarPage({
         </div>
       </section>
 
-      {/* 3. Open roles + employers — pillar-colored stat band. Counts are
-          placeholders ("XX,XXX") pending verified labor-market data; company
-          names are client-provided only. */}
+      {/* 3. Open roles + employers — pillar-colored stat band. Counts and
+          company names are client-provided (Pillars + Data). */}
       <section className={`${path.bgClass} text-tnky-white py-band`}>
         <div className="max-w-content mx-auto px-4 sm:px-8">
           <p className="mb-8 text-center font-display font-extrabold uppercase text-eyebrow text-tnky-white/80">
             Open roles right now
           </p>
-          <div className="grid grid-cols-1 gap-8 text-center sm:grid-cols-3 sm:gap-6">
+          <div className="mx-auto grid max-w-3xl grid-cols-1 gap-8 text-center sm:grid-cols-2 sm:gap-6">
             {[
               { value: path.openRoles.nky, label: "Open roles in Northern Kentucky" },
-              {
-                value: path.openRoles.cincy,
-                label: "Open roles in the Greater Cincinnati MSA",
-              },
               { value: path.openRoles.ky, label: "Open roles across Kentucky" },
             ].map((s) => (
               <div key={s.label}>

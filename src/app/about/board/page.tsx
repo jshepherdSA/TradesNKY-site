@@ -72,7 +72,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
   {
     name: "Randy Hemmerle",
     bio: "Krauss Maffei",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/randy-hemmerle.png",
     imageAlt: "",
   },
   {
@@ -88,9 +88,9 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     imageAlt: "",
   },
   {
-    // TODO: add Kevin's last name, organization, and headshot when supplied.
-    name: "Kevin",
-    image: PLACEHOLDER_PHOTO,
+    // TODO: add Kevin Cheek's organization when supplied.
+    name: "Kevin Cheek",
+    image: "/brand/board/kevin-cheek.jpg",
     imageAlt: "",
   },
 ];

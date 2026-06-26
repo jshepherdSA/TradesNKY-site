@@ -1,46 +1,37 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Story = {
-  name: string;
-  caption: string;
+  /** Reel video served from /public. */
+  src: string;
   tag: string;
+  caption?: string;
 };
 
+// Reels live in /public/videos/reels. Large files, so each <video> uses
+// preload="metadata" — the full clip only downloads when played.
 const stories: Story[] = [
   {
-    name: "Marcus, 17",
-    caption: "I never thought I'd be earning $18/hr before graduation",
-    tag: "Student",
+    src: "/videos/reels/ccms-virtual-welding.mp4",
+    tag: "Welding",
+    caption: "Virtual welding at Campbell County Middle School",
   },
   {
-    name: "Dana Rivera",
-    caption: "We hire TradesNKY graduates every year",
-    tag: "Employer",
+    src: "/videos/reels/campbell-county-hs-event.mp4",
+    tag: "Event",
+    caption: "TradesNKY event at Campbell County High School",
   },
   {
-    name: "Tyler B.",
-    caption: "My HVAC apprenticeship started junior year",
-    tag: "Apprentice",
+    src: "/videos/reels/tradesnky-reel-1.mp4",
+    tag: "TradesNKY",
   },
   {
-    name: "Coach Williams",
-    caption: "We expose our 5th graders to the trades now",
-    tag: "Educator",
-  },
-  {
-    name: "Keisha M.",
-    caption: "Electrical work pays more than my college friends make",
-    tag: "Trades Pro",
-  },
-  {
-    name: "Sam Chen",
-    caption: "I thought trades weren't for me. I was wrong",
-    tag: "Student",
+    src: "/videos/reels/tradesnky-reel-2.mp4",
+    tag: "TradesNKY",
   },
 ];
 
@@ -60,11 +51,28 @@ export function RealStories() {
   // Start at the middle card so neighbors are visible on both sides
   // from the very first paint of the carousel.
   const [active, setActive] = useState(() => Math.floor(stories.length / 2));
+  // Index of the reel currently playing (null = none).
+  const [playing, setPlaying] = useState<number | null>(null);
   const reducedMotion = useReducedMotion();
 
   const go = useCallback((dir: 1 | -1) => {
     setActive((cur) => (cur + dir + stories.length) % stories.length);
+    setPlaying(null);
   }, []);
+
+  // Click/keyboard on a card: bring it to center, or — if already centered —
+  // start its reel.
+  const activate = useCallback(
+    (i: number, isActive: boolean) => {
+      if (isActive) {
+        setPlaying(i);
+      } else {
+        setActive(i);
+        setPlaying(null);
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -127,7 +135,7 @@ export function RealStories() {
 
                 return (
                   <motion.div
-                    key={story.name}
+                    key={story.src}
                     className={cn(
                       "absolute",
                       isActive &&
@@ -144,13 +152,13 @@ export function RealStories() {
                       zIndex: t.z,
                       pointerEvents: visible ? undefined : "none",
                     }}
-                    onClick={() => {
-                      if (!isActive && visible) setActive(i);
-                    }}
                   >
                     <StoryCard
                       story={story}
+                      isActive={isActive}
+                      isPlaying={playing === i}
                       reducedMotion={Boolean(reducedMotion)}
+                      onActivate={() => activate(i, isActive)}
                     />
                     {/* Vignette — sits on top of the card, fades to 0 on the
                         active card. Wrapped on a motion.div so the opacity
@@ -184,11 +192,32 @@ export function RealStories() {
 
 function StoryCard({
   story,
+  isActive,
+  isPlaying,
   reducedMotion,
+  onActivate,
 }: {
   story: Story;
+  isActive: boolean;
+  isPlaying: boolean;
   reducedMotion: boolean;
+  onActivate: () => void;
 }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Play on becoming active+selected; pause and rewind otherwise so only one
+  // reel ever plays and inactive cards show their first frame again.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (isPlaying) {
+      void v.play().catch(() => {});
+    } else {
+      v.pause();
+      v.currentTime = 0;
+    }
+  }, [isPlaying]);
+
   const hoverProps = reducedMotion
     ? {}
     : { whileHover: "hover", whileFocus: "hover" };
@@ -197,6 +226,17 @@ function StoryCard({
     <motion.article
       data-story-card
       tabIndex={0}
+      role="button"
+      aria-label={
+        story.caption ? `Play reel: ${story.caption}` : "Play TradesNKY reel"
+      }
+      onClick={onActivate}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onActivate();
+        }
+      }}
       initial="idle"
       animate="idle"
       {...hoverProps}
@@ -211,37 +251,57 @@ function StoryCard({
       }}
       className="relative aspect-[9/16] w-[70vw] shrink-0 cursor-pointer snap-start overflow-hidden rounded-2xl bg-tnky-ink text-tnky-white focus:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-white sm:w-72 md:w-[17rem] lg:w-[19rem]"
     >
-      {/* Centered play button */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <motion.div
-          variants={{
-            idle: { scale: 1 },
-            hover: { scale: 1.1 },
-          }}
-          transition={{ type: "spring", stiffness: 320, damping: 18 }}
-          className="flex h-20 w-20 items-center justify-center rounded-full bg-tnky-white/15 backdrop-blur-sm ring-1 ring-tnky-white/30"
-        >
-          <Play
-            className="h-9 w-9 translate-x-0.5 fill-tnky-white text-tnky-white"
-            aria-hidden="true"
-          />
-        </motion.div>
-      </div>
+      {/* The reel itself. Native controls appear only while playing; otherwise
+          the card shows the first frame plus a play affordance. */}
+      <video
+        ref={videoRef}
+        className="absolute inset-0 h-full w-full object-cover"
+        preload="metadata"
+        playsInline
+        controls={isPlaying}
+        controlsList="nodownload"
+        tabIndex={-1}
+      >
+        <source src={`${story.src}#t=0.1`} type="video/mp4" />
+      </video>
 
-      {/* Bottom gradient + meta */}
-      <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1 bg-gradient-to-t from-tnky-ink/90 via-tnky-ink/60 to-transparent p-5 pt-16">
-        <span className="font-display font-extrabold uppercase tracking-eyebrow text-meta text-tnky-safety">
-          {story.tag}
-        </span>
-        <p className="font-display font-bold text-card-title text-tnky-white">
-          {story.name}
-        </p>
-        <p className="text-small text-tnky-white/80 [text-wrap:pretty]">
-          {story.caption}
-        </p>
-      </div>
+      {!isPlaying && (
+        <>
+          {/* Centered play button */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <motion.div
+              variants={{
+                idle: { scale: 1 },
+                hover: { scale: 1.1 },
+              }}
+              transition={{ type: "spring", stiffness: 320, damping: 18 }}
+              className="flex h-20 w-20 items-center justify-center rounded-full bg-tnky-white/15 backdrop-blur-sm ring-1 ring-tnky-white/30"
+            >
+              <Play
+                className="h-9 w-9 translate-x-0.5 fill-tnky-white text-tnky-white"
+                aria-hidden="true"
+              />
+            </motion.div>
+          </div>
 
-      <span className="sr-only">Play story from {story.name}</span>
+          {/* Bottom gradient + meta */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-1 bg-gradient-to-t from-tnky-ink/90 via-tnky-ink/60 to-transparent p-5 pt-16">
+            <span className="font-display font-extrabold uppercase tracking-eyebrow text-meta text-tnky-safety">
+              {story.tag}
+            </span>
+            {story.caption ? (
+              <p className="text-small text-tnky-white/90 [text-wrap:pretty]">
+                {story.caption}
+              </p>
+            ) : null}
+          </div>
+        </>
+      )}
+
+      {/* Active-but-not-playing affordance for screen readers. */}
+      {isActive && !isPlaying ? (
+        <span className="sr-only">Press to play this reel</span>
+      ) : null}
     </motion.article>
   );
 }

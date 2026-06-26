@@ -2,7 +2,7 @@ const STATS = [
   { num: "$63K", lbl: "median journey-level salary in NKY" },
   { num: "1M+", lbl: "unfilled skilled-trade jobs nationwide" },
   { num: "43%", lbl: "earnings jump for apprentices within 2.5 years" },
-  { num: "XX%+", lbl: "of the workforce retiring this decade" },
+  { num: "40%+", lbl: "of the workforce retiring this decade" },
 ];
 
 export function StatBar() {

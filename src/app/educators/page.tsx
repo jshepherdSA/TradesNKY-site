@@ -226,7 +226,7 @@ export default function EducatorsPage() {
             {[
               {
                 icon: GraduationCap,
-                stat: "XX%",
+                stat: "99%",
                 label: "graduation rate for CTE concentrators",
               },
               {
@@ -241,7 +241,7 @@ export default function EducatorsPage() {
               },
               {
                 icon: Compass,
-                stat: "X in XX",
+                stat: "98%",
                 label: "graduate with a clear next step",
               },
             ].map((tile) => {
@@ -269,7 +269,7 @@ export default function EducatorsPage() {
             })}
           </div>
           <p className="mt-6 text-center text-micro font-medium uppercase tracking-tag text-tnky-mute">
-            Figures reflect national CTE research and are illustrative.
+            Figures reflect Kentucky and national CTE research.
           </p>
         </div>
       </FadeInSection>
