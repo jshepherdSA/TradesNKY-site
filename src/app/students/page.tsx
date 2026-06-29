@@ -21,6 +21,7 @@ import { AudienceHero } from "../_components/audience-hero";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
 import { ShareButton } from "../_components/share-button";
 import { ReadMore } from "../_components/read-more";
+import { FivePathsAccordion } from "../_components/five-paths-accordion";
 import { PATHS, PATH_SLUGS } from "./pillars/data";
 import { cn } from "@/lib/utils";
 
@@ -209,6 +210,9 @@ export default function StudentsPage() {
           </div>
         </div>
       </FadeInSection>
+
+      {/* ── THE FIVE PILLARS — interactive accordion (shared component) ── */}
+      <FivePathsAccordion />
 
       {/* ── SECOND SECTION — The Technology Behind Modern Careers ─── */}
       <FadeInSection className="bg-tnky-cream">

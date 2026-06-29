@@ -247,7 +247,7 @@ export default function WhatIsTradesNkyPage() {
       </div>
 
       {/* ── skillUP — flagship regional event ───────────────────── */}
-      <FadeInSection className="bg-tnky-blue">
+      <FadeInSection className="bg-tnky-white">
         <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
             {/* Left — copy */}
@@ -257,21 +257,19 @@ export default function WhatIsTradesNkyPage() {
                 Flagship Event
               </span>
               <h2 className="mt-5">
-                <span className="inline-flex rounded-2xl bg-tnky-white p-5 shadow-tnky-2">
-                  <Image
-                    src="/brand/skillup-logo.png"
-                    alt="skillUP"
-                    width={256}
-                    height={256}
-                    className="h-28 w-28 md:h-32 md:w-32"
-                  />
-                </span>
+                <Image
+                  src="/brand/skillup-logo.png"
+                  alt="skillUP"
+                  width={256}
+                  height={256}
+                  className="h-32 w-32 md:h-40 md:w-40"
+                />
               </h2>
               <div
                 aria-hidden="true"
                 className="mt-5 h-1 w-20 rounded-full bg-tnky-safety"
               />
-              <p className="mt-6 max-w-lead text-lead font-medium leading-relaxed text-tnky-white/90 [text-wrap:pretty]">
+              <p className="mt-6 max-w-lead text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
                 skillUP is TradesNKY&apos;s annual interactive career exploration
                 event that connects middle school students with hands-on
                 experiences in the skilled trades. Students engage directly with
@@ -281,23 +279,23 @@ export default function WhatIsTradesNkyPage() {
 
               {/* 2026 event numbers */}
               <div className="mt-8">
-                <p className="font-display font-bold uppercase tracking-label text-mini text-tnky-safety">
+                <p className="font-display font-bold uppercase tracking-label text-mini text-tnky-blue">
                   skillUP 2026
                 </p>
                 <dl className="mt-3 flex flex-wrap gap-x-12 gap-y-4">
                   <div>
-                    <dt className="font-display font-tnky-black text-stat-lg leading-none text-tnky-white">
+                    <dt className="font-display font-tnky-black text-stat-lg leading-none text-tnky-blue">
                       1,051
                     </dt>
-                    <dd className="mt-1 text-small font-medium text-tnky-white/80">
+                    <dd className="mt-1 text-small font-medium text-tnky-mute">
                       students attended
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-display font-tnky-black text-stat-lg leading-none text-tnky-white">
+                    <dt className="font-display font-tnky-black text-stat-lg leading-none text-tnky-blue">
                       45+
                     </dt>
-                    <dd className="mt-1 text-small font-medium text-tnky-white/80">
+                    <dd className="mt-1 text-small font-medium text-tnky-mute">
                       exhibitors
                     </dd>
                   </div>
