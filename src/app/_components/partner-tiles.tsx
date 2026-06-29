@@ -17,6 +17,9 @@ export type PartnerTile = {
   /** Optional extra classes for the logo image — e.g. a scale to make one
    *  partner's mark read larger than the others in its row. */
   logoClassName?: string;
+  /** Set for all-white logos: renders the mark on a dark brand chip so it
+   *  stays visible against the white card. */
+  logoDark?: boolean;
 };
 
 export type PartnerTileGroup = {
@@ -73,14 +76,23 @@ export function PartnerTiles({ groups }: { groups: PartnerTileGroup[] }) {
                     transition={{ type: "spring", stiffness: 300, damping: 22 }}
                     className="flex h-full flex-col rounded-2xl border-2 border-tnky-blue bg-tnky-white p-8 shadow-tnky-2 transition-shadow duration-200 ease-tnky hover:shadow-tnky-3 md:p-10"
                   >
-                    <div className="relative h-20 w-full">
+                    <div
+                      className={cn(
+                        "relative h-20 w-full",
+                        p.logoDark && "rounded-lg bg-tnky-blue",
+                      )}
+                    >
                       {p.logoSrc ? (
                         <Image
                           src={p.logoSrc}
                           alt={`${p.name} logo`}
                           fill
                           sizes="(min-width: 768px) 20vw, 50vw"
-                          className={cn("object-contain object-left", p.logoClassName)}
+                          className={cn(
+                            "object-contain object-left",
+                            p.logoDark && "object-center p-4",
+                            p.logoClassName,
+                          )}
                         />
                       ) : (
                         <div

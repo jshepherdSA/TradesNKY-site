@@ -10,7 +10,6 @@ import {
   Compass,
   Hammer,
   Handshake,
-  Play,
   Settings,
   TrendingUp,
   Users,
@@ -40,6 +39,8 @@ const APPROACH: {
   icon: typeof BookOpen;
   label: string;
   desc: string;
+  /** Condensed copy for the compact supporting cards. */
+  short?: string;
   featured?: boolean;
 }[] = [
   {
@@ -52,36 +53,43 @@ const APPROACH: {
     icon: Hammer,
     label: "Hands-On Learning",
     desc: "Engaging, project-based lessons that help students discover the skills, technologies, and careers that power our communities.",
+    short: "Project-based lessons that bring skills and careers to life.",
   },
   {
     icon: Settings,
     label: "Customized Implementation",
     desc: "Tailored to the unique goals, schedules, and needs of each school district, classroom, and student.",
+    short: "Tailored to each district, classroom, and student.",
   },
   {
     icon: Handshake,
     label: "Dedicated School Partnerships",
     desc: "One-on-one support throughout implementation to ensure successful program delivery.",
+    short: "One-on-one support through implementation.",
   },
   {
     icon: Users,
     label: "Educator Support",
     desc: "The Essential Workforce Educator Network gives teachers professional development, resources, and a community of practice.",
+    short: "Professional development and a community of practice for teachers.",
   },
   {
     icon: Briefcase,
     label: "Industry Engagement",
     desc: "Professionals come into classrooms to share their career journeys, workplace experiences, and industry expertise.",
+    short: "Professionals share their career journeys in the classroom.",
   },
   {
     icon: Compass,
     label: "Career Exploration Experiences",
     desc: "Job site visits and facility tours that give students firsthand exposure to the essential trades in action.",
+    short: "Job-site visits and facility tours of the trades in action.",
   },
   {
     icon: ClipboardCheck,
     label: "Employer Engagement Toolkit",
     desc: "Helps employers understand how to hire students for pre-apprentice and apprenticeship programs.",
+    short: "Helps employers hire students for apprenticeships.",
   },
 ];
 
@@ -196,47 +204,85 @@ export default function WhatIsTradesNkyPage() {
               className="mt-5 h-1 w-20 rounded-full bg-tnky-safety"
             />
             <p className="mt-6 max-w-lead text-lead font-medium text-tnky-white/85 [text-wrap:pretty]">
-              A career pathway program connecting Northern Kentucky students to
-              high-demand skilled trades — from elementary school through
-              post-graduation.
+              A career pathway program bridging Northern Kentucky schools and
+              industry to spark student discovery of essential, skilled trades
+              careers.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── OVERVIEW — THE ESSENTIAL WORKFORCE ──────────────────── */}
+      {/* ── THE TRADESNKY APPROACH ──────────────────────────────── */}
       <FadeInSection className="bg-tnky-cream">
         <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-            <div>
-              <SectionHeading>The Essential Workforce</SectionHeading>
-              <div className="mt-6 space-y-4 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                <p>
-                  The essential workforce keeps our communities running, from
-                  constructing buildings and manufacturing products to powering
-                  infrastructure, transporting goods, and protecting public
-                  safety. TradesNKY ensures students understand these
-                  opportunities before making important decisions about their
-                  futures.
-                </p>
-                <p>
-                  By bringing education and industry together, we create
-                  hands-on learning experiences — through both a robust
-                  curriculum and in-depth career exploration — that inspire
-                  students, support educators, and strengthen the workforce that
-                  will shape Northern Kentucky for generations.
-                </p>
+          <div className="mx-auto max-w-3xl text-center">
+            <SectionHeading center>The TradesNKY Approach</SectionHeading>
+            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+              TradesNKY partners directly with schools, educators, and industry
+              to deliver an industry-informed curriculum and meaningful career
+              exploration experiences that connect classroom learning with the
+              real world.
+            </p>
+          </div>
+
+          {/* Featured — the Industry-Informed Curriculum leads as the core of
+              the program, full-width above the supporting practices. */}
+          {APPROACH.filter((item) => item.featured).map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.label}
+                className="mt-12 rounded-2xl bg-tnky-blue p-8 shadow-tnky-2 md:p-10"
+              >
+                <div className="flex flex-col gap-6 md:flex-row md:items-center">
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-tnky-safety text-tnky-safety-ink">
+                    <Icon
+                      className="h-8 w-8"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <div>
+                    <p className="font-display font-bold uppercase tracking-label text-mini text-tnky-safety">
+                      The Core of Our Program
+                    </p>
+                    <h3 className="mt-1 font-display italic font-tnky-black leading-tight text-h3 text-tnky-white">
+                      {item.label}
+                    </h3>
+                    <p className="mt-3 max-w-3xl text-body font-medium leading-relaxed text-tnky-white/85 [text-wrap:pretty]">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="relative min-h-[20rem] w-full overflow-hidden rounded-xl shadow-tnky-2 lg:h-full">
-              <Image
-                src="/images/students-event.jpg"
-                alt="Students connecting with tradespeople at a TradesNKY career event"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+            );
+          })}
+
+          {/* Supporting practices — compact squares. */}
+          <div className="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {APPROACH.filter((item) => !item.featured).map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.label}
+                  className="flex flex-col rounded-xl border border-tnky-edge bg-tnky-white p-5 shadow-tnky-1"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-tnky-blue/10 text-tnky-blue">
+                    <Icon
+                      className="h-5 w-5"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <h3 className="mt-3 font-display font-extrabold text-body text-tnky-ink [text-wrap:balance]">
+                    {item.label}
+                  </h3>
+                  <p className="mt-1.5 text-mini font-medium leading-relaxed text-tnky-mute [text-wrap:pretty]">
+                    {item.short ?? item.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </FadeInSection>
@@ -303,104 +349,18 @@ export default function WhatIsTradesNkyPage() {
               </div>
             </div>
 
-            {/* Right — landscape video player (source uploaded later) */}
+            {/* Right — landscape skillUP video */}
             <div className="relative aspect-video w-full overflow-hidden rounded-2xl border-4 border-tnky-safety bg-tnky-ink shadow-tnky-2">
-              {/* TODO(video): replace this placeholder with the uploaded
-                  landscape video, e.g.:
-                  <video
-                    className="h-full w-full object-cover"
-                    controls
-                    playsInline
-                    poster="/images/skillup-poster.jpg"
-                  >
-                    <source src="/videos/skillup.mp4" type="video/mp4" />
-                  </video> */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-tnky-blue to-tnky-ink">
-                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-tnky-safety text-tnky-safety-ink shadow-tnky-2">
-                  <Play
-                    className="ml-1 h-9 w-9 fill-current"
-                    strokeWidth={0}
-                    aria-hidden="true"
-                  />
-                </span>
-                <p className="font-display font-semibold uppercase tracking-label text-mini text-tnky-white/70">
-                  Video coming soon
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </FadeInSection>
-
-      {/* ── THE TRADESNKY APPROACH ──────────────────────────────── */}
-      <FadeInSection className="bg-tnky-cream">
-        <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <SectionHeading center>The TradesNKY Approach</SectionHeading>
-            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-              TradesNKY partners directly with schools, educators, and industry
-              to deliver meaningful career exploration experiences that connect
-              classroom learning with the real world.
-            </p>
-          </div>
-
-          {/* Featured — the Industry-Informed Curriculum leads as the core of
-              the program, full-width above the supporting practices. */}
-          {APPROACH.filter((item) => item.featured).map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.label}
-                className="mt-12 rounded-2xl bg-tnky-blue p-8 shadow-tnky-2 md:p-10"
+              <video
+                className="h-full w-full object-cover"
+                controls
+                playsInline
+                preload="metadata"
+                poster="/images/skillup-poster.jpg"
               >
-                <div className="flex flex-col gap-6 md:flex-row md:items-center">
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-tnky-safety text-tnky-safety-ink">
-                    <Icon
-                      className="h-8 w-8"
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <div>
-                    <p className="font-display font-bold uppercase tracking-label text-mini text-tnky-safety">
-                      The Core of Our Program
-                    </p>
-                    <h3 className="mt-1 font-display italic font-tnky-black leading-tight text-h3 text-tnky-white">
-                      {item.label}
-                    </h3>
-                    <p className="mt-3 max-w-3xl text-body font-medium leading-relaxed text-tnky-white/85 [text-wrap:pretty]">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-
-          <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {APPROACH.filter((item) => !item.featured).map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.label}
-                  className="flex flex-col rounded-2xl border border-tnky-edge bg-tnky-white p-6 shadow-tnky-1"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tnky-blue/10 text-tnky-blue">
-                    <Icon
-                      className="h-6 w-6"
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <h3 className="mt-4 font-display font-extrabold text-card-title text-tnky-ink [text-wrap:balance]">
-                    {item.label}
-                  </h3>
-                  <p className="mt-2 text-small font-medium leading-relaxed text-tnky-mute [text-wrap:pretty]">
-                    {item.desc}
-                  </p>
-                </div>
-              );
-            })}
+                <source src="/videos/skillup.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
       </FadeInSection>

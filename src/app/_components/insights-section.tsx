@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { INSIGHTS } from "../insights/insights-data";
@@ -10,6 +11,8 @@ type FeaturedPost = {
   date: string;
   dateTime: string;
   href: string;
+  imageSrc: string;
+  imageAlt: string;
 };
 
 type SupportingPost = {
@@ -19,6 +22,8 @@ type SupportingPost = {
   date: string;
   dateTime: string;
   href: string;
+  imageSrc: string;
+  imageAlt: string;
 };
 
 type InsightsSectionProps = {
@@ -42,6 +47,8 @@ const DEFAULT_FEATURED: FeaturedPost = {
   date: INSIGHTS[0].date,
   dateTime: INSIGHTS[0].dateTime,
   href: `/insights/${INSIGHTS[0].slug}`,
+  imageSrc: INSIGHTS[0].imageSrc,
+  imageAlt: INSIGHTS[0].imageAlt,
 };
 
 const DEFAULT_POSTS: SupportingPost[] = INSIGHTS.slice(1, 4).map((i) => ({
@@ -51,6 +58,8 @@ const DEFAULT_POSTS: SupportingPost[] = INSIGHTS.slice(1, 4).map((i) => ({
   date: i.date,
   dateTime: i.dateTime,
   href: `/insights/${i.slug}`,
+  imageSrc: i.imageSrc,
+  imageAlt: i.imageAlt,
 }));
 
 const ACCENT_BASE =
@@ -63,7 +72,13 @@ function FeaturedCard({ post }: { post: FeaturedPost }) {
       className="group flex h-full flex-col overflow-hidden rounded-xl border border-tnky-edge bg-tnky-white shadow-tnky-2 transition-shadow duration-200 ease-tnky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-cream motion-safe:md:hover:shadow-tnky-3 motion-safe:md:focus-visible:shadow-tnky-3"
     >
       <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-tnky-cream-2 to-tnky-cream-3 transition-transform duration-700 ease-tnky motion-safe:md:group-hover:scale-105 motion-safe:md:group-focus-visible:scale-105" />
+        <Image
+          src={post.imageSrc}
+          alt={post.imageAlt}
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="object-cover transition-transform duration-700 ease-tnky motion-safe:md:group-hover:scale-105 motion-safe:md:group-focus-visible:scale-105"
+        />
         <span
           aria-hidden="true"
           className={`${ACCENT_BASE} left-4 top-4 h-5 w-0.5 origin-top scale-y-0 delay-75 motion-safe:md:group-hover:scale-y-100 motion-safe:md:group-focus-visible:scale-y-100`}
@@ -126,10 +141,15 @@ function SupportingCard({ post }: { post: SupportingPost }) {
       href={post.href}
       className="group flex flex-1 overflow-hidden rounded-lg border border-tnky-edge bg-tnky-white shadow-tnky-2 transition-all duration-200 ease-tnky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2 focus-visible:ring-offset-tnky-cream motion-safe:md:hover:-translate-y-1 motion-safe:md:hover:shadow-tnky-3 motion-safe:md:focus-visible:-translate-y-1 motion-safe:md:focus-visible:shadow-tnky-3"
     >
-      <div
-        aria-hidden="true"
-        className="w-24 shrink-0 self-stretch bg-gradient-to-br from-tnky-cream-2 to-tnky-cream-3 sm:w-32"
-      />
+      <div className="relative w-24 shrink-0 self-stretch overflow-hidden sm:w-32">
+        <Image
+          src={post.imageSrc}
+          alt={post.imageAlt}
+          fill
+          sizes="128px"
+          className="object-cover transition-transform duration-500 ease-tnky motion-safe:md:group-hover:scale-105 motion-safe:md:group-focus-visible:scale-105"
+        />
+      </div>
       <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5 p-4">
         <div className="flex flex-wrap items-center gap-2">
           <span className="rounded-pill bg-tnky-blue-100 px-2.5 py-0.5 text-meta font-display font-extrabold uppercase tracking-label text-tnky-blue">

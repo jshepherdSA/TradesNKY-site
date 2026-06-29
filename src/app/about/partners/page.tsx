@@ -98,7 +98,7 @@ const GROUPS: PartnerTileGroup[] = [
         name: "AnyWeather",
         category: "Industry Partner",
         description:
-          "A Northern Kentucky residential and commercial roofing, HVAC, and exterior contractor — hiring and training skilled-trades workers across the region.",
+          "A Tri-State residential and commercial contractor specializing in roofing, HVAC, electrical, remodeling, and restoration — hiring and training skilled-trades workers across the region.",
         website: "https://anyweatherhvac.com/",
         logoSrc: "/brand/partners/anyweather-2025.png",
       },
@@ -202,11 +202,13 @@ const GROUPS: PartnerTileGroup[] = [
       {
         name: "Learning Labs",
         category: "Community Catalyst",
-        // TODO(client): provide logo, official website, and an approved
-        // description. Placeholder copy + "#" link until then.
+        // TODO(client): official website + approved description still pending.
+        // Logo is the all-white mark, shown on a dark chip via `logoDark`.
         description:
           "A collaboration partner supporting TradesNKY's hands-on, lab-based approach to trades education across Northern Kentucky.",
         website: "#",
+        logoSrc: "/brand/partners/learninglabs.png",
+        logoDark: true,
       },
     ],
   },

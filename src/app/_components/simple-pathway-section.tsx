@@ -48,8 +48,8 @@ const STEPS: PathwayStep[] = [
     borderClass: "border-t-tnky-grass",
     dotClass: "bg-tnky-grass",
     highlights: [
-      "9-week curriculum for 6th grade",
-      "18-week curriculum for 7th–8th grade",
+      "9-week curriculum",
+      "18-week curriculum",
       "Introduction to the essential trades",
       "Industry terminology and process",
       "Trades technology and simulators",

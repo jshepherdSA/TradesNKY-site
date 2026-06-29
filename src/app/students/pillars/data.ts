@@ -42,7 +42,7 @@ export const PATHS: Record<string, PathData> = {
     slug: "build",
     name: "Build",
     blurb:
-      "Design, construct, and finish the homes, plants, and infrastructure that keep Northern Kentucky standing.",
+      "Build the spaces where we live, work, learn, and play. From homes and schools to hospitals and skyscrapers, BUILD careers shape the communities around us.",
     bgClass: "bg-pillar-build",
     textClass: "text-pillar-build",
     icon: Hammer,
@@ -118,7 +118,7 @@ export const PATHS: Record<string, PathData> = {
     slug: "make",
     name: "Make",
     blurb:
-      "Machine, weld, fabricate, and automate — the manufacturing work that turns raw material into finished product.",
+      "Design, build, and manufacture the products the world depends on. MAKE careers combine technology, precision, and innovation to transform raw materials into everything from medical devices to aircraft components.",
     bgClass: "bg-pillar-make",
     textClass: "text-pillar-make",
     icon: Factory,
@@ -181,7 +181,7 @@ export const PATHS: Record<string, PathData> = {
     slug: "move",
     name: "Move",
     blurb:
-      "Drive, dispatch, and coordinate the logistics network that runs through Northern Kentucky's distribution hubs.",
+      "Keep people, products, and businesses moving. MOVE careers power transportation, logistics, aviation, and the supply chains that connect our world.",
     bgClass: "bg-pillar-move",
     textClass: "text-pillar-move",
     icon: Truck,
@@ -244,7 +244,7 @@ export const PATHS: Record<string, PathData> = {
     slug: "power",
     name: "Power",
     blurb:
-      "Generate, transmit, and maintain the energy and utility systems the whole region depends on.",
+      "Generate, deliver, and maintain the energy that powers modern life. POWER careers keep our homes, businesses, and industries running safely and efficiently.",
     bgClass: "bg-pillar-power",
     textClass: "text-pillar-power",
     icon: Zap,
@@ -313,7 +313,7 @@ export const PATHS: Record<string, PathData> = {
     slug: "protect",
     name: "Protect",
     blurb:
-      "Operate, secure, and safeguard the facilities, public services, and systems that keep communities running.",
+      "Serve and protect the people and communities that depend on you. PROTECT careers focus on public safety, emergency response, security, and keeping workplaces safe.",
     bgClass: "bg-pillar-protect",
     textClass: "text-pillar-protect",
     icon: Shield,

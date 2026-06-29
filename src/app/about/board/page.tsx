@@ -105,8 +105,9 @@ const TEAM_MEMBERS: BoardMemberCardProps[] = [
     imageAlt: "",
   },
   {
-    // TODO: add Ellie's last name, title, and headshot when supplied.
-    name: "Ellie",
+    // TODO: add Elly Neltner's headshot when supplied.
+    name: "Elly Neltner",
+    title: "Program Coordinator",
     image: PLACEHOLDER_PHOTO,
     imageAlt: "",
   },
