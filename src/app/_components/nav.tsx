@@ -9,7 +9,6 @@ import {
   BookOpen,
   Briefcase,
   ChevronDown,
-  Compass,
   Factory,
   GraduationCap,
   Hammer,
@@ -153,15 +152,8 @@ const NAV_ITEMS: NavItem[] = [
       {
         items: [
           {
-            label: "Mission & Vision",
-            description: "Why TradesNKY exists and what we're building toward.",
-            href: "/about",
-            icon: Compass,
-            pillarColor: "var(--color-tnky-blue)",
-          },
-          {
             label: "What is TradesNKY?",
-            description: "How the program works, from K-12 through post-graduation.",
+            description: "Our mission and vision, and how the program works from K-12 through post-graduation.",
             href: "/about/what-is-tradesnky",
             icon: BookOpen,
             pillarColor: "var(--color-tnky-blue)",

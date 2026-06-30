@@ -75,7 +75,7 @@ export default function ParentsPage() {
           alt: "A mentor and a young adult working together in a Northern Kentucky trades setting",
         }}
         primaryCta={{ text: "Take the Career Quiz", href: "/students/quiz" }}
-        secondaryCta={{ text: "About TradesNKY", href: "/about" }}
+        secondaryCta={{ text: "About TradesNKY", href: "/about/what-is-tradesnky" }}
       />
 
       {/* ── FIRST SECTION — Every Child Deserves a Pathway ────────── */}

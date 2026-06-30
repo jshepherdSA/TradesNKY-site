@@ -9,7 +9,7 @@ const NAV = [
   { href: "/parents", label: "Parents" },
   { href: "/educators", label: "Educators" },
   { href: "/employers", label: "Employers" },
-  { href: "/about", label: "About" },
+  { href: "/about/what-is-tradesnky", label: "About" },
 ];
 
 export function Header() {

@@ -79,7 +79,7 @@ export function PartnerTiles({ groups }: { groups: PartnerTileGroup[] }) {
                     <div
                       className={cn(
                         "relative h-20 w-full",
-                        p.logoDark && "rounded-lg bg-tnky-blue",
+                        p.logoDark && "rounded-lg bg-[#2d2d2d]",
                       )}
                     >
                       {p.logoSrc ? (

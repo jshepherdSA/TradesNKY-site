@@ -27,8 +27,7 @@ export const INSIGHTS: Insight[] = [
   {
     slug: "middle-school-build-expansion-kenton",
     category: "Program Expansion",
-    title:
-      "TradesNKY Expands Middle School Construction Curriculum to Kenton County Schools Through ARPA Funding Partnership",
+    title: "TradesNKY expands middle school curriculum to Kenton Co. Schools",
     excerpt:
       "TradesNKY is expanding its hands-on middle school BUILD curriculum to Holmes Middle School and four Kenton County middle schools through a new ARPA-funded partnership.",
     date: "May 21, 2026",
@@ -79,8 +78,7 @@ export const INSIGHTS: Insight[] = [
   {
     slug: "campbell-county-schools-partnership",
     category: "Partnership News",
-    title:
-      "TradesNKY and Campbell County Schools Announce Strategic Partnership to Expand Regional Career Pathways",
+    title: "TradesNKY and Campbell Co. Schools announce strategic partnership",
     excerpt:
       "A new strategic partnership will expand hands-on PK–12 career pathways across Campbell County Schools, including a new regional manufacturing pathway known as MAKE.",
     date: "March 26, 2026",
@@ -142,7 +140,7 @@ export const INSIGHTS: Insight[] = [
   {
     slug: "four-new-board-members",
     category: "Leadership",
-    title: "TradesNKY Announces Four New Members to Its Board of Directors",
+    title: "TradesNKY announces four new members to Board of Directors",
     excerpt:
       "Four new board members — leaders in manufacturing, construction, and workforce development — bring added expertise to TradesNKY’s skilled-trades mission.",
     date: "March 13, 2025",
@@ -209,8 +207,7 @@ export const INSIGHTS: Insight[] = [
   {
     slug: "kenton-county-400k-grant",
     category: "Funding & Grants",
-    title:
-      "Kenton County Awards $400,000 Grant to TradesNKY to Expand Skilled Trades Education in Local Schools",
+    title: "Kenton County awards $400,000 grant to TradesNKY",
     excerpt:
       "The Kenton County Fiscal Court voted unanimously to award $400,000 in ARPA funding to bring hands-on, trades-based career exploration to six Title I middle schools.",
     date: "January 14, 2025",
@@ -249,8 +246,7 @@ export const INSIGHTS: Insight[] = [
   {
     slug: "lorraine-omoore-executive-director",
     category: "Leadership",
-    title:
-      "TradesNKY Appoints First Executive Director to Lead Regional Workforce Efforts",
+    title: "TradesNKY appoints first Executive Director",
     excerpt:
       "TradesNKY has named Lorraine O’Moore — a workforce-development leader with more than 30 years of experience — as its first Executive Director.",
     date: "January 12, 2025",

@@ -76,7 +76,11 @@ const PILLAR_PAIRS: {
 }[] = [
   {
     pillar: "Build",
-    pillarColor: "text-pillar-build",
+    // Hero-only: a lighter royal blue than the pillar-build token (#2c4ba0)
+    // so "Build" reads distinctly against the dark navy second word
+    // (text-tnky-blue). Scoped to this hero — does NOT touch the
+    // pillar-build brand token used elsewhere.
+    pillarColor: "text-[#3f63c8]",
     pairs: ["Skills", "Futures"],
   },
   {

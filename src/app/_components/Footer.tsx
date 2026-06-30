@@ -25,10 +25,10 @@ const COLS: { h: string; links: { href: string; label: string }[] }[] = [
   {
     h: "About",
     links: [
-      { href: "/about", label: "Mission" },
+      { href: "/about/what-is-tradesnky", label: "Mission" },
       { href: "/insights", label: "Insights" },
-      { href: "/about#board", label: "Board" },
-      { href: "/about#annual-report", label: "Annual report" },
+      { href: "/about/board", label: "Board" },
+      { href: "/about/what-is-tradesnky", label: "Annual report" },
     ],
   },
   {

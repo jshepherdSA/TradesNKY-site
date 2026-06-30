@@ -45,7 +45,7 @@ const APPROACH: {
 }[] = [
   {
     icon: BookOpen,
-    label: "Industry-Informed Curriculum",
+    label: "Industry-Informed Proprietary Curriculum",
     desc: "Aligned with Kentucky Department of Education (KDE) standards and designed for all middle school students in grades 6–8, with flexible 9-week and 18-week implementation options.",
     featured: true,
   },
@@ -212,6 +212,62 @@ export default function WhatIsTradesNkyPage() {
         </div>
       </section>
 
+      {/* ── MISSION & VISION ────────────────────────────────────── */}
+      <FadeInSection className="bg-tnky-white">
+        <div className="max-w-content mx-auto px-4 py-16 sm:px-8 md:py-20">
+          <div className="mx-auto flex max-w-4xl flex-col gap-12 md:gap-16">
+            {/* Mission — header outside the box, statement inside. */}
+            <div>
+              <p className="font-display font-extrabold uppercase tracking-tag text-eyebrow text-tnky-blue">
+                Our Mission
+              </p>
+              <h2 className="mt-2 font-display italic font-extrabold text-h2 text-tnky-ink [text-wrap:balance]">
+                Built for Northern Kentucky
+              </h2>
+              <div
+                aria-hidden="true"
+                className="mt-4 h-1 w-16 rounded-full bg-tnky-safety"
+              />
+              <div className="mt-6 rounded-2xl border border-tnky-edge bg-tnky-cream p-8 shadow-tnky-1 md:p-10">
+                <p className="text-lead leading-relaxed text-tnky-ink/85 [text-wrap:pretty]">
+                  TradesNKY connects schools, industry, and community partners
+                  to prepare students for high-demand, high-skilled careers
+                  that build, power, and move our region forward. We create
+                  pathways for students in K-12th grade to allow them to gain
+                  exposure (K-5th), explore (6th-8th), and engage (9th-12th)
+                  with the essential workforce that keeps our community running.
+                </p>
+              </div>
+            </div>
+
+            {/* Vision — header outside the box, statement inside; right-aligned. */}
+            <div className="text-right">
+              <p className="font-display font-extrabold uppercase tracking-tag text-eyebrow text-tnky-blue">
+                Our Vision
+              </p>
+              <h2 className="mt-2 font-display italic font-extrabold text-h2 text-tnky-ink [text-wrap:balance]">
+                Every Student. Every Path.
+              </h2>
+              <div
+                aria-hidden="true"
+                className="mt-4 ml-auto h-1 w-16 rounded-full bg-tnky-safety"
+              />
+              <div className="mt-6 rounded-2xl border border-tnky-edge bg-tnky-cream p-8 shadow-tnky-1 md:p-10">
+                <p className="text-lead leading-relaxed text-tnky-ink/85 [text-wrap:pretty]">
+                  TradesNKY envisions a future where innovative trades education
+                  empowers every student academically and professionally,
+                  fosters diverse talents, and inspires a lifelong love for
+                  knowledge. We aspire to be a catalyst for transformative
+                  education, shaping skilled professionals and well-rounded
+                  individuals poised to lead in a dynamic world, building
+                  bridges to brighter futures extending beyond the trades.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </FadeInSection>
+
       {/* ── THE TRADESNKY APPROACH ──────────────────────────────── */}
       <FadeInSection className="bg-tnky-cream">
         <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
@@ -293,73 +349,81 @@ export default function WhatIsTradesNkyPage() {
       </div>
 
       {/* ── skillUP — flagship regional event ───────────────────── */}
-      <FadeInSection className="bg-tnky-white">
+      <FadeInSection className="bg-tnky-blue">
         <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            {/* Left — copy */}
-            <div>
+          {/* Top row — left: flagship pill + logo + yellow rule; right: the
+              video, taking more than half the width so it reads large. */}
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
+            {/* Top left — flagship pill, logo, yellow rule */}
+            <div className="lg:col-span-5">
               <span className="inline-flex items-center gap-2 rounded-pill bg-tnky-safety px-4 py-1.5 font-display font-bold uppercase tracking-label text-mini text-tnky-safety-ink">
                 <Zap className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
                 Flagship Event
               </span>
-              <h2 className="mt-5">
+              <h2 className="mt-5 py-4">
                 <Image
-                  src="/brand/skillup-logo.png"
+                  src="/brand/skillup-logowhite.png"
                   alt="skillUP"
-                  width={256}
-                  height={256}
-                  className="h-32 w-32 md:h-40 md:w-40"
+                  width={2939}
+                  height={2117}
+                  quality={100}
+                  className="h-32 w-auto md:h-40"
                 />
               </h2>
               <div
                 aria-hidden="true"
                 className="mt-5 h-1 w-20 rounded-full bg-tnky-safety"
               />
-              <p className="mt-6 max-w-lead text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
-                skillUP is TradesNKY&apos;s annual interactive career exploration
-                event that connects middle school students with hands-on
-                experiences in the skilled trades. Students engage directly with
-                industry professionals and employers to discover rewarding career
-                pathways that are helping build the future of NKY.
-              </p>
-
-              {/* 2026 event numbers */}
-              <div className="mt-8">
-                <p className="font-display font-bold uppercase tracking-label text-mini text-tnky-blue">
-                  skillUP 2026
-                </p>
-                <dl className="mt-3 flex flex-wrap gap-x-12 gap-y-4">
-                  <div>
-                    <dt className="font-display font-tnky-black text-stat-lg leading-none text-tnky-blue">
-                      1,051
-                    </dt>
-                    <dd className="mt-1 text-small font-medium text-tnky-mute">
-                      students attended
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="font-display font-tnky-black text-stat-lg leading-none text-tnky-blue">
-                      45+
-                    </dt>
-                    <dd className="mt-1 text-small font-medium text-tnky-mute">
-                      exhibitors
-                    </dd>
-                  </div>
-                </dl>
-              </div>
             </div>
 
-            {/* Right — landscape skillUP video */}
-            <div className="relative aspect-video w-full overflow-hidden rounded-2xl border-4 border-tnky-safety bg-tnky-ink shadow-tnky-2">
-              <video
-                className="h-full w-full object-cover"
-                controls
-                playsInline
-                preload="metadata"
-                poster="/images/skillup-poster.jpg"
-              >
-                <source src="/videos/skillup.mp4" type="video/mp4" />
-              </video>
+            {/* Top right — landscape skillUP video (> half the width) */}
+            <div className="lg:col-span-7">
+              <div className="relative aspect-video w-full overflow-hidden rounded-2xl border-4 border-tnky-safety bg-tnky-ink shadow-tnky-2">
+                <video
+                  className="h-full w-full object-cover"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster="/images/skillup-poster.jpg"
+                >
+                  <source src="/videos/skillup.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom row — full-width copy + the two skillUP 2026 numbers. */}
+          <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-center lg:gap-12">
+            <p className="text-lead font-medium leading-relaxed text-tnky-white/90 [text-wrap:pretty] lg:col-span-2">
+              skillUP is TradesNKY&apos;s annual interactive career exploration
+              event that connects middle school students with hands-on
+              experiences in the skilled trades. Students engage directly with
+              industry professionals and employers to discover rewarding career
+              pathways that are helping build the future of NKY.
+            </p>
+
+            <div>
+              <p className="font-display font-bold uppercase tracking-label text-mini text-tnky-safety">
+                skillUP 2026
+              </p>
+              <dl className="mt-3 flex flex-wrap gap-x-12 gap-y-4">
+                <div>
+                  <dt className="font-display font-tnky-black text-stat-lg leading-none text-tnky-white">
+                    1,051
+                  </dt>
+                  <dd className="mt-1 text-small font-medium text-tnky-white/70">
+                    students attended
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-display font-tnky-black text-stat-lg leading-none text-tnky-white">
+                    45+
+                  </dt>
+                  <dd className="mt-1 text-small font-medium text-tnky-white/70">
+                    exhibitors
+                  </dd>
+                </div>
+              </dl>
             </div>
           </div>
         </div>

@@ -18,31 +18,43 @@ export const metadata: Metadata = {
 const PLACEHOLDER_PHOTO = "/brand/avatar-placeholder.svg";
 
 // ── Board of Directors ──────────────────────────────────────────────
-// `bio` carries the organization line; `title` / `role` intentionally
-// omitted so each card renders just the name and affiliation.
+// `bio` carries the organization line. Co-founders and officers also carry
+// a `title` (Board Chair, Secretary, Treasurer, …) and are ordered first;
+// the remaining directors render just name + affiliation.
 const BOARD_MEMBERS: BoardMemberCardProps[] = [
   {
-    name: "Phil Griffin",
+    name: "Phillipe Griffin",
+    title: "Co-Founder / Board Chair",
     bio: "AnyWeather Companies",
     image: "/brand/board/phil-griffin.jpg",
+    imageAlt: "",
+  },
+  {
+    name: "Sara Bray",
+    title: "Co-Founder / Secretary",
+    bio: "Bray Construction Services",
+    image: "/brand/board/sara-bray.png",
+    imageAlt: "",
+  },
+  {
+    // TODO: add Brandon Bray's headshot when supplied.
+    name: "Brandon Bray",
+    title: "Co-Founder",
+    bio: "Bray Construction Services",
+    image: PLACEHOLDER_PHOTO,
+    imageAlt: "",
+  },
+  {
+    name: "Stephen Mann",
+    title: "Treasurer",
+    bio: "Blue and Co. LLC",
+    image: "/brand/board/stephen-mann.jpg",
     imageAlt: "",
   },
   {
     name: "Larisa Sims",
     bio: "CVG Airport",
     image: "/brand/board/larisa-sims.png",
-    imageAlt: "",
-  },
-  {
-    name: "Stephen Mann",
-    bio: "Blue and Co. LLC",
-    image: "/brand/board/stephen-mann.jpg",
-    imageAlt: "",
-  },
-  {
-    name: "Sara Bray",
-    bio: "Bray Construction Services",
-    image: "/brand/board/sara-bray.png",
     imageAlt: "",
   },
   {
@@ -88,8 +100,8 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     imageAlt: "",
   },
   {
-    // TODO: add Kevin Cheek's organization when supplied.
     name: "Kevin Cheek",
+    bio: "Mazak Corporation",
     image: "/brand/board/kevin-cheek.jpg",
     imageAlt: "",
   },
@@ -100,15 +112,13 @@ const TEAM_MEMBERS: BoardMemberCardProps[] = [
   {
     name: "Lorraine O'Moore",
     title: "Executive Director",
-    bio: "TradesNKY's staff lead, anchoring the organization's day-to-day work across Northern Kentucky.",
     image: "/brand/board/lorraine-omoore.webp",
     imageAlt: "",
   },
   {
-    // TODO: add Elly Neltner's headshot when supplied.
     name: "Elly Neltner",
     title: "Program Coordinator",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/elly-neltner.jpeg",
     imageAlt: "",
   },
 ];

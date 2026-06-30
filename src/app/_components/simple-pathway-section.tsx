@@ -1,4 +1,8 @@
-import { Check } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type PathwayStep = {
@@ -10,15 +14,19 @@ type PathwayStep = {
   borderClass: string;
   /** Bullet-dot color. */
   dotClass: string;
-  /** Grade-band activities, taken verbatim from the "From Exposure to
-   *  Opportunity" student-pathway infographic. The compact variant shows
-   *  the first three; the detailed variant (What is TradesNKY) shows all. */
+  /** The yellow-highlighted activities from the "From Exposure to
+   *  Opportunity" source — shown by default in every variant. */
   highlights: string[];
+  /** The remaining activities — hidden behind the per-stage "See more"
+   *  toggle. */
+  more: string[];
 };
 
-// Five stages, matching the "From Exposure to Opportunity" infographic
-// exactly: Expose → Explore → Engage → Equip → Experience. Accent colors
-// mirror the source's color coding using brand tokens.
+// Five stages, taken verbatim from the "From Exposure to Opportunity"
+// student-pathway source (FROM EXPOSURE TO OPPORTUNITY — Website.docx).
+// `highlights` are the activities the source highlights in yellow; `more`
+// are the rest, revealed by the per-stage "See more" toggle. Accent colors
+// mirror the source's column color coding using brand tokens.
 const STEPS: PathwayStep[] = [
   {
     name: "Expose",
@@ -26,19 +34,15 @@ const STEPS: PathwayStep[] = [
     badgeClass: "bg-tnky-rust text-tnky-white",
     borderClass: "border-t-tnky-rust",
     dotClass: "bg-tnky-rust",
-    highlights: [
-      "Career clusters",
-      "Field trips",
-      "Touch-a-Truck",
-      "Adopt-a-Class",
-      "Guest speakers",
-      "Dramatic play",
-      "STEM-based toys & activities",
-      "Experiments and outcomes",
-      "Maker activities",
-      "Books, videos, and pictures on essential careers",
-      "Family nights",
-      "Career lessons in each grade",
+    highlights: ["Career Clusters", "Field Trips", "Guest Speakers"],
+    more: [
+      "Adopt-A-Class",
+      "Touch-A-Truck",
+      "Family Nights",
+      "Job Simulations",
+      "STEM Activities",
+      "Soft Skills Training",
+      "Parent Engagement",
     ],
   },
   {
@@ -48,15 +52,18 @@ const STEPS: PathwayStep[] = [
     borderClass: "border-t-tnky-grass",
     dotClass: "bg-tnky-grass",
     highlights: [
-      "9-week curriculum",
-      "18-week curriculum",
-      "Introduction to the essential trades",
-      "Industry terminology and process",
-      "Trades technology and simulators",
-      "Hands-on technical projects",
-      "Aptitude and interest testing",
-      "Career fairs (skillUP)",
-      "Aptitude and interest assessments",
+      "Essential Skills Curricula",
+      "Skill UP (Career Expo)",
+      "Employability Skills Training",
+    ],
+    more: [
+      "Field Trips",
+      "Guest Speakers",
+      "Trade Technology",
+      "Simulators",
+      "Project-Based",
+      "Aptitudes/Interests",
+      "Parent Engagement",
     ],
   },
   {
@@ -66,18 +73,18 @@ const STEPS: PathwayStep[] = [
     borderClass: "border-t-tnky-safety",
     dotClass: "bg-tnky-safety",
     highlights: [
-      "NCCER Core credits",
-      "OSHA 10 certification",
-      "Complete industry micro-credentials",
-      "Expanded hands-on technical training",
-      "Site visits",
-      "CTE courses",
-      "ATC exposure",
-      "Career fairs (skillUP)",
-      "Soft skills and finance",
-      "Career coaching",
-      "Interview and resume prep",
-      "Aptitude and interest assessments",
+      "NCCER Core",
+      "Micro-Credentials",
+      "Employability Skills Training",
+    ],
+    more: [
+      "OSHA 10/30",
+      "Site Visits",
+      "Job-Shadowing",
+      "ATC Exposure",
+      "CTE Courses",
+      "Career Coaching",
+      "Aptitudes/Interests",
     ],
   },
   {
@@ -87,13 +94,19 @@ const STEPS: PathwayStep[] = [
     borderClass: "border-t-tnky-blue",
     dotClass: "bg-tnky-blue",
     highlights: [
-      "Students may earn dual credits",
-      "OSHA 30 certification",
-      "NCCER elective credits",
-      "Career coaching",
-      "Co-op & intern/summer employment opportunities",
-      "Soft skills training",
-      "Advanced training with partners — ATC, Enzweiler Building Institute, Gateway Community Technical College, CTE courses",
+      "NCCER Elective(s)",
+      "Industry Credentials",
+      "Dual-Credit Opportunities",
+    ],
+    more: [
+      "OSHA 30",
+      "ATC Enrollment",
+      "CTE Enrollment",
+      "Job-Shadowing",
+      "Site Visits",
+      "Career Coaching",
+      "Employability Skills Training",
+      "Aptitudes/Interests",
     ],
   },
   {
@@ -102,37 +115,121 @@ const STEPS: PathwayStep[] = [
     badgeClass: "bg-tnky-sky text-tnky-ink",
     borderClass: "border-t-tnky-sky",
     dotClass: "bg-tnky-sky",
-    highlights: [
-      "Co-op & internship opportunities",
+    highlights: ["Co-ops/Internships", "Apprenticeships", "Mentorships"],
+    more: [
+      "Employment",
       "Pre-apprenticeships",
-      "Continued technical training (NCCER electives, industry credentials)",
-      "Resume building & interview prep",
-      "Mentorships",
-      "Soft skills training",
-      "Students graduate college-bound or career-ready",
+      "NCCER Elective(s)",
+      "Industry Credentials",
+      "Resume-Building",
+      "Interview Prep",
+      "Employability Skills Training",
+      "Career Readiness",
     ],
   },
 ];
 
-// Intro + outcomes, verbatim from the infographic (the typo "eduction"
-// corrected to "education").
+// Intro + outcomes, taken verbatim from the source document.
 const INTRO =
-  "TradesNKY has partnered with local education leaders to develop a transferable model that connects classroom learning with real workforce opportunities. This partnership supports students from elementary school exposure, middle school exploration, and high school industry credentials, technical training, and career and college readiness. Together, with practitioner experiences and resources, students are introduced to the essential trades and college and career opportunities.";
+  "TradesNKY partnered with education and industry leaders to develop a transferable talent pipeline model that connects classroom learning with real workforce opportunities. These partnerships support students from elementary school awareness, to middle school exposure, to high school industry credentialing, technical training, experiential learning, and career and college readiness. Together, with practitioner experiences and resources, students are introduced to the diverse range of essential trades and college and career opportunities.";
 
 const OUTCOMES = [
-  "Career awareness",
-  "Hands-on technical skills",
-  "Industry credentials",
-  "Direct connections to employers",
+  "Career Awareness",
+  "Hands-On Technical Skills",
+  "Industry Credentials",
+  "Direct Connections to Employers",
 ];
+
+// brand --ease-tnky cubic-bezier(0.22, 1, 0.36, 1)
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+/** One pathway stage card — owns its own "See more" toggle so each stage
+ *  expands independently. */
+function StageCard({ step }: { step: PathwayStep }) {
+  const [open, setOpen] = useState(false);
+  const reduce = useReducedMotion();
+  const panelId = `pathway-more-${step.name.toLowerCase()}`;
+
+  const renderItem = (h: string) => (
+    <li
+      key={h}
+      className="flex items-start gap-2 text-mini font-medium leading-snug text-tnky-ink [text-wrap:pretty]"
+    >
+      <span
+        aria-hidden="true"
+        className={cn(
+          "mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full",
+          step.dotClass,
+        )}
+      />
+      <span>{h}</span>
+    </li>
+  );
+
+  return (
+    <article
+      className={cn(
+        "flex-1 rounded-xl border border-tnky-edge border-t-4 bg-tnky-cream p-5 lg:mt-5",
+        step.borderClass,
+      )}
+    >
+      <h3 className="font-display italic font-extrabold text-h4 text-tnky-ink">
+        {step.name}
+      </h3>
+      <p className="mt-1 font-display font-extrabold uppercase tracking-tag text-meta text-tnky-blue">
+        {step.grade}
+      </p>
+
+      <ul className="mt-3 space-y-2">{step.highlights.map(renderItem)}</ul>
+
+      {step.more.length > 0 && (
+        <>
+          <AnimatePresence initial={false}>
+            {open && (
+              <motion.div
+                id={panelId}
+                initial={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                animate={
+                  reduce ? { opacity: 1 } : { height: "auto", opacity: 1 }
+                }
+                exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                transition={{ duration: 0.28, ease: EASE }}
+                className="overflow-hidden"
+              >
+                <ul className="space-y-2 pt-2">{step.more.map(renderItem)}</ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-controls={panelId}
+            className="mt-3 inline-flex cursor-pointer items-center gap-1 font-display font-bold uppercase tracking-label text-mini text-tnky-blue transition-colors duration-200 hover:text-tnky-rust focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2"
+          >
+            {open ? "See less" : `See ${step.more.length} more`}
+            <ChevronDown
+              className={cn(
+                "h-3.5 w-3.5 transition-transform duration-200",
+                open && "rotate-180",
+              )}
+              aria-hidden="true"
+            />
+          </button>
+        </>
+      )}
+    </article>
+  );
+}
 
 export function SimplePathwaySection({
   detailed = false,
 }: {
-  /** When true (the What is TradesNKY page), each stage lists every
-   *  grade-band activity and the section adds the intro paragraph and the
-   *  "Why this matters" outcomes. Off by default so the homepage and
-   *  educators page keep the compact treatment. */
+  /** When true (the What is TradesNKY page), the section adds the intro
+   *  paragraph and the "Why this matters" outcomes. The per-stage activity
+   *  lists behave the same in every variant: highlighted activities show by
+   *  default, the rest reveal via "See more". */
   detailed?: boolean;
 }) {
   return (
@@ -164,12 +261,9 @@ export function SimplePathwaySection({
 
         {/* Five connected stages — vertical cascade on mobile, horizontal
             connected stepper on large screens. */}
-        <ol className="relative grid grid-cols-1 gap-8 lg:grid-cols-5 lg:gap-5">
+        <ol className="relative grid grid-cols-1 items-start gap-8 lg:grid-cols-5 lg:gap-5">
           {STEPS.map((step, i) => {
             const isLast = i === STEPS.length - 1;
-            const items = detailed
-              ? step.highlights
-              : step.highlights.slice(0, 3);
             return (
               <li
                 key={step.name}
@@ -200,37 +294,7 @@ export function SimplePathwaySection({
                   {i + 1}
                 </span>
 
-                {/* Stage card. */}
-                <article
-                  className={cn(
-                    "flex-1 rounded-xl border border-tnky-edge border-t-4 bg-tnky-cream p-5 lg:mt-5",
-                    step.borderClass,
-                  )}
-                >
-                  <h3 className="font-display italic font-extrabold text-h4 text-tnky-ink">
-                    {step.name}
-                  </h3>
-                  <p className="mt-1 font-display font-extrabold uppercase tracking-tag text-meta text-tnky-blue">
-                    {step.grade}
-                  </p>
-                  <ul className="mt-3 space-y-2">
-                    {items.map((h) => (
-                      <li
-                        key={h}
-                        className="flex items-start gap-2 text-mini font-medium leading-snug text-tnky-ink [text-wrap:pretty]"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className={cn(
-                            "mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full",
-                            step.dotClass,
-                          )}
-                        />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
+                <StageCard step={step} />
               </li>
             );
           })}

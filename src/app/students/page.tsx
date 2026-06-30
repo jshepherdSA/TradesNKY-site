@@ -370,7 +370,7 @@ export default function StudentsPage() {
               </div>
 
               <div className="mt-10 flex items-center gap-6">
-                <DonutChart percent={40} valueLabel="40%" />
+                <DonutChart percent={40} />
                 <p className="max-w-xs text-body font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
                   Did you know: more than{" "}
                   <span className="font-display font-extrabold">40%</span> of

@@ -157,8 +157,17 @@ export default function PolicymakersPage() {
           alt: "A modern civic skyline representing a growing regional economy",
         }}
         primaryCta={{ text: "Request a Meeting", href: "/contact" }}
-        secondaryCta={{ text: "About TradesNKY", href: "/about" }}
+        secondaryCta={{ text: "About TradesNKY", href: "/about/what-is-tradesnky" }}
       />
+
+      {/* ── Highlight — flagship offering (title only) ──────────── */}
+      <section className="bg-tnky-safety">
+        <div className="max-w-content mx-auto px-4 py-10 text-center sm:px-8 md:py-12">
+          <h2 className="font-display italic font-extrabold text-3xl md:text-4xl text-tnky-safety-ink [text-wrap:balance]">
+            Industry-Informed Proprietary Curriculum
+          </h2>
+        </div>
+      </section>
 
       {/* ── SECTIONS (from Website Architecture & Content doc) ─────── */}
       {SECTIONS.map((s, i) => {
