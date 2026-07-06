@@ -203,12 +203,10 @@ const GROUPS: PartnerTileGroup[] = [
         name: "Learning Labs",
         category: "Community Catalyst",
         // TODO(client): official website + approved description still pending.
-        // Logo is the all-white mark, shown on a dark chip via `logoDark`.
         description:
           "A collaboration partner supporting TradesNKY's hands-on, lab-based approach to trades education across Northern Kentucky.",
         website: "#",
-        logoSrc: "/brand/partners/learninglabs.png",
-        logoDark: true,
+        logoSrc: "/brand/partners/learninglabs-blue.png",
       },
     ],
   },

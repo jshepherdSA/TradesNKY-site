@@ -92,8 +92,11 @@ export default async function PillarPage({
                 <h3 className="font-display font-extrabold leading-tight text-card-title text-tnky-ink">
                   {career.title}
                 </h3>
+                <p className="mt-3 font-display font-bold uppercase tracking-tag text-micro text-tnky-mute">
+                  Mean annual wage
+                </p>
                 <p
-                  className={`mt-1 font-display font-tnky-black italic text-stat-md ${path.textClass}`}
+                  className={`mt-0.5 font-display font-tnky-black italic text-stat-md ${path.textClass}`}
                 >
                   {career.wage}
                 </p>
@@ -103,6 +106,14 @@ export default async function PillarPage({
               </article>
             ))}
           </div>
+
+          <p className="mt-8 max-w-3xl text-mini leading-relaxed text-tnky-mute [text-wrap:pretty]">
+            <span className="font-bold text-tnky-ink">Mean Annual Wage:</span>{" "}
+            The average amount workers in this career earn each year. Your
+            starting pay and future earnings may be higher or lower depending on
+            your experience, certifications, employer, location, and overtime
+            opportunities.
+          </p>
         </div>
       </section>
 

@@ -215,7 +215,7 @@ export default function WhatIsTradesNkyPage() {
       {/* ── MISSION & VISION ────────────────────────────────────── */}
       <FadeInSection className="bg-tnky-white">
         <div className="max-w-content mx-auto px-4 py-16 sm:px-8 md:py-20">
-          <div className="mx-auto flex max-w-4xl flex-col gap-12 md:gap-16">
+          <div className="flex flex-col gap-12 md:gap-16">
             {/* Mission — header outside the box, statement inside. */}
             <div>
               <p className="font-display font-extrabold uppercase tracking-tag text-eyebrow text-tnky-blue">

@@ -334,14 +334,17 @@ export default function StudentsPage() {
                   Average 4-Year Path
                 </p>
                 <p className="mt-3 font-display font-tnky-black text-stat-xl leading-none text-tnky-mute">
-                  $XXK
+                  $35,639
                 </p>
                 <p className="mt-2 text-body font-bold text-tnky-ink">
                   Average student-loan debt
                 </p>
                 <p className="mt-3 text-small font-medium leading-relaxed text-tnky-ink/70 [text-wrap:pretty]">
-                  Many students borrow for years of tuition before earning a
-                  full-time paycheck (U.S. average federal student-loan balance).
+                  Students who borrowed to pursue their bachelor&apos;s degree in
+                  2025 took out an average of $35,639 in education loans.
+                </p>
+                <p className="mt-2 text-mini font-medium text-tnky-ink/50">
+                  Source: Education Data Initiative
                 </p>
               </div>
             </div>

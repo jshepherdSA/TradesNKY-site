@@ -238,7 +238,7 @@ export default function ParentsPage() {
                   <ul className="mt-5 space-y-3">
                     {[
                       "Tuition often paid up front through loans",
-                      "~$XXK average student-loan debt",
+                      "$35,639 average student-loan debt",
                       "First full-time paycheck after graduation",
                     ].map((item) => (
                       <li
@@ -256,6 +256,9 @@ export default function ParentsPage() {
                 </div>
               </div>
             </div>
+            <p className="mt-4 text-mini font-medium text-tnky-mute">
+              Source: Education Data Initiative
+            </p>
           </div>
         </div>
       </FadeInSection>
