@@ -53,6 +53,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
   },
   {
     name: "Larisa Sims",
+    title: "Vice-Chair",
     bio: "CVG Airport",
     image: "/brand/board/larisa-sims.png",
     imageAlt: "",
