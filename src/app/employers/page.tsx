@@ -179,6 +179,15 @@ export default function EmployersPage() {
           <h2 className="font-display italic font-extrabold text-3xl md:text-4xl text-tnky-safety-ink [text-wrap:balance]">
             Industry-Informed Proprietary Curriculum
           </h2>
+          <p className="mx-auto mt-5 max-w-3xl text-lead font-medium leading-relaxed text-tnky-safety-ink [text-wrap:pretty]">
+            Our curriculum is built alongside industry leaders to ensure
+            students are gaining the technical foundations, problem-solving
+            skills, and real-world understanding needed to succeed in
+            high-demand careers. By listening to workforce experts and
+            understanding industry demands, TradesNKY creates relevant,
+            hands-on experiences that prepare students for the essential
+            careers that power our communities.
+          </p>
         </div>
       </section>
 

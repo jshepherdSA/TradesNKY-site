@@ -117,7 +117,9 @@ export default function ContactPage() {
                   <p className="mt-1 text-body leading-relaxed text-tnky-ink">
                     TradesNKY
                     <br />
-                    Northern Kentucky
+                    1010 Windsor Drive, Suite 202
+                    <br />
+                    Cold Spring, KY 41076
                   </p>
                 </div>
               </li>

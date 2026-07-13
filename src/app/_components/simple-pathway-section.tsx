@@ -253,7 +253,7 @@ export function SimplePathwaySection({
             </p>
           </div>
           {detailed && (
-            <p className="mt-6 max-w-3xl text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
+            <p className="mt-6 text-lead font-medium leading-relaxed text-tnky-ink [text-wrap:pretty]">
               {INTRO}
             </p>
           )}
