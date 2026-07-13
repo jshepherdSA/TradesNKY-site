@@ -140,7 +140,7 @@ const GROUPS: PartnerTileGroup[] = [
   {
     label: "Educational Partners",
     description:
-      "These are the schools and districts where the work happens. Together, we implement curriculum, engage students, and build clear pathways from classroom to career.",
+      "These are the schools and districts where the work is currently taking place, with plans to expand to additional schools and districts during the 2027–28 school year. Together, we implement curriculum, engage students, and build clear pathways from classroom to career.",
     gridCols: "grid-cols-2 md:grid-cols-3",
     partners: [
       {

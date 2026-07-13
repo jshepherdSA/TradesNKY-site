@@ -164,7 +164,7 @@ const ROADMAP: {
     title: "Growing Regional Impact",
     body: [
       "With support from the Kenton County Fiscal Court, TradesNKY expanded from serving two schools to eight middle schools across Northern Kentucky, dramatically increasing student access to hands-on career exploration.",
-      "TradesNKY also hosted its inaugural skillUP Career Exploration Fair at Gateway Community & Technical College, bringing together students, educators, and industry partners for an immersive experience designed to build awareness of high-demand career pathways.",
+      "TradesNKY also hosted its inaugural skill UP Career Exploration Fair at Gateway Community & Technical College, bringing together students, educators, and industry partners for an immersive experience designed to build awareness of high-demand career pathways.",
     ],
   },
   {
@@ -348,7 +348,7 @@ export default function WhatIsTradesNkyPage() {
         <SimplePathwaySection detailed />
       </div>
 
-      {/* ── skillUP — flagship regional event ───────────────────── */}
+      {/* ── skill UP — flagship regional event ───────────────────── */}
       <FadeInSection className="bg-tnky-blue">
         <div className="max-w-content mx-auto px-4 py-20 sm:px-8 md:py-24">
           {/* Top row — left: flagship pill + logo + yellow rule; right: the
@@ -363,7 +363,7 @@ export default function WhatIsTradesNkyPage() {
               <h2 className="mt-5 py-4">
                 <Image
                   src="/brand/skillup-logowhite.png"
-                  alt="skillUP"
+                  alt="skill UP"
                   width={2939}
                   height={2117}
                   quality={100}
@@ -376,7 +376,7 @@ export default function WhatIsTradesNkyPage() {
               />
             </div>
 
-            {/* Top right — landscape skillUP video (> half the width) */}
+            {/* Top right — landscape skill UP video (> half the width) */}
             <div className="lg:col-span-7">
               <div className="relative aspect-video w-full overflow-hidden rounded-2xl border-4 border-tnky-safety bg-tnky-ink shadow-tnky-2">
                 <video
@@ -392,10 +392,10 @@ export default function WhatIsTradesNkyPage() {
             </div>
           </div>
 
-          {/* Bottom row — full-width copy + the two skillUP 2026 numbers. */}
+          {/* Bottom row — full-width copy + the two skill UP 2026 numbers. */}
           <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-center lg:gap-12">
             <p className="text-lead font-medium leading-relaxed text-tnky-white/90 [text-wrap:pretty] lg:col-span-2">
-              skillUP is TradesNKY&apos;s annual interactive career exploration
+              Skill UP is TradesNKY&apos;s annual interactive career exploration
               event that connects middle school students with hands-on
               experiences in the skilled trades. Students engage directly with
               industry professionals and employers to discover rewarding career
@@ -404,7 +404,7 @@ export default function WhatIsTradesNkyPage() {
 
             <div>
               <p className="font-display font-bold uppercase tracking-label text-mini text-tnky-safety">
-                skillUP 2026
+                skill UP 2026
               </p>
               <dl className="mt-3 flex flex-wrap gap-x-12 gap-y-4">
                 <div>

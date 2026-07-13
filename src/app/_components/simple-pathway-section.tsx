@@ -53,7 +53,7 @@ const STEPS: PathwayStep[] = [
     dotClass: "bg-tnky-grass",
     highlights: [
       "Essential Skills Curricula",
-      "Skill UP (Career Expo)",
+      "skill UP (Career Expo)",
       "Employability Skills Training",
     ],
     more: [
@@ -248,7 +248,7 @@ export function SimplePathwaySection({
                 className="mt-3 h-[3px] w-14 rounded-full bg-tnky-safety"
               />
             </div>
-            <p className="max-w-lead text-lead text-tnky-mute [text-wrap:pretty]">
+            <p className="max-w-lead text-lead text-tnky-mute [text-wrap:pretty] md:whitespace-nowrap">
               The TradesNKY Student Pathway — Grades Pre-K–12.
             </p>
           </div>
