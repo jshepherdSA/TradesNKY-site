@@ -23,7 +23,7 @@ const PLACEHOLDER_PHOTO = "/brand/avatar-placeholder.svg";
 // the remaining directors render just name + affiliation.
 const BOARD_MEMBERS: BoardMemberCardProps[] = [
   {
-    name: "Phillipe Griffin",
+    name: "Phil Griffin",
     title: "Co-Founder / Board Chair",
     bio: "AnyWeather Companies",
     image: "/brand/board/phil-griffin.jpg",
@@ -71,7 +71,7 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     imageAlt: "",
   },
   {
-    name: "Phillipe Garnier",
+    name: "Philippe Garnier",
     bio: "Safran Landing Systems",
     image: "/brand/board/phillipe-garnier.jpg",
     imageAlt: "",
