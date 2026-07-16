@@ -178,7 +178,7 @@ export function InsightsHeroCarousel({ posts, interval = 3000 }: Props) {
           aria-label="Featured stories navigation"
           className="w-full bg-gradient-to-t from-tnky-black/90 to-transparent"
         >
-          <ol className="max-w-content mx-auto grid grid-cols-2 gap-2 px-4 pb-4 pt-3 sm:grid-cols-4 sm:px-6 sm:pb-5 md:gap-3 lg:px-8">
+          <ol className="max-w-content mx-auto grid grid-cols-1 gap-2 px-4 pb-4 pt-3 sm:grid-cols-3 sm:px-6 sm:pb-5 md:gap-3 lg:px-8">
             {posts.map((post, i) => {
               const isActive = i === current;
               return (

@@ -79,7 +79,24 @@ export default async function InsightPostPage({
         {/* Body */}
         <div className="mx-auto mt-10 max-w-2xl space-y-5">
           {insight.body.map((block, i) =>
-            block.type === "list" ? (
+            block.type === "image" ? (
+              <figure key={i} className="my-8">
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-tnky-2">
+                  <Image
+                    src={block.src}
+                    alt={block.alt}
+                    fill
+                    sizes="(min-width: 768px) 672px, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                {block.caption && (
+                  <figcaption className="mt-3 text-small leading-relaxed text-tnky-mute [text-wrap:pretty]">
+                    {block.caption}
+                  </figcaption>
+                )}
+              </figure>
+            ) : block.type === "list" ? (
               <ul key={i} className="space-y-3 pl-1">
                 {block.items.map((item) => (
                   <li
