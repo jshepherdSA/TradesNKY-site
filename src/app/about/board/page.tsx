@@ -13,9 +13,7 @@ export const metadata: Metadata = {
 
 // Board profiles taken from https://tradesnky.org/about-us/board-of-directors/.
 // Per request, board cards show only name + organization (the member /
-// officer / secretary labels have been dropped). Cover photos use a neutral
-// placeholder avatar until real headshots are supplied.
-const PLACEHOLDER_PHOTO = "/brand/avatar-placeholder.svg";
+// officer / secretary labels have been dropped).
 
 // ── Board of Directors ──────────────────────────────────────────────
 // `bio` carries the organization line. Co-founders and officers also carry
@@ -37,11 +35,10 @@ const BOARD_MEMBERS: BoardMemberCardProps[] = [
     imageAlt: "",
   },
   {
-    // TODO: add Brandon Bray's headshot when supplied.
     name: "Brandon Bray",
     title: "Co-Founder",
     bio: "Bray Construction Services",
-    image: PLACEHOLDER_PHOTO,
+    image: "/brand/board/brandon.png",
     imageAlt: "",
   },
   {

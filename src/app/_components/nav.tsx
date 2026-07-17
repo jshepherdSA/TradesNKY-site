@@ -153,7 +153,7 @@ const NAV_ITEMS: NavItem[] = [
         items: [
           {
             label: "What is TradesNKY?",
-            description: "Our mission and vision, and how the program works from K-12 through post-graduation.",
+            description: "Our mission, vision, and history.",
             href: "/about/what-is-tradesnky",
             icon: BookOpen,
             pillarColor: "var(--color-tnky-blue)",
