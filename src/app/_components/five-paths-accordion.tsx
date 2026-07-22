@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -22,41 +22,38 @@ export function FivePathsAccordion() {
   const isDesktop = useIsDesktop();
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
-  // Always sums to 100% so the row has no gap at any frame of the transition.
-  //   Idle:    5 × 20%        = 100%
-  //   Hovered: 40% + 4 × 15%  = 100%
-  // Both endpoints sum to 100% and flex-basis interpolates linearly, so the
-  // sum is conserved throughout the animation.
-  const flexBasisFor = (i: number): string => {
-    if (!isDesktop) return "auto";
-    if (hoveredIdx === null) return "20%";
-    if (hoveredIdx === i) return "40%";
-    return "15%";
+  // Each pillar is a separate column now (there are gaps between them), so the
+  // old flex-basis-sums-to-100% trick no longer works. Instead the columns
+  // share the row via `flex-grow` weights over a zero basis, and flexbox
+  // subtracts the gaps automatically:
+  //   Idle:    every column weight 1        → 5 equal columns
+  //   Hovered: hovered 2.6, others 1        → hovered ≈ 39%, others ≈ 15%
+  // Animating flex-grow (a <number>) gives the same smooth expand as before.
+  const flexStyleFor = (i: number): CSSProperties => {
+    if (!isDesktop) return { flex: "0 0 auto" };
+    const grow = hoveredIdx === null ? 1 : hoveredIdx === i ? 2.6 : 1;
+    return { flexGrow: grow, flexShrink: 1, flexBasis: 0 };
   };
 
   const items = PATH_SLUGS.map((slug) => PATHS[slug]);
-  const lastIdx = items.length - 1;
 
   return (
-    // Desktop only: lock the whole section to `100vh - nav-h` and run
-    // it as a flex column — header takes its natural height, the
-    // accordion row below fills the remainder via `md:flex-1`. So
-    // sticky nav + header + accordion = exactly 100vh. On mobile the
-    // section flows at content height (5 stacked pillars don't fit in
-    // 100vh with any reasonable type sizes, so the constraint only
-    // applies once the layout actually fits horizontally).
+    // Desktop only: lock the whole section to a little under the viewport and
+    // run it as a flex column — header takes its natural height, the accordion
+    // row below fills the remainder via `md:flex-1`. The `- 6rem` trims the
+    // section so it no longer eats the full viewport.
     <section
       id="five-pillars-section"
       className="bg-tnky-white md:flex md:flex-col md:overflow-hidden"
       style={
         isDesktop
-          ? { height: "calc(100vh - var(--nav-h, 64px))" }
+          ? { height: "calc(100vh - var(--nav-h, 64px) - 6rem)", minHeight: "34rem" }
           : undefined
       }
     >
       {/* Header — flex row on md+ (heading+underline left, description right),
           stacked vertically on mobile. */}
-      <div className="px-4 py-16 sm:px-8 md:py-20">
+      <div className="px-4 py-10 sm:px-8 md:py-12">
         <div className="max-w-content mx-auto flex flex-col gap-6 md:flex-row md:items-center md:justify-between md:gap-10">
           <div>
             {/* Anchor target for the hero's Explore Careers button. id sits
@@ -85,91 +82,114 @@ export function FivePathsAccordion() {
       </div>
 
       {/*
-        Accordion row.
-        Gap-fix Option 1: container bg is bg-pillar-protect — Protect is always
-        the rightmost child, so any sub-pixel gap on the right shows the same
-        color as Protect instead of the white page background.
+        Accordion row. Each child is a standalone architectural pillar (a
+        rounded capital at the top, a fluted shaft, and a rounded base at the
+        bottom) sitting on the white section background, with gaps between them.
       */}
-      <div className="relative flex w-full flex-col overflow-hidden bg-pillar-protect md:min-h-0 md:flex-1 md:flex-row">
+      <div className="relative flex w-full flex-col gap-3 px-4 pb-10 sm:px-8 md:min-h-0 md:flex-1 md:flex-row md:gap-4 md:pb-12">
         {items.map((path, i) => {
           const Icon = path.icon;
           // On mobile every column shows the expanded view by default; on desktop only when hovered/focused.
           const showExpanded = !isDesktop || hoveredIdx === i;
           const topCareers = path.careers.slice(0, 4);
-          // Gap-fix Option 2: let the rightmost pillar grow to fill any
-          // sub-pixel rounding remainder so it stays pinned to the right edge.
-          const flexGrow = i === lastIdx ? 1 : 0;
 
           return (
             <div
               key={path.slug}
-              className={`relative overflow-hidden ${path.bgClass} text-tnky-white transition-[flex-basis] duration-200 ease-tnky md:h-full`}
-              style={{ flex: `${flexGrow} 0 ${flexBasisFor(i)}` }}
+              className={`group/pillar relative flex flex-col text-tnky-white [filter:drop-shadow(0_8px_14px_rgba(11,14,26,0.12))] transition-[flex-grow] duration-300 ease-tnky md:h-full`}
+              style={flexStyleFor(i)}
               onMouseEnter={() => isDesktop && setHoveredIdx(i)}
               onMouseLeave={() => isDesktop && setHoveredIdx(null)}
               onFocus={() => isDesktop && setHoveredIdx(i)}
               onBlur={() => isDesktop && setHoveredIdx(null)}
             >
-              {/* Collapsed view — desktop only, while no column is hovered/focused on this one */}
+              {/* Capital — the wide block at the top of the column. Spans the
+                  full pillar width (overhanging the narrower shaft) and carries
+                  the pillar label above a recessed white molding bar. */}
               <div
-                aria-hidden={showExpanded ? "true" : undefined}
-                className={`absolute inset-0 hidden flex-col items-center justify-center p-6 transition-opacity duration-300 md:flex ${
-                  showExpanded ? "pointer-events-none opacity-0" : "opacity-100"
-                }`}
+                className={`flex h-20 flex-none items-center justify-center rounded-b-2xl px-3 md:h-24 md:px-4 ${path.bgClass}`}
               >
-                <Icon
-                  className="h-12 w-12"
-                  strokeWidth={1.5}
-                  aria-hidden="true"
-                />
-                <span className="mt-4 text-center font-display font-extrabold uppercase tracking-pillar text-button text-tnky-white">
+                <span className="block text-center font-display font-extrabold uppercase leading-none tracking-pillar text-h3 text-tnky-white">
                   {path.name}
                 </span>
               </div>
 
-              {/* Expanded view — always visible on mobile; on desktop fades in when hovered/focused */}
+              {/* Necking ring — a thin horizontal band, narrower than the
+                  capital but a little wider than the shaft, that steps the wide
+                  base down to the narrow column. */}
               <div
-                aria-hidden={!showExpanded ? "true" : undefined}
-                className={`flex h-full min-h-[24rem] flex-col p-6 transition-opacity duration-300 md:min-h-0 md:overflow-y-auto md:p-8 ${
-                  showExpanded ? "opacity-100" : "pointer-events-none opacity-0"
-                }`}
-              >
-                <Icon
-                  className="h-10 w-10 md:h-12 md:w-12"
-                  strokeWidth={1.5}
-                  aria-hidden="true"
-                />
-                <h3 className="mt-4 font-display italic font-tnky-black uppercase leading-none text-h2 text-tnky-white">
-                  {path.name}
-                </h3>
-                <ul className="mt-6 space-y-3">
-                  {topCareers.map((career) => (
-                    <li
-                      key={career.title}
-                      className="flex items-baseline justify-between gap-3"
-                    >
-                      <span className="text-button text-tnky-white/90">
-                        {career.title}
-                      </span>
-                      <span className="whitespace-nowrap font-display font-extrabold text-body text-tnky-white">
-                        {career.wage}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href={`/students/pillars/${path.slug}`}
-                  className="mt-auto inline-flex items-center gap-2 self-start rounded-pill bg-tnky-white px-5 py-2.5 font-display font-bold text-button text-tnky-ink transition-colors duration-200 ease-tnky hover:bg-tnky-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tnky-white"
+                aria-hidden="true"
+                className={`mx-auto h-3 w-[86%] flex-none ${path.bgClass}`}
+              />
+
+              {/* Shaft — the narrow column body, inset from the pillar edges so
+                  the white section background shows on both sides, producing the
+                  wide-cap / skinny-middle / wide-base silhouette. */}
+              <div className={`relative mx-auto flex w-[80%] min-h-0 flex-1 flex-col ${path.bgClass}`}>
+                {/* Collapsed view — desktop only, while this column isn't
+                    hovered/focused. Icon centered in the shaft (the label lives
+                    in the capital above). */}
+                <div
+                  aria-hidden={showExpanded ? "true" : undefined}
+                  className={`absolute inset-0 hidden items-center justify-center p-4 transition-opacity duration-300 md:flex ${
+                    showExpanded ? "pointer-events-none opacity-0" : "opacity-100"
+                  }`}
                 >
-                  View {path.name} careers
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
+                  <Icon className="h-16 w-16" strokeWidth={1.5} aria-hidden="true" />
+                </div>
+
+                {/* Expanded view — always visible on mobile; on desktop fades in when hovered/focused */}
+                <div
+                  aria-hidden={!showExpanded ? "true" : undefined}
+                  className={`flex min-h-[20rem] flex-1 flex-col px-4 py-5 transition-opacity duration-300 md:min-h-0 md:overflow-y-auto md:py-6 ${
+                    showExpanded ? "opacity-100" : "pointer-events-none opacity-0"
+                  }`}
+                >
+                  <Icon
+                    className="h-12 w-12 md:h-14 md:w-14"
+                    strokeWidth={1.5}
+                    aria-hidden="true"
+                  />
+                  <ul className="mt-5 space-y-2.5">
+                    {topCareers.map((career) => (
+                      <li
+                        key={career.title}
+                        className="flex items-baseline justify-between gap-3"
+                      >
+                        <span className="text-button text-tnky-white/90">
+                          {career.title}
+                        </span>
+                        <span className="whitespace-nowrap font-display font-extrabold text-body text-tnky-white">
+                          {career.wage}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={`/students/pillars/${path.slug}`}
+                    className="mt-auto inline-flex items-center gap-2 self-start rounded-pill bg-tnky-white px-4 py-2.5 font-display font-bold text-button text-tnky-ink transition-colors duration-200 ease-tnky hover:bg-tnky-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tnky-white"
+                  >
+                    View {path.name} careers
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </div>
               </div>
+
+              {/* Necking ring above the base — mirror of the one below the cap. */}
+              <div
+                aria-hidden="true"
+                className={`mx-auto h-3 w-[86%] flex-none ${path.bgClass}`}
+              />
+
+              {/* Base — the wide solid block at the bottom of the column. */}
+              <div
+                aria-hidden="true"
+                className={`h-20 flex-none rounded-t-2xl px-3 md:h-24 md:px-4 ${path.bgClass}`}
+              />
             </div>
           );
         })}
       </div>
-
     </section>
   );
 }
