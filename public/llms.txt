@@ -1,0 +1,44 @@
+# TradesNKY
+
+> A career pathway program connecting Northern Kentucky K-12 students, families, educators, and employers to high-demand skilled trades careers.
+
+## About
+
+TradesNKY is a Northern Kentucky nonprofit that connects schools, industry, and community partners to prepare students for high-demand, high-skilled careers that build, power, and move the region forward.
+
+Its K-12 pathway model moves students through three stages: exposure (grades K-5), exploration (grades 6-8), and engagement (grades 9-12). Programs include in-school curriculum, after-school Trades Clubs, and the skill UP regional career fair.
+
+All careers are organized into five pillars, which structure the curriculum, the career quiz, and the career pages:
+
+- **Build** — construction and the built environment
+- **Make** — advanced manufacturing
+- **Move** — transportation and logistics
+- **Power** — energy and utilities
+- **Protect** — public safety and essential services
+
+- [What is TradesNKY](https://tradesnky.org/about/what-is-tradesnky): Mission, vision, and organizational history.
+- [Our Team](https://tradesnky.org/about/board): Board of directors and staff.
+- [Partners](https://tradesnky.org/about/partners): Industry, education, and community partner organizations.
+
+## Key Pages
+
+- [Homepage](https://tradesnky.org): Overview of TradesNKY, the five pillars, and the K-12 career pathway.
+- [For Students](https://tradesnky.org/students): Explore skilled-trades careers in Northern Kentucky and find the path that fits.
+- [For Parents](https://tradesnky.org/parents): How skilled trades and technical education let students build real skills, earn while they learn, and keep future options open.
+- [For Educators](https://tradesnky.org/educators): Improving College & Career Readiness, student engagement, and graduation outcomes for districts.
+- [For Employers](https://tradesnky.org/employers): Building a talent pipeline and reducing workforce shortages by connecting students to skilled careers.
+- [For Policymakers](https://tradesnky.org/policymakers): Workforce development, economic growth, and community impact across the region.
+- [Career Quiz](https://tradesnky.org/students/quiz): Interactive quiz that matches a student to one of the five pillars and a recommended occupation.
+- [About](https://tradesnky.org/about/what-is-tradesnky): Mission, vision, and history.
+- [Insights](https://tradesnky.org/insights): News, partnerships, program expansions, and announcements.
+- [Contact](https://tradesnky.org/contact): Contact form and details. Email info@tradesnky.org; 1010 Windsor Drive, Suite 202, Cold Spring, KY 41076.
+
+## Career Pathways
+
+The five pillars. Each page lists representative careers, annual wages, and regional employers.
+
+- [Build](https://tradesnky.org/students/pillars/build): Construction and the built environment — carpentry, electrical, plumbing, HVAC, ironwork, welding, and project management.
+- [Make](https://tradesnky.org/students/pillars/make): Advanced manufacturing — CNC machining, welding, robotics, tool and die, quality inspection, and industrial maintenance.
+- [Move](https://tradesnky.org/students/pillars/move): Transportation and logistics — CDL driving, diesel mechanics, logistics coordination, warehousing, and aviation.
+- [Power](https://tradesnky.org/students/pillars/power): Energy and utilities — lineworkers, power plant operators, substation and wind turbine technicians, and gas utility work.
+- [Protect](https://tradesnky.org/students/pillars/protect): Public safety and essential services — firefighting and EMT, cybersecurity, water treatment, facilities maintenance, and law enforcement.

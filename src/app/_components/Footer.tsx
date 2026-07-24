@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CookiePreferencesButton } from "./cookie-preferences-button";
 
 const COLS: { h: string; links: { href: string; label: string }[] }[] = [
   {
@@ -81,8 +82,23 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className="pt-7 flex flex-col md:flex-row gap-3 md:justify-between text-tnky-white/50 text-mini">
+        <div className="pt-7 flex flex-col gap-3 md:flex-row md:items-center md:justify-between text-tnky-white/50 text-mini">
           <span>© Trades NKY · 501(c)(3)</span>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link
+              href="/accessibility"
+              className="hover:text-tnky-white hover:underline hover:decoration-dashed hover:underline-offset-4"
+            >
+              Accessibility
+            </Link>
+            <Link
+              href="/cookie-policy"
+              className="hover:text-tnky-white hover:underline hover:decoration-dashed hover:underline-offset-4"
+            >
+              Cookie Policy
+            </Link>
+            <CookiePreferencesButton className="hover:text-tnky-white hover:underline hover:decoration-dashed hover:underline-offset-4" />
+          </div>
         </div>
       </div>
     </footer>
