@@ -165,13 +165,6 @@ export function FivePathsAccordion() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    href={`/students/pillars/${path.slug}`}
-                    className="mt-auto inline-flex items-center gap-2 self-start rounded-pill bg-tnky-white px-4 py-2.5 font-display font-bold text-button text-tnky-ink transition-colors duration-200 ease-tnky hover:bg-tnky-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tnky-white"
-                  >
-                    View {path.name} careers
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
                 </div>
               </div>
 
@@ -181,11 +174,24 @@ export function FivePathsAccordion() {
                 className={`mx-auto h-3 w-[86%] flex-none ${path.bgClass}`}
               />
 
-              {/* Base — the wide solid block at the bottom of the column. */}
+              {/* Base — the wide block at the bottom of the column. Carries the
+                  explore-path button (revealed on expand), sitting opposite the
+                  pillar name in the capital. */}
               <div
-                aria-hidden="true"
-                className={`h-20 flex-none rounded-t-2xl px-3 md:h-24 md:px-4 ${path.bgClass}`}
-              />
+                className={`flex h-20 flex-none items-center justify-center overflow-hidden rounded-t-2xl px-3 md:h-24 md:px-4 ${path.bgClass}`}
+              >
+                <Link
+                  href={`/students/pillars/${path.slug}`}
+                  aria-hidden={!showExpanded ? "true" : undefined}
+                  tabIndex={showExpanded ? undefined : -1}
+                  className={`inline-flex items-center gap-2 whitespace-nowrap rounded-pill bg-tnky-white px-4 py-2.5 font-display font-bold text-button text-tnky-ink transition-opacity duration-300 ease-tnky hover:bg-tnky-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tnky-white ${
+                    showExpanded ? "opacity-100" : "pointer-events-none opacity-0"
+                  }`}
+                >
+                  View {path.name} careers
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
             </div>
           );
         })}
