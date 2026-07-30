@@ -38,16 +38,18 @@ export function FivePathsAccordion() {
   const items = PATH_SLUGS.map((slug) => PATHS[slug]);
 
   return (
-    // Desktop only: lock the whole section to a little under the viewport and
-    // run it as a flex column — header takes its natural height, the accordion
-    // row below fills the remainder via `md:flex-1`. The `- 6rem` trims the
-    // section so it no longer eats the full viewport.
+    // Desktop only: run the section as a flex column shorter than the viewport
+    // — header takes its natural height, the accordion row below fills the
+    // remainder via `md:flex-1`. The `- 8rem` leaves that much clearance below
+    // the pillars so the base "explore" buttons stay clear of the bottom-fixed
+    // cookie banner. The lower `min-height` keeps that clearance positive on
+    // short laptop viewports instead of pushing the buttons under the banner.
     <section
       id="five-pillars-section"
       className="bg-tnky-white md:flex md:flex-col md:overflow-hidden"
       style={
         isDesktop
-          ? { height: "calc(100vh - var(--nav-h, 64px) - 6rem)", minHeight: "34rem" }
+          ? { height: "calc(100vh - var(--nav-h, 64px) - 8rem)", minHeight: "26rem" }
           : undefined
       }
     >
