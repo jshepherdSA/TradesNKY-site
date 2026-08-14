@@ -86,6 +86,12 @@ export function Footer() {
           <span>© Trades NKY · 501(c)(3)</span>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Link
+              href="/privacy-policy"
+              className="hover:text-tnky-white hover:underline hover:decoration-dashed hover:underline-offset-4"
+            >
+              Privacy Policy
+            </Link>
+            <Link
               href="/accessibility"
               className="hover:text-tnky-white hover:underline hover:decoration-dashed hover:underline-offset-4"
             >

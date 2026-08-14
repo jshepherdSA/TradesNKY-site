@@ -7,6 +7,7 @@ import { NavHeightObserver } from "./_components/nav-height-observer";
 import { ScrollManager } from "./_components/scroll-manager";
 import { Footer } from "./_components/Footer";
 import { CookieConsent } from "./_components/cookie-consent";
+import { Analytics } from "./_components/analytics";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -66,6 +67,7 @@ export default function RootLayout({
         <div className="flex-1">{children}</div>
         <Footer />
         <CookieConsent />
+        <Analytics />
       </body>
     </html>
   );

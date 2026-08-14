@@ -8,6 +8,19 @@ import {
 } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import {
+  CHANGE_EVENT,
+  CONSENT_VERSION,
+  getServerSnapshot,
+  getSnapshot,
+  OPEN_EVENT,
+  parseConsent,
+  SSR_SNAPSHOT,
+  STORAGE_KEY,
+  subscribe,
+  type OptionalKey,
+  type StoredConsent,
+} from "@/lib/consent";
 
 /**
  * Cookie consent banner. Appears on first visit (no stored choice), fixed to
@@ -21,21 +34,6 @@ import { cn } from "@/lib/utils";
  * matches the server (banner hidden) and reconciles on the client — no
  * setState-in-effect and no hydration mismatch.
  */
-
-const STORAGE_KEY = "tnky-cookie-consent";
-const CONSENT_VERSION = 1;
-const OPEN_EVENT = "tnky:cookie-preferences";
-const CHANGE_EVENT = "tnky:cookie-consent-change";
-const SSR_SNAPSHOT = "__ssr__";
-
-type OptionalKey = "functional" | "analytics" | "advertising";
-
-type StoredConsent = {
-  v: number;
-  choice: "accepted" | "declined" | "custom";
-  categories: { necessary: true } & Record<OptionalKey, boolean>;
-  ts: number;
-};
 
 const CATEGORIES: {
   key: "necessary" | OptionalKey;
@@ -65,38 +63,6 @@ const CATEGORIES: {
     desc: "Used to measure and deliver more relevant advertising.",
   },
 ];
-
-function subscribe(callback: () => void) {
-  window.addEventListener("storage", callback);
-  window.addEventListener(CHANGE_EVENT, callback);
-  return () => {
-    window.removeEventListener("storage", callback);
-    window.removeEventListener(CHANGE_EVENT, callback);
-  };
-}
-
-function getSnapshot(): string | null {
-  try {
-    return window.localStorage.getItem(STORAGE_KEY);
-  } catch {
-    return null;
-  }
-}
-
-function getServerSnapshot(): string {
-  return SSR_SNAPSHOT;
-}
-
-function parseConsent(raw: string | null): StoredConsent | null {
-  if (!raw || raw === SSR_SNAPSHOT) return null;
-  try {
-    const parsed = JSON.parse(raw) as StoredConsent;
-    if (!parsed || parsed.v !== CONSENT_VERSION) return null;
-    return parsed;
-  } catch {
-    return null;
-  }
-}
 
 export function CookieConsent() {
   const raw = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);

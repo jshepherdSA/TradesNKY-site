@@ -42,3 +42,9 @@ The five pillars. Each page lists representative careers, annual wages, and regi
 - [Move](https://tradesnky.org/students/pillars/move): Transportation and logistics — CDL driving, diesel mechanics, logistics coordination, warehousing, and aviation.
 - [Power](https://tradesnky.org/students/pillars/power): Energy and utilities — lineworkers, power plant operators, substation and wind turbine technicians, and gas utility work.
 - [Protect](https://tradesnky.org/students/pillars/protect): Public safety and essential services — firefighting and EMT, cybersecurity, water treatment, facilities maintenance, and law enforcement.
+
+## Legal
+
+- [Privacy Policy](https://tradesnky.org/privacy-policy): How we collect, use, disclose, and protect personal information.
+- [Cookie Policy](https://tradesnky.org/cookie-policy): How we use cookies and similar technologies.
+- [Accessibility Statement](https://tradesnky.org/accessibility): Our commitment to an accessible, inclusive experience.

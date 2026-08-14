@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { SVGProps } from "react";
 import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
-import { ContactForm } from "../_components/contact-form";
+import { JotformContact } from "../_components/jotform-contact";
 import { CtaCard as NewsletterBanner } from "../_components/CtaCard";
 
 // Inline brand-mark SVGs — the project's pinned `lucide-react@1.14`
@@ -85,7 +85,7 @@ export default function ContactPage() {
           gets the wider column at lg+. */}
       <section className="bg-tnky-cream">
         <div className="max-w-content mx-auto grid grid-cols-1 gap-10 px-4 py-12 sm:px-8 md:py-16 lg:grid-cols-[3fr_2fr] lg:gap-16">
-          <ContactForm />
+          <JotformContact />
 
           <aside
             aria-labelledby="contact-info-heading"
