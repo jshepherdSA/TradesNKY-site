@@ -21,10 +21,97 @@ export type Insight = {
   dateTime: string;
   imageSrc: string;
   imageAlt: string;
+  /**
+   * Byline, for authored pieces such as opinion columns. Omitted on standard
+   * organizational announcements.
+   */
+  author?: string;
+  /**
+   * Original publisher, for pieces first published elsewhere (e.g. an opinion
+   * column submitted to a newspaper). `note` carries the publication's own
+   * contributor credit; `url` links back to the original.
+   */
+  source?: { name: string; url?: string; note?: string };
   body: InsightBlock[];
 };
 
 export const INSIGHTS: Insight[] = [
+  {
+    slug: "opinion-preparing-tomorrows-skilled-trades-workforce",
+    category: "Opinion",
+    title:
+      "Opinion: Preparing tomorrow’s skilled trades workforce begins long before graduation",
+    excerpt:
+      "TradesNKY founders Phil Griffin, Brandon Bray, and Sara Bray argue that solving Northern Kentucky’s workforce shortage starts long before a job posting — originally published as an opinion column in the NKyTribune.",
+    date: "August 13, 2026",
+    dateTime: "2026-08-13",
+    imageSrc: "/images/student-woodworking.jpg",
+    imageAlt:
+      "A student practicing hands-on woodworking skills in a Northern Kentucky trades classroom",
+    author: "Phil Griffin, Brandon Bray, and Sara Bray",
+    source: {
+      name: "NKyTribune",
+      url: "https://nkytribune.com/2026/08/opinion-preparing-tomorrows-skilled-trades-workforce-begins-long-before-graduation/",
+      note: "Opinion column — Special to NKyTribune",
+    },
+    body: [
+      {
+        type: "p",
+        text: "COVID-19 reminded us that skilled trades professionals are essential to keeping our communities running. They maintain our infrastructure, support local businesses, and provide the critical services we rely on every day. With 40% of the skilled trades workforce anticipated to retire in the next decade, the need to invest in the next generation of skilled workers is more urgent than ever.",
+      },
+      {
+        type: "p",
+        text: "Northern Kentucky’s workforce challenges cannot be solved through recruitment alone. Building a sustainable talent pipeline requires a long-term strategy that begins well before students enter the workforce. By exposing young learners to career opportunities, engaging them in hands-on learning, and connecting them to education and apprenticeship pathways, we can develop the skilled workforce our region will need for years to come.",
+      },
+      {
+        type: "image",
+        src: "/images/tradesnky-founders.jpg",
+        alt: "TradesNKY founders Phil Griffin, Brandon Bray, and Sara Bray",
+        caption: "Phil Griffin, Brandon Bray, and Sara Bray (Photos from TradesNKY)",
+      },
+      {
+        type: "p",
+        text: "TradesNKY was founded on a simple belief: preparing students for the future is a shared responsibility. Parents, employers, educators, community organizations, policymakers, and schools all play an important role in helping young people discover their interests, develop their talents, and explore meaningful career opportunities. By working together, we can create experiences that connect education to the world of work and help students make informed decisions about their futures.",
+      },
+      {
+        type: "p",
+        text: "To put this belief into action, TradesNKY has identified five industry sectors that comprise the essential trades workforce: BUILD (Construction), MAKE (Manufacturing), MOVE (Supply Chain & Logistics), POWER (Utilities & Energy), and PROTECT (Public Safety & Cybersecurity).",
+      },
+      {
+        type: "p",
+        text: "Starting with BUILD, TradesNKY collaborated with industry and education partners to create a middle school curriculum aligned with both workforce needs and educational standards. Currently being implemented in local schools, the curriculum, with integrated employability skills training, exposes students to a variety of construction trades – including carpentry, plumbing, HVAC, electrical, welding, and masonry – through engaging, hands-on projects designed to build technical knowledge, career awareness, and practical life skills that benefit students regardless of the path they ultimately pursue.",
+      },
+      {
+        type: "p",
+        text: "The impact of this has been transformational, with improvements in attendance, learner engagement, and academic achievement. More importantly, students are developing and demonstrating life skills including teamwork, problem-solving and self-reliance, all while gaining a deeper understanding of the relevance of their education, seeing how mathematics, science, and technology are applied every day in the skilled trades and across the broader workforce.",
+      },
+      {
+        type: "p",
+        text: "TradesNKY also partners with education and industry to develop the TradesNKY Student Pathway: From Exposure to Opportunity. This student-first approach to career readiness creates a seamless continuum that begins with Career Exposure in Pre-K and elementary school and progresses to Career Exploration in middle school. In grades 9 and 10, students deepen their engagement through micro-credentialing and work-based learning experiences. By grades 11 and 12, students pursue industry certifications through attending community and technical college, an area technology center, or trade school while participating in increasingly immersive work-based experiential learning opportunities, including job shadowing, internships, co-ops, pre-apprenticeships, and pathway-related employment.",
+      },
+      {
+        type: "p",
+        text: "This progressive model ensures that students graduate with the awareness, skills, credentials, and hands-on experience needed to successfully transition into postsecondary education, Registered Apprenticeships, military service, or the workforce.",
+      },
+      {
+        type: "p",
+        text: "As TradesNKY expands across its five essential industry pillars, we will continue to engage employers, educators, and community partners in the development of sector-specific student pathways that align with the TradesNKY Exposure to Opportunity model, strengthening our region’s future workforce.",
+      },
+      {
+        type: "p",
+        text: "Northern Kentucky has long thrived through collaboration among education, industry, and community leaders, and workforce development should be no different. Preparing students for future success requires a collective commitment to introducing career opportunities, developing skills, and building career readiness long before graduation. This investment benefits not only students, but also the employers, communities, and regional economy that depend on the next generation of talent.",
+      },
+      {
+        type: "p",
+        text: "The solution to our workforce challenges begins long before a job posting is created. We encourage employers, educators and parents to become active partners in education by opening their doors to students, supporting career exploration opportunities, and helping inspire the next generation of skilled professionals.",
+      },
+      {
+        type: "p",
+        text: "Phil Griffin, Brandon Bray, and Sara Bray are the founders of TradesNKY.",
+      },
+    ],
+  },
+
   {
     slug: "educators-professional-development-2026",
     category: "Professional Development",

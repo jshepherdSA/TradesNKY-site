@@ -62,6 +62,38 @@ export default async function InsightPostPage({
           >
             {insight.date}
           </time>
+
+          {/* Byline / original-publication credit. Only rendered for authored
+              pieces such as opinion columns; standard announcements omit both
+              fields and this block disappears entirely. */}
+          {(insight.author || insight.source) && (
+            <div className="mt-5 border-l-2 border-tnky-safety pl-4">
+              {insight.author && (
+                <p className="font-display font-bold text-body text-tnky-ink">
+                  By {insight.author}
+                </p>
+              )}
+              {insight.source && (
+                <p className="mt-1 text-small leading-relaxed text-tnky-mute [text-wrap:pretty]">
+                  {insight.source.note ??
+                    `Originally published in ${insight.source.name}`}
+                  {insight.source.url && (
+                    <>
+                      {" · "}
+                      <a
+                        href={insight.source.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-tnky-blue underline underline-offset-4 transition-colors duration-150 hover:text-tnky-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2"
+                      >
+                        Read the original on {insight.source.name}
+                      </a>
+                    </>
+                  )}
+                </p>
+              )}
+            </div>
+          )}
         </header>
 
         {/* Lead image */}
