@@ -26,6 +26,53 @@ export type Insight = {
 
 export const INSIGHTS: Insight[] = [
   {
+    slug: "educators-professional-development-2026",
+    category: "Professional Development",
+    title: "Preparing educators to bring skilled trades education to life",
+    excerpt:
+      "Ahead of the 2026–2027 school year, TradesNKY hosted two days of professional development for Northern Kentucky teachers and administrators — lifting educators’ confidence in teaching the curriculum from 4.2 to 4.8 out of 5.",
+    date: "July 30, 2026",
+    dateTime: "2026-07-30",
+    imageSrc: "/images/educators-pd-training.jpg",
+    imageAlt:
+      "Northern Kentucky educators seated at classroom tables during a two-day TradesNKY professional development session as an industry leader presents",
+    body: [
+      {
+        type: "p",
+        text: "As students across Northern Kentucky (NKY) get ready to head back to the classroom in the next few weeks, TradesNKY is helping ensure the educators are ready and connected to the resources they need.",
+      },
+      {
+        type: "p",
+        text: "Ahead of the 2026–2027 school year, TradesNKY welcomed teachers and administrators from participating schools across NKY for two days of professional development focused on bringing the TradesNKY curriculum to life in the classroom.",
+      },
+      {
+        type: "p",
+        text: "The training gave educators an opportunity to dig into the curriculum and explore hands-on learning strategies. Just as importantly, educators heard directly from industry and community leaders who shared their perspectives on the workforce needs facing our region and the importance of introducing students to skilled trades careers early.",
+      },
+      {
+        type: "p",
+        text: "The results showed the impact of that preparation. Educators’ average confidence in implementing the curriculum increased from 4.2 out of 5 before the training to 4.8 afterward, with 80% of participants reporting that they felt “Very Confident” in teaching the curriculum following the two-day experience.",
+      },
+      {
+        type: "p",
+        text: "Educators reported growth in areas ranging from technical content knowledge and career conversations to building industry partnerships. They left with practical ideas they can put to work immediately, including bringing industry professionals into their classrooms and connecting trades instruction with subjects such as math and science.",
+      },
+      {
+        type: "p",
+        text: "One of the most encouraging signs came from the questions educators were asking. Early in the training, conversations centered on understanding the curriculum, classroom management and how to get started. By the second day, those questions had shifted toward scheduling, pacing and school-specific planning, showing that educators were already thinking beyond how to teach the curriculum and toward how to make it work effectively for their students.",
+      },
+      {
+        type: "p",
+        text: "TradesNKY’s work is about more than introducing students to tools or individual trades. It is about helping young people understand the opportunities available to them and see rewarding, high-demand careers as possibilities for their own futures. Educators are essential to making that happen.",
+      },
+      {
+        type: "p",
+        text: "The professional development may have lasted two days, but its impact will continue throughout the school year.",
+      },
+    ],
+  },
+
+  {
     slug: "middle-school-build-expansion-kenton",
     category: "Program Expansion",
     title: "TradesNKY expands middle school curriculum to Kenton Co. Schools",
@@ -431,9 +478,9 @@ export const INSIGHTS: Insight[] = [
       "TradesNKY has named Lorraine O’Moore — a workforce-development leader with more than 30 years of experience — as its first Executive Director.",
     date: "January 12, 2025",
     dateTime: "2025-01-12",
-    imageSrc: "/images/mentor-student.jpg",
+    imageSrc: "/brand/board/lorraine-omoore.webp",
     imageAlt:
-      "A workforce-development leader mentoring a student in a Northern Kentucky trades setting",
+      "Lorraine O’Moore, first Executive Director of TradesNKY",
     body: [
       {
         type: "p",
