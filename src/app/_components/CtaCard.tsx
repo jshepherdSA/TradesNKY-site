@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { AlertCircle, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useNewsletterSignup } from "./use-newsletter-signup";
 
 // brand --ease-tnky cubic-bezier(0.22, 1, 0.36, 1)
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -38,49 +38,18 @@ const itemVariants: Variants = {
   },
 };
 
-type Status = "idle" | "submitting" | "success" | "error";
-
 type CtaCardProps = {
   imageSrc?: string;
   imageAlt?: string;
 };
 
-const isValidEmail = (value: string) =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-
 export function CtaCard({
   imageSrc = DEFAULT_IMAGE,
   imageAlt = "",
 }: CtaCardProps = {}) {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<Status>("idle");
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const { email, setEmail, status, errorMessage, handleSubmit } =
+    useNewsletterSignup();
   const reducedMotion = useReducedMotion();
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!isValidEmail(email)) {
-      setStatus("error");
-      setErrorMessage("Please enter a valid email address.");
-      return;
-    }
-    setStatus("submitting");
-    setErrorMessage(null);
-    try {
-      // Recorded as a submission on the TradesNKY Newsletter JotForm by the
-      // server route, which holds the API key (see app/api/subscribe).
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
-      });
-      if (!res.ok) throw new Error(`Subscribe failed: ${res.status}`);
-      setStatus("success");
-    } catch {
-      setStatus("error");
-      setErrorMessage("Something went wrong. Please try again.");
-    }
-  };
 
   return (
     <section className="relative flex min-h-[22rem] items-center overflow-hidden bg-tnky-blue py-band">

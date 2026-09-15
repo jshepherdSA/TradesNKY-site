@@ -21,6 +21,7 @@ const STATIC_ROUTES: Route[] = [
   { path: "/about/partners", priority: 0.6, changeFrequency: "monthly" },
   { path: "/insights", priority: 0.7, changeFrequency: "weekly" },
   { path: "/contact", priority: 0.6, changeFrequency: "yearly" },
+  { path: "/newsletter", priority: 0.5, changeFrequency: "yearly" },
   { path: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" },
   { path: "/cookie-policy", priority: 0.3, changeFrequency: "yearly" },
   { path: "/accessibility", priority: 0.3, changeFrequency: "yearly" },

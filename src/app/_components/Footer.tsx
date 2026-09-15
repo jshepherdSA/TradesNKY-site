@@ -38,7 +38,7 @@ const COLS: { h: string; links: { href: string; label: string }[] }[] = [
       { href: "/contact", label: "Contact" },
       { href: "/contact#volunteer", label: "Volunteer" },
       { href: "/contact#donate", label: "Donate" },
-      { href: "/contact#newsletter", label: "Newsletter" },
+      { href: "/newsletter", label: "Newsletter" },
     ],
   },
 ];
