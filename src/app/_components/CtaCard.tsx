@@ -67,11 +67,14 @@ export function CtaCard({
     setStatus("submitting");
     setErrorMessage(null);
     try {
-      // TODO(backend): wire this up to a real subscribe endpoint
-      // (e.g. POST /api/subscribe with { email }). Until that exists, the
-      // brief delay + success transition below is a placeholder so the UI
-      // flow is reviewable — no email is actually being sent or stored.
-      await new Promise((resolve) => setTimeout(resolve, 900));
+      // Recorded as a submission on the TradesNKY Newsletter JotForm by the
+      // server route, which holds the API key (see app/api/subscribe).
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      if (!res.ok) throw new Error(`Subscribe failed: ${res.status}`);
       setStatus("success");
     } catch {
       setStatus("error");
