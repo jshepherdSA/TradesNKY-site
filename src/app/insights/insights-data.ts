@@ -8,7 +8,9 @@
 export type InsightBlock =
   | { type: "p"; text: string }
   | { type: "list"; items: string[] }
-  | { type: "image"; src: string; alt: string; caption?: string };
+  | { type: "image"; src: string; alt: string; caption?: string }
+  /** A standalone linked line, e.g. a pointer to a related document. */
+  | { type: "link"; text: string; href: string };
 
 export type Insight = {
   slug: string;
@@ -36,6 +38,91 @@ export type Insight = {
 };
 
 export const INSIGHTS: Insight[] = [
+  {
+    slug: "inside-tradesnky-build-curriculum",
+    category: "Program Spotlight",
+    title:
+      "Building skills, discovering possibilities: Inside TradesNKY’s BUILD curriculum",
+    excerpt:
+      "Designed for grades 6–8, TradesNKY’s hands-on BUILD curriculum connects classroom lessons with real projects and career exploration — and is now being taught in eight Northern Kentucky schools.",
+    date: "October 12, 2026",
+    dateTime: "2026-10-12",
+    imageSrc: "/images/build-curriculum-students.jpg",
+    imageAlt:
+      "Middle school students and an instructor working with hammers and timber at an outdoor workbench during a TradesNKY BUILD lesson",
+    body: [
+      {
+        type: "p",
+        text: "What goes into building a house? For students exploring TradesNKY’s BUILD curriculum, the answer involves more than lumber and tools. It takes math, planning, safety, problem-solving and teamwork; skills they can put into practice while discovering careers across the building and construction industries.",
+      },
+      {
+        type: "p",
+        text: "Designed for students in grades 6–8, BUILD is a hands-on, industry-informed curriculum aligned with Kentucky Department of Education standards. It connects classroom instruction with practical projects and career exploration, giving students opportunities to discover their interests before making decisions about their future.",
+      },
+      {
+        type: "p",
+        text: "BUILD began during the 2023 school year through a partnership with Campbell County Schools to support its Construction Trades pathway. When TradesNKY found that available curriculum did not meet the partnership’s needs, the organization decided to develop its own.",
+      },
+      {
+        type: "p",
+        text: "HVAC technicians, electricians, carpenters and other industry experts worked alongside local education professionals to create lessons that connected classroom learning with the skills used in the workplace.",
+      },
+      {
+        type: "p",
+        text: "The curriculum grew to include sixth-, seventh- and eighth-grade courses, all piloted at Campbell County Middle School. Together, the courses provide a progression from foundational safety and tool skills to more advanced systems and construction projects.",
+      },
+      {
+        type: "p",
+        text: "BUILD starts with a nine-week introductory experience aligned with sixth-grade standards, followed by two 18-week exploration experiences aligned with seventh- and eighth-grade standards.",
+      },
+      {
+        type: "p",
+        text: "In sixth grade, students explore safety, measurement, construction drawings, carpentry, electrical concepts and masonry. A house-building project brings those lessons together, giving students opportunities to read plans, measure materials and work as a team to assemble a small wooden house.",
+      },
+      {
+        type: "p",
+        text: "The project makes classroom concepts tangible. Measurements and fractions help students prepare materials. Geometry helps them understand how roof pieces fit together. Communication and careful planning help them complete the work safely and accurately.",
+      },
+      {
+        type: "p",
+        text: "Seventh-grade students build on those foundations through bridge building, hand and power tools, carpentry, plumbing, electrical systems, HVAC and masonry-related trades. Projects include bridge and wall construction, while career exploration introduces students to career pathways and job-market information.",
+      },
+      {
+        type: "p",
+        text: "In eighth grade, students explore workplace safety, heavy equipment, engineering concepts, HVAC and welding, including welding simulation. A capstone project brings together design, budgeting, materials planning, a professional presentation and a build.",
+      },
+      {
+        type: "p",
+        text: "Career exploration is woven throughout BUILD. Each grade includes a dedicated unit with at least five days set aside for experiences such as industry guest speakers, workplace visits or off-site learning.",
+      },
+      {
+        type: "p",
+        text: "These connections help students understand what different careers involve and how classroom skills translate to the workplace. Students also practice introductions, professional communication, note-taking and reflection as they engage with industry professionals.",
+      },
+      {
+        type: "p",
+        text: "TradesNKY also supports educators through professional development, planning assistance, classroom visits, resources and industry connections. The program puts students first, giving teachers flexibility to adapt pacing, instruction and hands-on activities to their students’ needs and explore creative approaches to learning while following a consistent sequence of standards and skills.",
+      },
+      {
+        type: "p",
+        text: "Middle school offers an opportunity to introduce students to work they may never have considered and skills they may not otherwise develop in school. Through hands-on experiences, students can discover new interests and better understand the connection between education and employment.",
+      },
+      {
+        type: "p",
+        text: "BUILD is currently being implemented at Campbell County Middle School, Holmes Middle School, Twenhofel Middle School, Woodland Middle School, Turkey Foot Middle School, Summit View Academy, Holy Cross Elementary and Zion Christian Academy.",
+      },
+      {
+        type: "p",
+        text: "What began as a response to one district’s need has become a resource for schools across Northern Kentucky. Through BUILD, TradesNKY is helping students develop practical skills today while expanding what they can imagine for their future.",
+      },
+      {
+        type: "link",
+        text: "Click HERE for a TradesNKY curriculum overview.",
+        href: "https://drive.google.com/file/d/19Hmd6dSjotbptDOY0RS7D1uPOTvJuN6p/view",
+      },
+    ],
+  },
+
   {
     slug: "opinion-preparing-tomorrows-skilled-trades-workforce",
     category: "Opinion",
@@ -691,7 +778,7 @@ export function getInsight(slug: string): Insight | undefined {
 export function insightBodyText(insight: Insight): string {
   return insight.body
     .map((block) => {
-      if (block.type === "p") return block.text;
+      if (block.type === "p" || block.type === "link") return block.text;
       if (block.type === "list") return block.items.join(" ");
       return block.caption ?? "";
     })

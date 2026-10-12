@@ -143,6 +143,20 @@ export default async function InsightPostPage({
                   </li>
                 ))}
               </ul>
+            ) : block.type === "link" ? (
+              <p
+                key={i}
+                className="text-body leading-relaxed text-tnky-ink [text-wrap:pretty]"
+              >
+                <a
+                  href={block.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-tnky-blue underline underline-offset-4 transition-colors duration-150 hover:text-tnky-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2"
+                >
+                  {block.text}
+                </a>
+              </p>
             ) : (
               <p
                 key={i}
