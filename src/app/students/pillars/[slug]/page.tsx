@@ -162,6 +162,24 @@ export default async function PillarPage({
         </div>
       </section>
 
+      {/* 4. Data source — covers the wage and open-role figures above. */}
+      <section className="bg-tnky-cream">
+        <div className="max-w-content mx-auto px-4 py-6 sm:px-8">
+          <p className="text-center text-mini font-medium leading-relaxed text-tnky-mute [text-wrap:pretty]">
+            Source: Wage and job numbers on this page are from the State of
+            Kentucky, via the Kentucky Center for Statistics (KYSTATS):{" "}
+            <a
+              href="https://kystats.ky.gov/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-tnky-blue underline underline-offset-4 transition-colors duration-150 hover:text-tnky-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2"
+            >
+              kystats.ky.gov
+            </a>
+          </p>
+        </div>
+      </section>
+
       <NewsletterBanner />
     </main>
   );
