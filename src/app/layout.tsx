@@ -9,6 +9,7 @@ import { Footer } from "./_components/Footer";
 import { CookieConsent } from "./_components/cookie-consent";
 import { Analytics } from "./_components/analytics";
 import { cn } from "@/lib/utils";
+import { SHARE_IMAGE } from "@/lib/share";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -44,10 +45,28 @@ const comfortaa = Comfortaa({
   display: "swap",
 });
 
+const SITE_DESCRIPTION =
+  "Connecting K-12 students in Northern Kentucky to skilled trades careers. Real careers, real paychecks, no student debt.";
+
 export const metadata: Metadata = {
+  // Resolves relative URLs in social tags (og:image, og:url) to absolute ones.
+  metadataBase: new URL("https://www.tradesnky.org"),
   title: "Trades NKY — Build Skills. Build Futures.",
-  description:
-    "Connecting K-12 students in Northern Kentucky to skilled trades careers. Real careers, real paychecks, no student debt.",
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Trades NKY",
+    locale: "en_US",
+    title: "Trades NKY — Build Skills. Build Futures.",
+    description: SITE_DESCRIPTION,
+    images: [SHARE_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Trades NKY — Build Skills. Build Futures.",
+    description: SITE_DESCRIPTION,
+    images: [SHARE_IMAGE.url],
+  },
 };
 
 export default function RootLayout({

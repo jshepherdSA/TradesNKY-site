@@ -1,11 +1,34 @@
 import type { Metadata } from "next";
+import { SHARE_IMAGE } from "@/lib/share";
 import { NewsletterSignupForm } from "../_components/newsletter-signup-form";
 import { ContactAside } from "../_components/contact-aside";
+
+const SHARE_TITLE = "Sign Up for the TradesNKY Newsletter Today";
+const SHARE_DESCRIPTION =
+  "Get the latest on skilled-trades careers, programs, and opportunities in Northern Kentucky, delivered to your inbox.";
 
 export const metadata: Metadata = {
   title: "Newsletter | Trades NKY",
   description:
     "Sign up for the TradesNKY newsletter for the latest on skilled-trades careers, programs, and opportunities in Northern Kentucky.",
+  alternates: { canonical: "/newsletter" },
+  // Link-preview card for Facebook, LinkedIn, X, etc. A page's openGraph
+  // replaces the layout's entirely, so the full set is repeated here.
+  openGraph: {
+    type: "website",
+    siteName: "Trades NKY",
+    locale: "en_US",
+    url: "/newsletter",
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
+    images: [SHARE_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
+    images: [SHARE_IMAGE.url],
+  },
 };
 
 /**
