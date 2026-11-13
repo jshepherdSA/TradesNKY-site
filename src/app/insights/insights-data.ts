@@ -124,6 +124,70 @@ export const INSIGHTS: Insight[] = [
   },
 
   {
+    slug: "camco-chemical-make-curriculum-grant",
+    category: "Funding & Grants",
+    title:
+      "Camco Chemical supports TradesNKY’s manufacturing curriculum with $15,000 grant",
+    excerpt:
+      "A $15,000 grant from Camco Chemical, made through the Rolfes Family Fund at Horizon Community Foundation of Northern Kentucky, will support development of TradesNKY’s new MAKE manufacturing curriculum for middle school students.",
+    date: "September 17, 2026",
+    dateTime: "2026-09-17",
+    imageSrc: "/images/camco-rolfes-check-presentation.jpg",
+    imageAlt:
+      "Representatives from Camco Chemical, the Rolfes Family Fund and TradesNKY hold a ceremonial $15,000 check for the MAKE curriculum at Camco Chemical’s groundbreaking ceremony in Independence",
+    body: [
+      {
+        type: "p",
+        text: "Camco Chemical Company is supporting the next generation of Northern Kentucky’s (NKY) manufacturing workforce through a $15,000 grant to TradesNKY. The grant, made through the Rolfes Family Fund at Horizon Community Foundation of Northern Kentucky, will support the development of TradesNKY’s new MAKE (Manufacturing) curriculum.",
+      },
+      {
+        type: "p",
+        text: "The contribution was recognized Thursday during the groundbreaking ceremony for Camco Chemical and RSA Properties’ new facility in Independence, marking investments in both the company’s continued growth and the future workforce needed to support manufacturing in the region.",
+      },
+      {
+        type: "p",
+        text: "Camco initially approached TradesNKY about an opportunity to support the organization’s work. TradesNKY proposed its recently launched MAKE initiative, which is being developed alongside industry partners to introduce middle school students to the careers and opportunities available in modern manufacturing. The goal is to develop a standards-aligned curriculum that can be easily implemented by educators and meets Kentucky Department of Education requirements.",
+      },
+      {
+        type: "p",
+        text: "“Camco Chemical is proud to support TradesNKY as we work together to expose, educate, and engage the manufacturing workforce of the future,” said Adrian Hothem, President and CEO of Camco Chemical. “As a third-generation, family-owned manufacturer born and raised in Northern Kentucky, we believe that investing in our children, giving them the tools, skills, and opportunities to succeed, delivers one of the greatest returns we can make. Developing and deploying curriculum and programs that engage and excite future generations about careers in manufacturing is essential to the continued success of manufacturers like Camco and to the long-term strength and prosperity of the NKY community.”",
+      },
+      {
+        type: "p",
+        text: "For Camco and the Rolfes family, the investment also carries a personal connection to the company’s history. Camco was founded by Richard “Dick” Rolfes Jr., who built the company with a high school education and a drive to create something that would last for generations. Today, the third-generation family-owned company continues to invest in NKY and sees early exposure to manufacturing careers as an important part of developing, attracting and retaining the region’s future workforce.",
+      },
+      {
+        type: "p",
+        text: "“This partnership is exactly what TradesNKY is about, bringing education and industry together to help young people understand the opportunities that exist right here in our community,” said Lorraine O’Moore, Executive Director of TradesNKY.",
+      },
+      {
+        type: "p",
+        text: "“Camco’s investment in the MAKE curriculum will help us give students meaningful, hands-on exposure to modern manufacturing at an age when they are beginning to think about what their futures could look like. We are incredibly grateful to Camco Chemical and the Rolfes Family Fund for believing in this work and investing in the next generation of NKY’s workforce.”",
+      },
+      {
+        type: "p",
+        text: "The $15,000 grant was formally awarded by the Rolfes Family Fund at Horizon Community Foundation of Northern Kentucky.",
+      },
+      {
+        type: "p",
+        text: "“The Rolfes Family is proud to support the important work TradesNKY is doing to introduce young people to the opportunities available across the skilled trades,” said Chris Cook, Trustee of the Rolfes Family Fund. “We are especially excited about their growing focus on the manufacturing sector, where the need for a strong, skilled workforce continues to grow.”",
+      },
+      {
+        type: "p",
+        text: "“Supporting programs that expose students to these career paths at an early age is an investment not only in their future, but also in the long-term strength of our businesses and the NKY community,” he added.",
+      },
+      {
+        type: "p",
+        text: "The contribution was announced as part of Camco Chemical and RSA Properties’ September 17 groundbreaking ceremony in Independence. Representatives from Camco Chemical, the Rolfes Family Fund, TradesNKY, BE NKY, the City of Independence and other community partners participated in the event.",
+      },
+      {
+        type: "p",
+        text: "Through MAKE and its broader skilled-trades programming, TradesNKY works to expose students to career possibilities early, provide hands-on learning experiences and connect education with the businesses and industry leaders that will employ NKY’s future workforce.",
+      },
+    ],
+  },
+
+  {
     slug: "opinion-preparing-tomorrows-skilled-trades-workforce",
     category: "Opinion",
     title:
