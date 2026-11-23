@@ -123,6 +123,79 @@ export const INSIGHTS: Insight[] = [
     ],
   },
 
+  // Summary of LINK nky news coverage, written in TradesNKY's voice and
+  // linking to the original story. Photos used with LINK nky's permission.
+  {
+    slug: "link-nky-campbell-county-construction-math",
+    category: "In the News",
+    title:
+      "LINK nky: How a Campbell County construction class is helping students master math",
+    excerpt:
+      "LINK nky visited Campbell County Middle School to see how TradesNKY’s BUILD curriculum turns construction projects into real-world math lessons — with results already showing up in the data.",
+    date: "October 11, 2026",
+    dateTime: "2026-10-11",
+    imageSrc: "/images/linknky-campbell-bridge-design.jpg",
+    imageAlt:
+      "Campbell County Middle School seventh graders hot-gluing popsicle sticks into a truss bridge during their construction class",
+    source: {
+      name: "LINK nky",
+      url: "https://linknky.com/news/education/2026/10/11/how-a-campbell-county-construction-class-is-helping-students-master-math/",
+      note: "Featured in LINK nky — reporting and photos by Lia Salvatierra",
+    },
+    body: [
+      {
+        type: "p",
+        text: "LINK nky education reporter Lia Salvatierra spent time in the construction classroom at Campbell County Middle School, where TradesNKY’s BUILD curriculum first took root, to see how hands-on projects are helping students sharpen their math skills.",
+      },
+      {
+        type: "p",
+        text: "The story traces TradesNKY’s beginnings to an after-school construction club in Campbell County, launched by founders Phil Griffin of AnyWeather Companies and Brandon and Sara Bray of Bray Construction Services in response to the skilled-labor shortages they saw in their own businesses. That club led to a nine-week pilot curriculum in 2023, which has since grown into a full three-year middle school program introducing students to carpentry, electrical, HVAC, masonry and plumbing.",
+      },
+      {
+        type: "p",
+        text: "In teacher Noah Wirth’s classroom, students build model houses, design bridges and, later in the year, frame a wall complete with insulation, electrical and plumbing. Wirth runs the room like a job site, with students rotating through roles such as foreman, superintendent and safety inspector.",
+      },
+      {
+        type: "image",
+        src: "/images/linknky-noah-wirth-classroom.jpg",
+        alt: "Teacher Noah Wirth leading his construction class at Campbell County Middle School",
+        caption:
+          "Noah Wirth runs his construction classroom like a real job site. Photo by Lia Salvatierra | LINK nky",
+      },
+      {
+        type: "p",
+        text: "Along the way, students pick up more math than many of them expect — reading fractions on a tape measure, taking precise measurements and even applying the Pythagorean theorem before they meet it in math class. As Wirth tells his students, some days are “math class” in disguise.",
+      },
+      {
+        type: "image",
+        src: "/images/linknky-bentley-green-bridge.jpg",
+        alt: "Seventh grader Bentley Green building a popsicle-stick trestle bridge with his classmates",
+        caption:
+          "Seventh grader Bentley Green and his crew build a trestle bridge. Photo by Lia Salvatierra | LINK nky",
+      },
+      {
+        type: "p",
+        text: "The article highlights early results from Campbell County Schools:",
+      },
+      {
+        type: "list",
+        items: [
+          "Nearly 78% of last spring’s eighth-grade construction students met or exceeded their anticipated growth on state testing — the first class to complete all three years of the TradesNKY curriculum.",
+          "At Campbell County High School, the share of ninth-grade carpentry students passing the beginning-of-year pre-assessment rose to 97%, up from a historical average of about 40%.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The curriculum is now taught in eight Northern Kentucky middle schools, and TradesNKY is building industry partnerships to extend career pathways into manufacturing, transportation and logistics, utilities and energy, and public safety.",
+      },
+      {
+        type: "link",
+        text: "Read the full story on LINK nky →",
+        href: "https://linknky.com/news/education/2026/10/11/how-a-campbell-county-construction-class-is-helping-students-master-math/",
+      },
+    ],
+  },
+
   {
     slug: "camco-chemical-make-curriculum-grant",
     category: "Funding & Grants",

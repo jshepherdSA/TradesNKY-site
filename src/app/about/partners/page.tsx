@@ -185,8 +185,88 @@ const GROUPS: PartnerTileGroup[] = [
       "These manufacturing partners open their doors and share their expertise, connecting students to the real-world skills behind careers in modern manufacturing.",
     gridCols: "grid-cols-2 md:grid-cols-3",
     partners: [
-      // TODO(client): add the businesses from the Manufacturing Month graphic
-      // (not yet provided).
+      // Descriptions verified against public sources (Nov 2026); client to
+      // confirm wording.
+      {
+        name: "Amrize",
+        category: "MAKE Industry Partner",
+        description:
+          "Amrize's Building Envelope facility in Florence, Kentucky produces roofing and building envelope systems for commercial and residential construction across North America.",
+        website: "https://www.amrize.com/",
+        logoSrc: "/brand/partners/Amrize_Logo_2025.svg.webp",
+      },
+      {
+        name: "Andrews Laser Works",
+        category: "MAKE Industry Partner",
+        description:
+          "A Northern Kentucky laser cutting and machining specialist founded in 1946 and now part of PCC, producing precision components for the aerospace industry.",
+        website: "https://www.pccaero.com/companies/andrews-laser-works/",
+        logoSrc: "/brand/partners/andrewslaserworks.png",
+      },
+      {
+        name: "Balluff",
+        category: "MAKE Industry Partner",
+        description:
+          "A global maker of sensors and industrial automation technology whose Florence, Kentucky campus houses Balluff's production and its distribution center for the Americas.",
+        website: "https://www.balluff.com/en-us",
+        logoSrc: "/brand/partners/balluff.svg",
+      },
+      {
+        name: "Fives",
+        category: "MAKE Industry Partner",
+        description:
+          "An international industrial engineering group whose Fives Machining Systems operation in Hebron, Kentucky designs and builds advanced machine tools for manufacturers.",
+        website: "https://www.fivesgroup.com/",
+        logoSrc: "/brand/partners/fives-logo.png",
+      },
+      {
+        name: "Jabil",
+        category: "MAKE Industry Partner",
+        description:
+          "A global manufacturing solutions provider whose Florence, Kentucky facilities support cloud and data center infrastructure, employing technicians and engineers across Northern Kentucky.",
+        website: "https://www.jabil.com/",
+        logoSrc: "/brand/partners/Jabil_Circuit_Logo.svg.webp",
+      },
+      {
+        name: "Kenton Equipment",
+        category: "MAKE Industry Partner",
+        description:
+          "A family-owned outdoor power equipment dealer serving Northern Kentucky since 1972, with sales and service locations in Independence and Dry Ridge.",
+        website: "https://www.kentonequipment.com/",
+        logoSrc: "/brand/partners/KentonEquipment_Logo.webp",
+      },
+      {
+        name: "KraussMaffei",
+        category: "MAKE Industry Partner",
+        description:
+          "A leading maker of plastics processing machinery, from injection molding to extrusion, with its North American headquarters and Innovation Center in Florence, Kentucky.",
+        website: "https://www.kraussmaffei.com/en",
+        logoSrc: "/brand/partners/kraussmaffei.png",
+      },
+      {
+        name: "Mazak",
+        category: "MAKE Industry Partner",
+        description:
+          "A world leader in CNC machine tools that has built machines at its iSMART Factory in Florence, Kentucky since 1974 — its North American headquarters.",
+        website: "https://www.mazak.com/us-en/",
+        logoSrc: "/brand/partners/Mazak_logo.svg.webp",
+      },
+      {
+        name: "Mubea",
+        category: "MAKE Industry Partner",
+        description:
+          "A global automotive supplier and lightweight specialist producing high-strength spring components at its North American operations in Florence, Kentucky.",
+        website: "https://www.mubea.com/en",
+        logoSrc: "/brand/partners/mubea.png",
+      },
+      {
+        name: "Regal Rexnord",
+        category: "MAKE Industry Partner",
+        description:
+          "A global leader in industrial powertrain solutions whose Florence, Kentucky facility produces mechanical power transmission drives, components, and bearings.",
+        website: "https://www.regalrexnord.com/",
+        logoSrc: "/brand/partners/regalrexnord.png",
+      },
       {
         name: "Safran Landing Systems",
         category: "MAKE Industry Partner",
@@ -194,6 +274,14 @@ const GROUPS: PartnerTileGroup[] = [
           "A global aerospace manufacturer whose Walton, Kentucky facility produces aircraft wheels, brakes, and carbon components — a key contributor to Kentucky's aerospace manufacturing sector.",
         website: "https://www.safran-group.com/companies/safran-landing-systems",
         logoSrc: "/brand/partners/safranlogo-cropped.jpg",
+      },
+      {
+        name: "Steinert",
+        category: "MAKE Industry Partner",
+        description:
+          "The U.S. arm of a global sorting technology company, based in Walton, Kentucky, building magnetic and sensor-based separation systems for recycling and mining.",
+        website: "https://steinertglobal.com/us/",
+        logoSrc: "/brand/partners/steinert.jpeg",
       },
     ],
   },
