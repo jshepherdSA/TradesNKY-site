@@ -19,9 +19,10 @@ type CornerstonePartner = {
   name: string;
   description: string;
   /** Partner's official website — rendered as a "Visit website" link
-   *  beneath the description. */
-  website: string;
-  logoSrc: string;
+   *  beneath the description. Omit to hide the link. */
+  website?: string;
+  /** Logo path under /public. When omitted, a placeholder box is shown. */
+  logoSrc?: string;
   /** Optional per-card logo size override. `"large"` bumps the logo
    *  container height ~40% so a particular partner's mark reads more
    *  prominently when it visually carries the card. */
@@ -52,6 +53,13 @@ const CORNERSTONE_PARTNERS: CornerstonePartner[] = [
     website: "#",
     logoSrc: "/brand/partners/fisherfamfoundation.png",
     logoSize: "large",
+  },
+  {
+    // TODO(client): approved description and website still pending.
+    name: "Doug and Sheila Bray Family",
+    description:
+      "Northern Kentucky philanthropists whose family investment helps sustain and grow TradesNKY's hands-on skilled-trades programming for students across the region.",
+    logoSrc: "/brand/partners/Doug-and-Sheila-Bray-Family-Text.png",
   },
 ];
 
@@ -86,17 +94,43 @@ const GROUPS: PartnerTileGroup[] = [
         website: "https://foundation.duke-energy.com",
         logoSrc: "/brand/partners/dukeenergyfoundation.png",
       },
+      // TODO(client): approved descriptions pending for the three partners
+      // below.
+      {
+        name: "Camco Chemical",
+        category: "Project Partner",
+        description:
+          "A third-generation, family-owned chemical manufacturer based in Northern Kentucky, providing chemical manufacturing, fulfillment, and supply chain solutions — and supporting development of TradesNKY's MAKE manufacturing curriculum.",
+        website: "https://www.camco-chem.com/",
+        logoSrc: "/brand/partners/camcologo.png",
+      },
+      {
+        name: "TC Energy",
+        category: "Project Partner",
+        description:
+          "A North American energy infrastructure company operating natural gas pipelines and storage, investing in the communities and future workforce along its footprint.",
+        website: "https://www.tcenergy.com/",
+        logoSrc: "/brand/partners/TCenergylogo.png",
+      },
+      {
+        name: "The Haile Foundation",
+        category: "Project Partner",
+        description:
+          "An independent family foundation dedicated to enhancing the quality of life for residents of Greater Cincinnati and Northern Kentucky.",
+        website: "https://www.hailefoundation.org/",
+        logoSrc: "/brand/partners/HaileFdn-logo.png",
+      },
     ],
   },
   {
-    label: "Industry Partners",
+    label: "BUILD Industry Partners",
     description:
-      "These partners step directly into the learning environment. By sharing their time, talent, and expertise, they connect students to the real-world skills behind the essential workforce careers.",
+      "These construction partners step directly into the learning environment. By sharing their time, talent, and expertise, they connect students to the real-world skills behind careers in building and construction.",
     gridCols: "grid-cols-2 md:grid-cols-3",
     partners: [
       {
         name: "AnyWeather",
-        category: "Industry Partner",
+        category: "BUILD Industry Partner",
         description:
           "A Tri-State residential and commercial contractor specializing in roofing, HVAC, electrical, remodeling, and restoration — hiring and training skilled-trades workers across the region.",
         website: "https://anyweatherhvac.com/",
@@ -104,7 +138,7 @@ const GROUPS: PartnerTileGroup[] = [
       },
       {
         name: "Bray Construction Services Inc.",
-        category: "Industry Partner",
+        category: "BUILD Industry Partner",
         description:
           "A regional commercial and industrial construction firm building across Northern Kentucky and the Greater Cincinnati corridor.",
         website: "https://brayinc.com/",
@@ -112,7 +146,7 @@ const GROUPS: PartnerTileGroup[] = [
       },
       {
         name: "O'Rourke Wrecking Company",
-        category: "Industry Partner",
+        category: "BUILD Industry Partner",
         description:
           "A demolition and dismantling specialist with deep roots in Greater Cincinnati and Northern Kentucky's industrial and commercial sites.",
         website: "https://orourkewrecking.com/",
@@ -120,7 +154,7 @@ const GROUPS: PartnerTileGroup[] = [
       },
       {
         name: "Turner Construction Company",
-        category: "Industry Partner",
+        category: "BUILD Industry Partner",
         description:
           "One of the country's largest builders and a Greater Cincinnati pillar of large-scale commercial construction, with deep apprenticeship and trades partnerships across the region.",
         website: "https://www.turnerconstruction.com/",
@@ -129,11 +163,37 @@ const GROUPS: PartnerTileGroup[] = [
       },
       {
         name: "Valley Interior Systems",
-        category: "Industry Partner",
+        category: "BUILD Industry Partner",
         description:
           "Northern Kentucky's commercial interior contractor of choice — drywall, framing, ceilings, and finishes across thousands of regional projects.",
         website: "https://buildwithvalley.com/",
         logoSrc: "/brand/partners/valley.png",
+      },
+      {
+        name: "Riegler Blacktop",
+        category: "BUILD Industry Partner",
+        description:
+          "An asphalt and civil construction contractor serving Northern Kentucky and Greater Cincinnati since 1954, mentoring students through Boone County Schools' Heavy Equipment Sciences program.",
+        website: "https://rieglerblacktop.com/",
+        logoSrc: "/brand/partners/rieglerblacktoplogo.png",
+      },
+    ],
+  },
+  {
+    label: "MAKE Industry Partners",
+    description:
+      "These manufacturing partners open their doors and share their expertise, connecting students to the real-world skills behind careers in modern manufacturing.",
+    gridCols: "grid-cols-2 md:grid-cols-3",
+    partners: [
+      // TODO(client): add the businesses from the Manufacturing Month graphic
+      // (not yet provided).
+      {
+        name: "Safran Landing Systems",
+        category: "MAKE Industry Partner",
+        description:
+          "A global aerospace manufacturer whose Walton, Kentucky facility produces aircraft wheels, brakes, and carbon components — a key contributor to Kentucky's aerospace manufacturing sector.",
+        website: "https://www.safran-group.com/companies/safran-landing-systems",
+        logoSrc: "/brand/partners/safranlogo-cropped.jpg",
       },
     ],
   },
@@ -264,7 +324,7 @@ export default function PartnersPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             {CORNERSTONE_PARTNERS.map((partner) => (
               <article
                 key={partner.name}
@@ -281,13 +341,20 @@ export default function PartnersPage() {
                       : "h-32 md:h-40"
                   }`}
                 >
-                  <Image
-                    src={partner.logoSrc}
-                    alt={`${partner.name} logo`}
-                    fill
-                    sizes="(min-width: 768px) 40vw, 90vw"
-                    className="object-contain"
-                  />
+                  {partner.logoSrc ? (
+                    <Image
+                      src={partner.logoSrc}
+                      alt={`${partner.name} logo`}
+                      fill
+                      sizes="(min-width: 768px) 40vw, 90vw"
+                      className="object-contain"
+                    />
+                  ) : (
+                    <div
+                      aria-hidden="true"
+                      className="h-full w-full rounded-lg bg-tnky-edge/50"
+                    />
+                  )}
                 </div>
 
                 <div className="text-center">
@@ -297,14 +364,16 @@ export default function PartnersPage() {
                   <p className="mt-3 text-body leading-relaxed text-tnky-mute [text-wrap:pretty]">
                     {partner.description}
                   </p>
-                  <a
-                    href={partner.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-block text-small text-tnky-blue underline underline-offset-4 transition-colors duration-150 hover:text-tnky-safety focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2"
-                  >
-                    Visit website →
-                  </a>
+                  {partner.website && (
+                    <a
+                      href={partner.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-block text-small text-tnky-blue underline underline-offset-4 transition-colors duration-150 hover:text-tnky-safety focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tnky-blue focus-visible:ring-offset-2"
+                    >
+                      Visit website →
+                    </a>
+                  )}
                 </div>
               </article>
             ))}
